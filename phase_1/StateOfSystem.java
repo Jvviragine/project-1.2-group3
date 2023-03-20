@@ -7,12 +7,17 @@ public class StateOfSystem {
     ArrayList<Vector> positions = new ArrayList<>();
     ArrayList<Vector> velocities = new ArrayList<>();
     double timeOfState;
+    double timestep;
+    double G;
+    
 
     //constructor
     public StateOfSystem(double t0, ArrayList<Vector> positions, ArrayList<Vector> velocities) {
         this.positions = positions;
         this.velocities = velocities;
         timeOfState = t0;
+        timestep=0.1; //change to relevant timestep
+        G=6.6743*(Math.pow(10,-3));
     }
 
     public ArrayList<Vector> getPositions(){
@@ -29,6 +34,13 @@ public class StateOfSystem {
 
     public void setTime(double time){
         timeOfState = time;
+    }
+
+    public void updatePosition(){
+        for(int i=0;i<positions.size();i++){
+            Vector incr=(velocities.get(i)).multi(timestep);
+            positions.get(i).add(incr);
+        }
     }
 
     public void setSingleVelocity(int id, Vector newVelocity){
