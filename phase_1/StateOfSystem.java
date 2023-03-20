@@ -9,9 +9,9 @@ public class StateOfSystem {
     double timeOfState;
 
     //constructor
-    public StateOfSystem(double t0, ArrayList<Vector> positions, ArrayList<Vector> velcities) {
+    public StateOfSystem(double t0, ArrayList<Vector> positions, ArrayList<Vector> velocities) {
         this.positions = positions;
-        this.velocities = velcities;
+        this.velocities = velocities;
         timeOfState = t0;
     }
 
