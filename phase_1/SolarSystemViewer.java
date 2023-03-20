@@ -15,8 +15,8 @@ public class SolarSystemViewer {
 
         SolarSystem solarSystem = new SolarSystem();
 
-        final int SOLAR_SYSTEM_WIDTH = 800;
-        final int SOLAR_SYSTEM_HEIGHT = 800;
+        final int SOLAR_SYSTEM_WIDTH = 1000;
+        final int SOLAR_SYSTEM_HEIGHT = 1000;
 
         solarSystemFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
