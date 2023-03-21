@@ -9,9 +9,7 @@ public class CelestialBody{
         this.initialvelocity=initalvelocity;
         this.mass=mass;
     }
-    public void setMass(double mass){
-        this.mass=mass;
-    }
+    
     public double getMass(){
         return mass;
     }
