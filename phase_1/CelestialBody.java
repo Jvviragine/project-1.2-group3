@@ -5,6 +5,10 @@ public class CelestialBody{
     double mass;
     double radius;
 
+    // Added more Instance Fields
+    Vector netForce;
+    Vector netAcceleration;
+
     public CelestialBody(Vector initialposition,Vector initialvelocity,double mass,double radius){
         this.position=initialposition;
         this.velocity=initialvelocity;
@@ -34,6 +38,14 @@ public class CelestialBody{
 
     public double getRadius(){
         return radius;
+    }
+
+    public void setNetForce(Vector netForce) {
+        this.netForce = netForce;
+    }
+
+    public void setNetAcceleration(Vector netAcceleration) {
+        this.netAcceleration = netAcceleration;
     }
 
 }

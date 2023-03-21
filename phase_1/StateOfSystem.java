@@ -105,7 +105,7 @@ public class StateOfSystem {
         return force;
     }
 
-    public Vector getNetForceActingOnABody(CelestialBody body) {
+    public void getNetForceActingOnABody(CelestialBody body) {
 
         // Stores all the Forces acting on a Certain Celestial Body
         ArrayList<Vector> forcesOnBody = new ArrayList<Vector>();
@@ -137,8 +137,11 @@ public class StateOfSystem {
             netForce = netForce.add(forcesOnBody.get(i));
         }
 
-        return netForce.multi(-1);
+        // The Net Force will be associated with 1 Specific Body (Stored in CelestialBody Class)
+        body.setNetForce(netForce);
     }
+
+    // Find 
 
     public void setSingleVelocity(int id, Vector newVelocity){
         ArrayList<Vector> newVelocities = new ArrayList<>();
