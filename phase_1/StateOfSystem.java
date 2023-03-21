@@ -6,6 +6,7 @@ public class StateOfSystem {
     ArrayList <CelestialBody> bodies=new ArrayList<>();
     ArrayList<Vector> positions = new ArrayList<>();
     ArrayList<Vector> velocities = new ArrayList<>();
+    ArrayList<Vector> tempnewvelocities = new ArrayList<>();
     double timeOfState;
     double timestep;
     final double G = 6.6743*(Math.pow(10,-20));
@@ -26,6 +27,8 @@ public class StateOfSystem {
         for(int i=0;i<period;i++){
             updateVelocity();
             updatePosition();
+            velocities=tempnewvelocities;
+            tempnewvelocities.clear();
             toString();
         }
     }
@@ -58,18 +61,19 @@ public class StateOfSystem {
     }
 
     public void updateVelocity(){
-        //System.out.println("Start Velocity:" + positions);
+        System.out.println("Start Velocity:" + velocities);
         ArrayList <Vector> newvelocities=new ArrayList<>();
+        newvelocities.add(velocities.get(0));
         for(int i=1;i<velocities.size();i++){//skip sun when calculating velocity
-            Vector netforce=getForce(bodies.get(i)).multi(-1);
-            Vector acceleration=netforce.multi(bodies.get(i).getMass());//acceleration
+            Vector netforce=getNetForceActingOnABody(bodies.get(i)).multi(-1);
+            Vector acceleration=netforce.multi(1/bodies.get(i).getMass());//acceleration
             Vector incr=(acceleration.multi(timestep));
             Vector updated =velocities.get(i).add(incr);
             bodies.get(i).setVelocity(updated);
             newvelocities.add(updated);
         }
-        positions=newvelocities;
-        //System.out.println("End Velocity:" + positions);
+        tempnewvelocities = newvelocities;
+        System.out.println("End Velocity:" + newvelocities);
     }
 
     public Vector getForce(CelestialBody body){
