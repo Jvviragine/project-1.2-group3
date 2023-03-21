@@ -38,7 +38,7 @@ public class StateOfSystem {
 
     public void updatePosition(){
         ArrayList <Vector> newpositions=new ArrayList<>();
-        for(int i=0;i<positions.size();i++){
+        for(int i=0;i<positions.size();i++){ //skip sun when calculating position
             Vector incr=(velocities.get(i)).multi(timestep);
             Vector updated =positions.get(i).add(incr);
             bodies.get(i).setPosition(updated);
@@ -49,8 +49,9 @@ public class StateOfSystem {
 
     public void updateVelocity(){
         ArrayList <Vector> newvelocities=new ArrayList<>();
-        for(int i=0;i<positions.size();i++){
-
+        for(int i=1;i<positions.size();i++){//skip sun when calculating velocity
+            Vector force=getForce(bodies.get(i));
+            Vector acceleration=force.multi(bodies.get(i).getMass());//acceleration
             Vector incr=(velocities.get(i)).multi(timestep);
             Vector updated =positions.get(i).add(incr);
 
@@ -62,11 +63,21 @@ public class StateOfSystem {
     }
 
     public Vector getForce(CelestialBody body){
+        Vector force=new Vector();
         for(int i=0;i<bodies.size();i++){
             if(bodies.get(i)!=body){
-                
+                Vector bodyposition=body.getPosition();
+                Vector otherposition=bodies.get(i).getPosition();
+                double masses=body.getMass()*bodies.get(i).getMass();
+                Vector numerator=bodyposition.sub(otherposition);
+                double dist=bodyposition.dist(otherposition);
+                double denominator=Math.pow(dist,2);
+                Vector unitVector=new Vector(numerator.getX()/dist,numerator.getY()/dist,numerator.getZ()/dist);
+                double gxm=G*masses;
+                force=unitVector.multi(gxm/denominator);
             }
         }
+        return force;
     }
 
     public void setSingleVelocity(int id, Vector newVelocity){
