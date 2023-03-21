@@ -7,6 +7,7 @@ public class StateOfSystem {
     ArrayList<Vector> positions = new ArrayList<>();
     ArrayList<Vector> velocities = new ArrayList<>();
     ArrayList<Vector> tempnewvelocities = new ArrayList<>();
+    ArrayList<ArrayList<Vector>> orbits = new ArrayList<>();
     double timeOfState;
     double timestep;
     final double G = 6.6743*(Math.pow(10,-20));
@@ -24,11 +25,21 @@ public class StateOfSystem {
     }
     
     public void currentState(int period){
+        for(int i = 1;i<bodies.size();i++){
+            ArrayList<Vector> orbit = new ArrayList<>();
+            orbits.add(orbit);
+            orbits.get(i-1).add(bodies.get(i).getPosition());
+        }
         for(int i=0;i<period;i++){
             updateVelocity();
             updatePosition();
             velocities=tempnewvelocities;
+            for(int j = 0; j<orbits.size();j++){
+                orbits.get(j).add(bodies.get(j+1).getPosition());
+            }
         }
+        System.out.println(orbits.get(0).toString());
+        System.out.println(orbits.get(0).size());
     }
 
     public ArrayList<Vector> getPositions(){
