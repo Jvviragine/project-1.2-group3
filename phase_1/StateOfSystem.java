@@ -48,6 +48,28 @@ public class StateOfSystem {
         positions=newpositions;
     }
 
+    public void updateVelocity(){
+        ArrayList <Vector> newvelocities=new ArrayList<>();
+        for(int i=0;i<positions.size();i++){
+
+            Vector incr=(velocities.get(i)).multi(timestep);
+            Vector updated =positions.get(i).add(incr);
+
+
+            bodies.get(i).setVelocity(updated);
+            newvelocities.add(updated);
+        }
+        positions=newvelocities;
+    }
+
+    public Vector getForce(CelestialBody body){
+        for(int i=0;i<bodies.size();i++){
+            if(bodies.get(i)!=body){
+                
+            }
+        }
+    }
+
     public void setSingleVelocity(int id, Vector newVelocity){
         ArrayList<Vector> newVelocities = new ArrayList<>();
         for(int i = 0; i<velocities.size(); i++){
