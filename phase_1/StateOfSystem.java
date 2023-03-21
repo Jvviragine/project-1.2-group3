@@ -21,7 +21,7 @@ public class StateOfSystem {
         }
         this.bodies = bodies;
         timeOfState = t0;
-        timestep=0.1; //change to relevant timestep;
+        timestep=1; //change to relevant timestep;
     }
     
     public void currentState(int period){
