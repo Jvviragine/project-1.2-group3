@@ -3,7 +3,7 @@ package phase_1;
 import java.util.ArrayList;
 
 public class StateOfSystem {
-
+    ArrayList <CelestialBody> bodies=new ArrayList<>();
     ArrayList<Vector> positions = new ArrayList<>();
     ArrayList<Vector> velocities = new ArrayList<>();
     double timeOfState;
@@ -12,9 +12,10 @@ public class StateOfSystem {
     
 
     //constructor
-    public StateOfSystem(double t0, ArrayList<Vector> positions, ArrayList<Vector> velocities) {
+    public StateOfSystem(double t0, ArrayList<Vector> positions, ArrayList<Vector> velocities,ArrayList<CelestialBody>bodies) {
         this.positions = positions;
         this.velocities = velocities;
+        this.bodies = bodies;
         timeOfState = t0;
         timestep=0.1; //change to relevant timestep
         G=6.6743*(Math.pow(10,-3));
@@ -37,10 +38,14 @@ public class StateOfSystem {
     }
 
     public void updatePosition(){
+        ArrayList <Vector> newpositions=new ArrayList<>();
         for(int i=0;i<positions.size();i++){
             Vector incr=(velocities.get(i)).multi(timestep);
-            positions.get(i).add(incr);
+            Vector updated =positions.get(i).add(incr);
+            bodies.get(i).setPosition(updated);
+            newpositions.add(updated);
         }
+        positions=newpositions;
     }
 
     public void setSingleVelocity(int id, Vector newVelocity){
