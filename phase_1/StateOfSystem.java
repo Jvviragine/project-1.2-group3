@@ -166,6 +166,22 @@ public class StateOfSystem {
         Vector newPosition = initialPosition.add(previousVelocity.multi(timestep)); // A purely LINEAR Approximation (considers the velocity Constant during tn -> tn+1)
     }
 
+    // Finds the New Position by Using a Better Approximation than simple Euler's Version
+    public void setNewPrecisePosition(CelestialBody body) {
+
+        // This Method would call SetNewVelocity (or we store on a body the previous velocities as well)
+        Vector previousVelocity = body.getVelocity(); // Vn
+        setNewVelocity(body); // At this time, the Final Velocity is Calculated
+        Vector finalVelocity = body.getVelocity(); // Already gets the new one calculated on the previous step
+
+        Vector averageVelocity = (previousVelocity.add(finalVelocity)).multi(1 / 2); // (Vi + Vf) / 2
+
+        Vector initialPosition = body.getPosition();
+
+        Vector newPosition = initialPosition.add(averageVelocity.multi(timeOfState)); //How it increases the Precision
+        body.setPosition(newPosition);
+    }
+
     public void setSingleVelocity(int id, Vector newVelocity){
         ArrayList<Vector> newVelocities = new ArrayList<>();
         for(int i = 0; i<velocities.size(); i++){
