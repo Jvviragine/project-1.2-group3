@@ -8,17 +8,16 @@ public class StateOfSystem {
     ArrayList<Vector> velocities = new ArrayList<>();
     double timeOfState;
     double timestep;
-    double G;
+    final double G = 6.6743*(Math.pow(10,-20));
     
 
     //constructor
-    public StateOfSystem(double t0, ArrayList<Vector> positions, ArrayList<Vector> velocities,ArrayList<CelestialBody>bodies) {
+    public StateOfSystem(double t0, ArrayList<CelestialBody>bodies) {
         this.positions = positions;
         this.velocities = velocities;
         this.bodies = bodies;
         timeOfState = t0;
-        timestep=0.1; //change to relevant timestep
-        G=6.6743*(Math.pow(10,-3));
+        timestep=0.1; //change to relevant timestep;
     }
 
     public ArrayList<Vector> getPositions(){
