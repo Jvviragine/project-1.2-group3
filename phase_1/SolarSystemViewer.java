@@ -9,6 +9,13 @@ import javax.swing.ImageIcon;
 
 public class SolarSystemViewer 
 {
+    public static int h = 740;
+    public static final int SOLAR_SYSTEM_HEIGHT = h;
+
+    // scale = maximum distance/(screen width/2)-5% of screen width km/px
+    public static double d = (celestialObjects.getDistanceFromSun(1253801723.95465, -760453007.810989, -36697431.1565206));
+    public static final double scale = d/((h/2)-(h*0.05));
+
     public static void main(String[] args) 
     {
         JFrame solarSystemFrame = new JFrame();
@@ -23,15 +30,10 @@ public class SolarSystemViewer
         // planet = new JLabel(sun);
         // SolarSystemViewer.add(planet);
 
-        int w = 740;
-        int h = 740;
-        final int SOLAR_SYSTEM_WIDTH = w;
-        final int SOLAR_SYSTEM_HEIGHT = h;
-
         solarSystemFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         solarSystemFrame.add(solarSystem);
-        solarSystem.setPreferredSize(new Dimension(SOLAR_SYSTEM_WIDTH, SOLAR_SYSTEM_HEIGHT));
+        solarSystem.setPreferredSize(new Dimension(SOLAR_SYSTEM_HEIGHT, SOLAR_SYSTEM_HEIGHT));
         solarSystemFrame.pack();
         solarSystemFrame.setResizable(false);
         solarSystemFrame.setLocationRelativeTo(null);
