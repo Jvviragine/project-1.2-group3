@@ -22,7 +22,7 @@ public class SolarSystemTester2 {
         celestialBodies.add(sun);
         celestialBodies.add(probe);
 
-        StateOfSystem solarSystemState = new StateOfSystem(0, celestialBodies)
+        StateOfSystem solarSystemState = new StateOfSystem(0, celestialBodies);
         
         //StateOfSystem solarSystemState = new StateOfSystem(0, null, null, null);
 
