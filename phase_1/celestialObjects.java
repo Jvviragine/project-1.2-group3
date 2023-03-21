@@ -1,16 +1,21 @@
 package phase_1;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class celestialObjects 
 {
     double massSpaceship = 50000;
     double gravitationalConstant = Math.pow(6.6743*10,-20);
-    static double x1;
-    static double x2;
-    static double x3;
-    static double v1;
-    static double v2;
-    static double v3;
-    static double mass;
+    static ArrayList<celestialObjects> celestialObjectList = new ArrayList<celestialObjects>();
+
+    double x1;
+    double x2;
+    double x3;
+    double v1;
+    double v2;
+    double v3;
+    double mass;
     
     celestialObjects sun = new celestialObjects(0, 0, 0, 0, 0, 0, Math.pow(1.9885*10,30));
     celestialObjects venus = new celestialObjects(-28216773.9426889, 103994008.541512, 3012326.64296788, -34.0236737066136, -8.96521274688838, 1.84061735279188, Math.pow(48.685*10,23));
@@ -32,45 +37,62 @@ public class celestialObjects
         this.mass = mass;
     }
 
-    public static double getX1()
+    public void list()
+    {
+        celestialObjectList.add(sun);
+        celestialObjectList.add(venus);
+        celestialObjectList.add(earth);
+        celestialObjectList.add(moon);
+        celestialObjectList.add(mars);
+        celestialObjectList.add(jupiter);
+        celestialObjectList.add(saturn);
+        celestialObjectList.add(titan);
+    }
+
+    public double getX1()
     {
         return x1;
     }
 
-    public static double getX2()
+    public double getX2()
     {
         return x2;
     }
 
-    public static double getX3()
+    public double getX3()
     {
         return x3;
     }
 
-    public static double getV1()
+    public double getV1()
     {
         return v1;
     }
 
-    public static double getV2()
+    public double getV2()
     {
         return v2;
     }
 
-    public static double getV3()
+    public double getV3()
     {
         return v3;
     }
 
-    public static double getMass()
+    public double getMass()
     {
         return mass;
     }
 
-    public static double getDistanceFromSun(double x1, double x2, double x3)
+    public double getDistanceFromSun()
+    {
+        double distanceSun = Math.sqrt(Math.pow(getX1(),2) + Math.pow(getX2(),2) + Math.pow(getX3(),2));
+        return distanceSun;
+    }
+
+    public static double getSaturnDistanceFromSun(double x1, double x2, double x3)
     {
         double distanceSun = Math.sqrt(Math.pow(x1,2) + Math.pow(x2,2) + Math.pow(x3,2));
-        
         return distanceSun;
     }
 }

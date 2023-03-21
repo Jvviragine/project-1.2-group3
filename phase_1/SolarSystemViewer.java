@@ -15,7 +15,7 @@ public class SolarSystemViewer
     // public static final double scale = d/(((h/2)-(5*h/100))); backup scale
     // scale = maximum distance rounded up / (screen width/2) screen width km/px; current scale
 
-    public static double d = (celestialObjects.getDistanceFromSun(1253801723.95465, -760453007.810989, -36697431.1565206));
+    public static double d = (celestialObjects.getSaturnDistanceFromSun(1253801723.95465, -760453007.810989, -36697431.1565206));
     public static final double scale = Math.ceil(d/100000000)*100000000/((h/2));
     public static void main(String[] args) 
     {
