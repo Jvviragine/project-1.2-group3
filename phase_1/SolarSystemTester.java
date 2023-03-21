@@ -23,7 +23,12 @@ public class SolarSystemTester {
         celestialBodies.add(sun);
         celestialBodies.add(probe);
 
-        StateOfSystem stateOfSolarSystem = new StateOfSystem(0, celestialBodies);
+        for(int i=0;i<3;i++){
+            StateOfSystem stateOfSolarSystem = new StateOfSystem(i, celestialBodies);
+            stateOfSolarSystem.currentState(5);
+            //System.out.println(stateOfSolarSystem.currentState(3));
+        }
+        
         //StateOfSystem solarSystemState = new StateOfSystem(0, null, null, null);
 
 

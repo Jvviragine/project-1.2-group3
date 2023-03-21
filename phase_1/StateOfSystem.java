@@ -13,11 +13,21 @@ public class StateOfSystem {
 
     //constructor
     public StateOfSystem(double t0, ArrayList<CelestialBody>bodies) {
-        this.positions = positions;
-        this.velocities = velocities;
+        for(int i=0;i<bodies.size();i++){
+            positions.add(bodies.get(i).getPosition());
+            velocities.add(bodies.get(i).getVelocity());
+        }
         this.bodies = bodies;
         timeOfState = t0;
         timestep=0.1; //change to relevant timestep;
+    }
+    
+    public void currentState(int period){
+        for(int i=0;i<period;i++){
+            updateVelocity();
+            updatePosition();
+            toString();
+        }
     }
 
     public ArrayList<Vector> getPositions(){
@@ -48,6 +58,7 @@ public class StateOfSystem {
     }
 
     public void updateVelocity(){
+        System.out.println("Start Velocity:" + positions);
         ArrayList <Vector> newvelocities=new ArrayList<>();
         for(int i=1;i<velocities.size();i++){//skip sun when calculating velocity
             Vector netforce=getForce(bodies.get(i)).multi(-1);
@@ -58,6 +69,7 @@ public class StateOfSystem {
             newvelocities.add(updated);
         }
         positions=newvelocities;
+        System.out.println("End Velocity:" + positions);
     }
 
     public Vector getForce(CelestialBody body){
