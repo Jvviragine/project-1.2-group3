@@ -3,6 +3,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.*;
 import java.security.spec.EllipticCurve;
+import java.awt.image.BufferedImage;
+import java.awt.image.ImageObserver;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 
 
 /*public class SolarSystem extends JPanel {
@@ -42,6 +46,9 @@ import java.security.spec.EllipticCurve;
         
 public class SolarSystem extends JPanel 
 {
+    BufferedImage trial;
+    ImageObserver observer;
+    
     public void paintComponent(Graphics g) 
     {
         Graphics2D g2D = (Graphics2D) g;
@@ -77,6 +84,14 @@ public class SolarSystem extends JPanel
         Line2D.Double sun = new Line2D.Double(370, 370, 370,370);
         g2D.draw(sun);
 
+        try {
+            trial = ImageIO.read(getClass().getResource("sun.png"));
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        g2D.drawImage(trial, 375, 375, 50, 50, observer);
+
         // g2D.setStroke(new BasicStroke(1));
         // g.setColor(Color.GREEN);
         // Ellipse2D.Double venusOrbit = new Ellipse2D.Double(370-29.6, 370-29.6, 29.6*2, 29.6*2);
@@ -102,14 +117,14 @@ public class SolarSystem extends JPanel
         // Ellipse2D.Double saturnOrbit = new Ellipse2D.Double(370-355.76923077, 370-355.76923077, 355.76923077*2, 355.76923077*2);
         // g2D.draw(saturnOrbit);
 
-        for(//for i: object in array)
-        {
-            double x = celestialObjects(i).getX1();
-            double y = celestialObjects(i).getX2();
+        // for(//for i: object in array)
+        // {
+        //     double x = celestialObjects(i).getX1();
+        //     double y = celestialObjects(i).getX2();
 
-            Ellipse2D.Double arrayObject = new Ellipse2D.Double((x/SolarSystemViewer.scale)+(SolarSystemViewer.h)-(10/2), -y/SolarSystemViewer.scale+(SolarSystemViewer.h)-(10/2), 10, 10);
-            g2D.draw(arrayObject);
-        }
+        //     Ellipse2D.Double arrayObject = new Ellipse2D.Double((x/SolarSystemViewer.scale)+(SolarSystemViewer.h)-(10/2), -y/SolarSystemViewer.scale+(SolarSystemViewer.h)-(10/2), 10, 10);
+        //     g2D.draw(arrayObject);
+        // }
 
         
     }
