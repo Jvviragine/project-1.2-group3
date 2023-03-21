@@ -69,7 +69,8 @@ public class celestialObjects
 
     public static double getDistanceFromSun(double x1, double x2, double x3)
     {
-        double distanceSun = Math.sqrt(Math.pow(getX1(),2) + Math.pow(getX2(),2) + Math.pow(getX3(),2));
+        double distanceSun = Math.sqrt(Math.pow(x1,2) + Math.pow(x2,2) + Math.pow(x3,2));
+        
         return distanceSun;
     }
 }
