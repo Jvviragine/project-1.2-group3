@@ -80,6 +80,41 @@ public class StateOfSystem {
         return force;
     }
 
+    public Vector getNetForceActingOnABody(CelestialBody body) {
+
+        // Stores all the Forces acting on a Certain Celestial Body
+        ArrayList<Vector> forcesOnBody = new ArrayList<Vector>();
+
+        // Stores the Net Force acting on a Celestial Body
+        Vector netForce = new Vector();
+
+        // Go through every pair of Forces
+        for (int i = 0; i < bodies.size(); i++) {
+            
+            // We have to Check if it's not the Current Body
+            CelestialBody otherBody = bodies.get(i);
+            if (bodies.get(i) != body) {
+
+                Vector forceOnBody = new Vector();
+                double massesProduct = otherBody.getMass() * body.getMass();
+                Vector differenceOfPositions = body.getPosition().sub(otherBody.getPosition());
+                double denominatorCubed = Math.pow(differenceOfPositions.len(), 3);
+
+                double scalar = (G * massesProduct) / denominatorCubed;
+                forceOnBody = differenceOfPositions.multi(scalar);
+                forcesOnBody.add(forceOnBody);
+            }
+        }
+
+        // Now that we have all the Forces on a Body, we can compute the Resultant Vector
+        for (int i = 0; i < forcesOnBody.size(); i++) {
+            
+            netForce = netForce.add(forcesOnBody.get(i));
+        }
+
+        return netForce;
+    }
+
     public void setSingleVelocity(int id, Vector newVelocity){
         ArrayList<Vector> newVelocities = new ArrayList<>();
         for(int i = 0; i<velocities.size(); i++){
