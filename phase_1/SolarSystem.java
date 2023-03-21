@@ -79,11 +79,6 @@ public class SolarSystem extends JPanel
             }
         }
         
-        g2D.setStroke(new BasicStroke((float) (1400000/SolarSystemViewer.scale)));
-        g.setColor(Color.ORANGE);
-        Line2D.Double sun = new Line2D.Double(SolarSystemViewer.h/2, SolarSystemViewer.h/2, SolarSystemViewer.h/2,SolarSystemViewer.h/2);
-        g2D.draw(sun);
-
         try 
         {
             trial = ImageIO.read(getClass().getResource("sun.png"));
@@ -95,37 +90,18 @@ public class SolarSystem extends JPanel
 
         g2D.drawString("sun", SolarSystemViewer.h/2, 400);
         g2D.drawImage(trial, SolarSystemViewer.h/2 - 25, SolarSystemViewer.h/2 - 25, 50, 50, observer);
-
+        g2D.setStroke(new BasicStroke((float) (1400000/SolarSystemViewer.scale)));
+        g.setColor(Color.ORANGE);
+        Line2D.Double sun = new Line2D.Double(SolarSystemViewer.h/2, SolarSystemViewer.h/2, SolarSystemViewer.h/2,SolarSystemViewer.h/2);
+        g2D.draw(sun);
 
         // g2D.setStroke(new BasicStroke(1));
         // g.setColor(Color.GREEN);
         // Ellipse2D.Double venusOrbit = new Ellipse2D.Double(370-29.6, 370-29.6, 29.6*2, 29.6*2);
         // g2D.draw(venusOrbit);
 
-        // g2D.setStroke(new BasicStroke(1));
-        // g.setColor(Color.BLUE);
-        // Ellipse2D.Double earthOrbit = new Ellipse2D.Double(370-42.1230769231, 370-42.1230769231, 42.1230769231*2, 42.1230769231*2);
-        // g2D.draw(earthOrbit);
-
-        // g2D.setStroke(new BasicStroke(1));
-        // g.setColor(Color.RED);
-        // Ellipse2D.Double marsOrbit = new Ellipse2D.Double(370-53.7923076924, 370-53.7923076924, 53.7923076924*2, 53.7923076924*2);
-        // g2D.draw(marsOrbit);
-
-        // g2D.setStroke(new BasicStroke(1));
-        // g.setColor(Color.YELLOW);
-        // Ellipse2D.Double jupiterOrbit = new Ellipse2D.Double(370-197.238461539, 370-197.238461539, 197.238461539*2, 197.238461539*2);
-        // g2D.draw(jupiterOrbit);
-
-        // g2D.setStroke(new BasicStroke(1));
-        // g.setColor(Color.PINK);
-        // Ellipse2D.Double saturnOrbit = new Ellipse2D.Double(370-355.76923077, 370-355.76923077, 355.76923077*2, 355.76923077*2);
-        // g2D.draw(saturnOrbit);
-
-
-
-        // String image[] = {"venus.png", "earth.png", "moon.png", "mars.png", "jupiter.png", "saturn.png", "titan.png"}; 
-        // String label[] = {"venus", "earth", "moon", "mars", "jupiter", "saturn", "titan"}; 
+        String image[] = {"venus.png", "earth.png", "moon.png", "mars.png", "jupiter.png", "saturn.png", "titan.png"}; 
+        String label[] = {"venus", "earth", "moon", "mars", "jupiter", "saturn", "titan"}; 
 
         // for(//for i: object in array)
         // {
