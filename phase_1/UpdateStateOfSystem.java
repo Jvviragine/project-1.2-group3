@@ -34,6 +34,15 @@ public class UpdateStateOfSystem {
             setNetAccelerationActingOnABody(bodiesInSystem.get(i));
         } // Now we have all Updated Net Accelerations in the Bodies of the System
         
+        // Sets the New Velocities for the New State in which the Solar System is in
+        for (int i = 0; i < bodiesInSystem.size(); i++) {
+            setNewVelocity(bodiesInSystem.get(i));
+        } // Now we have the Initial Velocity for this new State 
+
+        // Set new Positions -> Improved Euler Method 
+        for (int i = 0; i < bodiesInSystem.size(); i++) {
+            setNewPrecisePosition(bodiesInSystem.get(i));
+        } // Now all the New Positions for all the Bodies have been Established
     }
 
     // Method Responsible for Updating the State of Our Solar System -> From Tn to T1 -> Tamar's Methods
