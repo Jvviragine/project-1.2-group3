@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class StateOfSystem {
     ArrayList <CelestialBody> bodies=new ArrayList<>();
-    ArrayList<Vector> positions = new ArrayList<>();
-    ArrayList<Vector> velocities = new ArrayList<>();
+    ArrayList<Vector> currentPositions = new ArrayList<>();
+    ArrayList<Vector> currentVelocities = new ArrayList<>();
     ArrayList<Vector> tempnewvelocities = new ArrayList<>();
     ArrayList<ArrayList<Vector>> orbits = new ArrayList<>();
     double timeOfState;
@@ -16,8 +16,8 @@ public class StateOfSystem {
     //constructor
     public StateOfSystem(double timeStepInSeconds, ArrayList<CelestialBody>bodies) {
         for(int i=0;i<bodies.size();i++){
-            positions.add(bodies.get(i).getPosition());
-            velocities.add(bodies.get(i).getVelocity());
+            currentPositions.add(bodies.get(i).getPosition());
+            currentVelocities.add(bodies.get(i).getVelocity());
         }
         this.bodies = bodies;
         timeOfState = timeStepInSeconds;
@@ -34,7 +34,7 @@ public class StateOfSystem {
         for(int i=0;i<period;i++){
             updateVelocity();
             updatePosition();
-            velocities=tempnewvelocities;
+            currentVelocities=tempnewvelocities;
             for(int j = 0; j<orbits.size();j++){
                 orbits.get(j).add(bodies.get(j+1).getPosition());
             }
@@ -43,12 +43,12 @@ public class StateOfSystem {
         //System.out.println(orbits.get(0).size());
     }
 
-    public ArrayList<Vector> getPositions(){
-        return positions;
+    public ArrayList<Vector> getCurrentPositions(){
+        return currentPositions;
     }
 
-    public ArrayList<Vector> getVelocities(){
-        return velocities;
+    public ArrayList<Vector> getCurrentVelocities(){
+        return currentVelocities;
     }
 
     public double getTimeOfState(){
@@ -60,27 +60,27 @@ public class StateOfSystem {
     }
 
     public void updatePosition(){
-        System.out.println("Start Position:" + positions.get(1));
+        System.out.println("Start Position:" + currentPositions.get(1));
         ArrayList <Vector> newpositions=new ArrayList<>();
-        for(int i=0;i<positions.size();i++){ 
-            Vector incr=(velocities.get(i)).multi(timestep);
-            Vector updated =positions.get(i).add(incr);
+        for(int i=0;i<currentPositions.size();i++){ 
+            Vector incr=(currentVelocities.get(i)).multi(timestep);
+            Vector updated =currentPositions.get(i).add(incr);
             bodies.get(i).setPosition(updated);
             newpositions.add(updated);
         }
-        positions=newpositions;
-        System.out.println("End Position:" + positions.get(1));
+        currentPositions=newpositions;
+        System.out.println("End Position:" + currentPositions.get(1));
     }
 
     public void updateVelocity(){
-        System.out.println("Start Velocity:" + velocities);
+        System.out.println("Start Velocity:" + currentVelocities);
         ArrayList <Vector> newvelocities=new ArrayList<>();
-        newvelocities.add(velocities.get(0));
-        for(int i=1;i<velocities.size();i++){//skip sun when calculating velocity
+        newvelocities.add(currentVelocities.get(0));
+        for(int i=1;i<currentVelocities.size();i++){//skip sun when calculating velocity
             Vector netforce=getForce(bodies.get(i)).multi(-1);
             Vector acceleration=netforce.multi(1/bodies.get(i).getMass());//acceleration
             Vector incr=(acceleration.multi(timestep));
-            Vector updated =velocities.get(i).add(incr);
+            Vector updated =currentVelocities.get(i).add(incr);
             bodies.get(i).setVelocity(updated);
             newvelocities.add(updated);
         }
@@ -185,40 +185,40 @@ public class StateOfSystem {
 
     public void setSingleVelocity(int id, Vector newVelocity){
         ArrayList<Vector> newVelocities = new ArrayList<>();
-        for(int i = 0; i<velocities.size(); i++){
+        for(int i = 0; i<currentVelocities.size(); i++){
             if(i == id){
                 newVelocities.add(newVelocity);
             }else{
-                newVelocities.add(velocities.get(i));
+                newVelocities.add(currentVelocities.get(i));
             }
         }
-        velocities = newVelocities;
+        currentVelocities = newVelocities;
     }
 
     public void setSinglePosition(int id, Vector newPosition){
         ArrayList<Vector> newPositions = new ArrayList<>();
-        for(int i = 0; i<positions.size(); i++){
+        for(int i = 0; i<currentPositions.size(); i++){
             if(i == id){
                 newPositions.add(newPosition);
             }else{
-                newPositions.add(positions.get(i));
+                newPositions.add(currentPositions.get(i));
             }
         }
-        positions = newPositions;
+        currentPositions = newPositions;
     }
 
     public String toString(){//to print the positions and velocities
         StringBuilder str = new StringBuilder();
         str.append("positions: ");
-        for(int i = 0; i<positions.size(); i++){
-            str.append(positions.get(i).toString());
+        for(int i = 0; i<currentPositions.size(); i++){
+            str.append(currentPositions.get(i).toString());
             str.append(", ");
         }
 
         str.append("\n");
         str.append("velocities: ");
-        for(int i = 0; i<velocities.size(); i++){
-            str.append(velocities.get(i).toString());
+        for(int i = 0; i<currentVelocities.size(); i++){
+            str.append(currentVelocities.get(i).toString());
             str.append(", ");
         }
         return str.toString();

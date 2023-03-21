@@ -24,6 +24,16 @@ public class UpdateStateOfSystem {
     // Method Responsible for Updating the State of Our Solar System -> From Tn to T1 -> João's Methods
     public void updateStateOfSolarSystem() {
 
+        // Calculate the Net Forces for Each Body in Our Solar System -> We have to decide about the SUN - Doesn't get affected by the Forces
+        for (int i = 0; i < bodiesInSystem.size(); i++) {
+            setNetForceActingOnABody(bodiesInSystem.get(i));
+        } // Now we have all Updated Net Forces in the Bodies of the System
+
+        // Calculates the Net Acceleration for Each Body in our Solar System
+        for (int i = 0; i < bodiesInSystem.size(); i++) {
+            setNetAccelerationActingOnABody(bodiesInSystem.get(i));
+        } // Now we have all Updated Net Accelerations in the Bodies of the System
+        
     }
 
     // Method Responsible for Updating the State of Our Solar System -> From Tn to T1 -> Tamar's Methods
