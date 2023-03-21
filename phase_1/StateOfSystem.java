@@ -21,10 +21,11 @@ public class StateOfSystem {
         }
         this.bodies = bodies;
         timeOfState = t0;
-        timestep=1; //change to relevant timestep;
+        
     }
     
-    public void currentState(int period){
+    public void currentState(int period, int stepTime){
+        timestep = stepTime;
         for(int i = 1;i<bodies.size();i++){
             ArrayList<Vector> orbit = new ArrayList<>();
             orbits.add(orbit);
@@ -59,7 +60,7 @@ public class StateOfSystem {
     }
 
     public void updatePosition(){
-        System.out.println("Start Position:" + positions);
+        System.out.println("Start Position:" + positions.get(1));
         ArrayList <Vector> newpositions=new ArrayList<>();
         for(int i=0;i<positions.size();i++){ 
             Vector incr=(velocities.get(i)).multi(timestep);
@@ -68,7 +69,7 @@ public class StateOfSystem {
             newpositions.add(updated);
         }
         positions=newpositions;
-        System.out.println("End Position:" + positions);
+        System.out.println("End Position:" + positions.get(1));
     }
 
     public void updateVelocity(){

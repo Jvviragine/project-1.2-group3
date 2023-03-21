@@ -67,7 +67,7 @@ public class SolarSystemTester {
 
         //for(int i=0;i<3;i++){
             StateOfSystem stateOfSolarSystem = new StateOfSystem(0, celestialBodies);
-            stateOfSolarSystem.currentState(365);
+            stateOfSolarSystem.currentState(365, 86400);
             //System.out.println(stateOfSolarSystem.currentState(3));
         //}
         
