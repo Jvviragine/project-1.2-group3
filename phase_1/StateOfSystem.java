@@ -122,7 +122,7 @@ public class StateOfSystem {
             netForce = netForce.add(forcesOnBody.get(i));
         }
 
-        return netForce;
+        return netForce.multi(-1);
     }
 
     public void setSingleVelocity(int id, Vector newVelocity){
