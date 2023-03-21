@@ -38,8 +38,8 @@ public class StateOfSystem {
                 orbits.get(j).add(bodies.get(j+1).getPosition());
             }
         }
-        System.out.println(orbits.get(0).toString());
-        System.out.println(orbits.get(0).size());
+        //System.out.println(orbits.get(0).toString());
+        //System.out.println(orbits.get(0).size());
     }
 
     public ArrayList<Vector> getPositions(){
