@@ -21,12 +21,17 @@ public class UpdateStateOfSystem {
 
     // UPDATING FUNCTIONS
 
-    // Method Responsible for Updating the State of Our Solar System -> From Tn to T1
+    // Method Responsible for Updating the State of Our Solar System -> From Tn to T1 -> João's Methods
     public void updateStateOfSolarSystem() {
-        
+
     }
 
-    // Euler Solvers -> All the Calculation Functions
+    // Method Responsible for Updating the State of Our Solar System -> From Tn to T1 -> Tamar's Methods
+    public void updateStateOfSolarSystemEuler() {
+
+    }
+
+    // Euler Solvers -> All the Calculation Functions -> Joãos Version
     public void setNetForceActingOnABody(CelestialBody body) {
 
         // Stores all the Forces acting on a Certain Celestial Body
