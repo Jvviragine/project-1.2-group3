@@ -9,6 +9,7 @@ public class UpdateStateOfSystem {
     private StateOfSystem solarSystem;
     private ArrayList<CelestialBody> bodiesInSystem = new ArrayList<CelestialBody>();
     private double timeStepInSeconds;
+    private int currentTimeOfState;
     final double G = 6.6743*(Math.pow(10,-20));
 
     // Constructor 
@@ -17,6 +18,7 @@ public class UpdateStateOfSystem {
         this.solarSystem = solarSystem;
         bodiesInSystem = this.solarSystem.getBodiesInSystem();
         timeStepInSeconds = this.solarSystem.getTimeStepInSeconds();
+        this.currentTimeOfState = this.solarSystem.getCurrentTime();
     }
 
     // UPDATING FUNCTIONS
@@ -43,6 +45,8 @@ public class UpdateStateOfSystem {
         for (int i = 0; i < bodiesInSystem.size(); i++) {
             setNewPrecisePosition(bodiesInSystem.get(i));
         } // Now all the New Positions for all the Bodies have been Established
+
+        System.out.println("Now our Solar Syste is on State T = " + currentTimeOfState);
     }
 
     // Method Responsible for Updating the State of Our Solar System -> From Tn to T1 -> Tamar's Methods

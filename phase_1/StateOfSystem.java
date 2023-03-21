@@ -8,7 +8,7 @@ public class StateOfSystem {
     ArrayList<Vector> currentVelocities = new ArrayList<>();
     ArrayList<Vector> tempnewvelocities = new ArrayList<>();
     ArrayList<ArrayList<Vector>> orbits = new ArrayList<>();
-    double timeOfState;
+    int timeOfState; // Always an Integer -> T0, T1, T2... Tn
     double timestep;
     final double G = 6.6743*(Math.pow(10,-20));
     
@@ -20,7 +20,8 @@ public class StateOfSystem {
             currentVelocities.add(bodies.get(i).getVelocity());
         }
         this.bodies = bodies;
-        timeOfState = timeStepInSeconds;
+        timeOfState = 0; // Starts at T0
+        this.timestep = timeStepInSeconds;
         
     }
     
@@ -55,9 +56,11 @@ public class StateOfSystem {
         return timeOfState;
     }
 
-    public void setTime(double time){
-        timeOfState = time;
-    }
+    // Why this Method?
+
+    // public void setTime(double time){ 
+    //     timeOfState = time;
+    // }
 
     public void updatePosition(){
         System.out.println("Start Position:" + currentPositions.get(1));
@@ -230,6 +233,10 @@ public class StateOfSystem {
 
     public double getTimeStepInSeconds() {
         return this.timestep;
+    }
+
+    public int getCurrentTime() {
+        return this.timeOfState;
     }
 
 }
