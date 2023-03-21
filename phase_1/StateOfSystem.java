@@ -224,4 +224,12 @@ public class StateOfSystem {
         return str.toString();
     }
 
+    public ArrayList<CelestialBody> getBodiesInSystem() {
+        return this.bodies;
+    }
+
+    public double getTimeStepInSeconds() {
+        return this.timestep;
+    }
+
 }
