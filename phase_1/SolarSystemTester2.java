@@ -30,6 +30,10 @@ public class SolarSystemTester2 {
         UpdateStateOfSystem solarSystemUpdater = new UpdateStateOfSystem(solarSystemState);
 
         // Loop controlling how many TimeSteps we are going to take
+        int lastT = 1;
+        for (int t = 1; t <= lastT; t++) {
+            solarSystemUpdater.updateStateOfSolarSystem();
+        }
         
 
 

@@ -27,22 +27,22 @@ public class UpdateStateOfSystem {
     public void updateStateOfSolarSystem() {
 
         // Calculate the Net Forces for Each Body in Our Solar System -> We have to decide about the SUN - Doesn't get affected by the Forces
-        for (int i = 0; i < bodiesInSystem.size(); i++) {
+        for (int i = 1; i < bodiesInSystem.size(); i++) { // STARTS AT 1 BECAUSE THE SUN IS AT INDEX 0
             setNetForceActingOnABody(bodiesInSystem.get(i));
         } // Now we have all Updated Net Forces in the Bodies of the System
 
         // Calculates the Net Acceleration for Each Body in our Solar System
-        for (int i = 0; i < bodiesInSystem.size(); i++) {
+        for (int i = 1; i < bodiesInSystem.size(); i++) { // STARTS AT 1 BECAUSE THE SUN IS AT INDEX 0
             setNetAccelerationActingOnABody(bodiesInSystem.get(i));
         } // Now we have all Updated Net Accelerations in the Bodies of the System
         
         // Sets the New Velocities for the New State in which the Solar System is in
-        for (int i = 0; i < bodiesInSystem.size(); i++) {
+        for (int i = 1; i < bodiesInSystem.size(); i++) { // STARTS AT 1 BECAUSE THE SUN IS AT INDEX 0
             setNewVelocity(bodiesInSystem.get(i));
         } // Now we have the Initial Velocity for this new State 
 
         // Set new Positions -> Improved Euler Method 
-        for (int i = 0; i < bodiesInSystem.size(); i++) {
+        for (int i = 1; i < bodiesInSystem.size(); i++) { // STARTS AT 1 BECAUSE THE SUN IS AT INDEX 0
             setNewPrecisePosition(bodiesInSystem.get(i));
         } // Now all the New Positions for all the Bodies have been Established
 
@@ -67,7 +67,7 @@ public class UpdateStateOfSystem {
         Vector netForce = new Vector();
 
         // Go through every pair of Forces
-        for (int i = 0; i < bodiesInSystem.size(); i++) {
+        for (int i = 1; i < bodiesInSystem.size(); i++) { // STARTS AT 1 BECAUSE THE SUN IS AT INDEX 0
             
             // We have to Check if it's not the Current Body
             CelestialBody otherBody = bodiesInSystem.get(i);
@@ -85,7 +85,7 @@ public class UpdateStateOfSystem {
         }
 
         // Now that we have all the Forces on a Body, we can compute the Resultant Vector
-        for (int i = 0; i < forcesOnBody.size(); i++) {
+        for (int i = 1; i < forcesOnBody.size(); i++) { // STARTS AT 1 BECAUSE THE SUN IS AT INDEX 0
             
             netForce = netForce.add(forcesOnBody.get(i));
         }
