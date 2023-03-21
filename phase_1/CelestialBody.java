@@ -1,19 +1,29 @@
 package phase_1;
+
+import java.util.ArrayList;
+
 public class CelestialBody{
-    Vector position;
-    Vector velocity;
-    double mass;
-    double radius;
+    private Vector position;
+    private Vector velocity;
+    private double mass;
+    private double radius;
 
     // Added more Instance Fields
-    Vector netForce;
-    Vector netAcceleration;
+    private Vector netForce;
+    private Vector netAcceleration;
+
+    // Have a History of all the Positions and Velocities
+    private ArrayList<Vector> positions = new ArrayList<Vector>();
+    private ArrayList<Vector> velocities = new ArrayList<Vector>();
+    
 
     public CelestialBody(Vector initialposition,Vector initialvelocity,double mass,double radius){
         this.position=initialposition;
         this.velocity=initialvelocity;
         this.mass=mass;
         this.radius=radius;
+        this.positions.add(initialposition);
+        this.velocities.add(initialvelocity);
     }
     
     public double getMass(){
@@ -54,6 +64,14 @@ public class CelestialBody{
 
     public Vector getNetAcceleration() {
         return this.netAcceleration;
+    }
+
+    public ArrayList<Vector> getPositionsArray() {
+        return this.positions;
+    }
+
+    public ArrayList<Vector> getVelocitiesArray() {
+        return this.velocities;
     }
 
 }
