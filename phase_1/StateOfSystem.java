@@ -105,7 +105,7 @@ public class StateOfSystem {
         return force;
     }
 
-    public void getNetForceActingOnABody(CelestialBody body) {
+    public void setNetForceActingOnABody(CelestialBody body) {
 
         // Stores all the Forces acting on a Certain Celestial Body
         ArrayList<Vector> forcesOnBody = new ArrayList<Vector>();
@@ -141,7 +141,25 @@ public class StateOfSystem {
         body.setNetForce(netForce);
     }
 
-    // Find 
+    // Find the Net Acceleration for Each Componenet
+    public void setNetAccelerationActingOnABody(CelestialBody body) {
+        double bodyMass = body.getMass();
+        Vector netAcceleration = body.getNetForce().multi(1 / bodyMass);
+        body.setNetAcceleration(netAcceleration);
+    }
+
+    // Find the Final Vn, so, for example, if the Velocity was V0, it will Final V1
+    public void setNewVelocity(CelestialBody body) {
+        Vector previousVelocity = body.getVelocity();
+        Vector currentAcceleration = body.getNetAcceleration();
+        Vector newVelocity = previousVelocity.add(currentAcceleration.multi(timestep)); // Time Step is the Step Size for Euler's Method
+        body.setVelocity(newVelocity);
+    }
+
+    // Find the new Position Vector
+    public void setNewPosition(CelestialBody body) {
+        
+    }
 
     public void setSingleVelocity(int id, Vector newVelocity){
         ArrayList<Vector> newVelocities = new ArrayList<>();

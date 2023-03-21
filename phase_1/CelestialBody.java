@@ -44,8 +44,16 @@ public class CelestialBody{
         this.netForce = netForce;
     }
 
+    public Vector getNetForce() {
+        return this.netForce;
+    }
+
     public void setNetAcceleration(Vector netAcceleration) {
         this.netAcceleration = netAcceleration;
+    }
+
+    public Vector getNetAcceleration() {
+        return this.netAcceleration;
     }
 
 }
