@@ -14,13 +14,13 @@ public class StateOfSystem {
     
 
     //constructor
-    public StateOfSystem(double t0, ArrayList<CelestialBody>bodies) {
+    public StateOfSystem(double timeStepInSeconds, ArrayList<CelestialBody>bodies) {
         for(int i=0;i<bodies.size();i++){
             positions.add(bodies.get(i).getPosition());
             velocities.add(bodies.get(i).getVelocity());
         }
         this.bodies = bodies;
-        timeOfState = t0;
+        timeOfState = timeStepInSeconds;
         
     }
     

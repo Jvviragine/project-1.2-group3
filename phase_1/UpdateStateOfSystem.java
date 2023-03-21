@@ -4,19 +4,29 @@ import java.util.ArrayList;
 
 // This Class will be responsible for Updating the State of the Solar System
 public class UpdateStateOfSystem {
-
+    
+    // Instance Fields
     private StateOfSystem solarSystem;
     private ArrayList<CelestialBody> bodiesInSystem = new ArrayList<CelestialBody>();
     private double timeStepInSeconds;
     final double G = 6.6743*(Math.pow(10,-20));
 
+    // Constructor 
     public UpdateStateOfSystem(StateOfSystem solarSystem) {
 
         this.solarSystem = solarSystem;
         bodiesInSystem = this.solarSystem.getBodiesInSystem();
         timeStepInSeconds = this.solarSystem.getTimeStepInSeconds();
     }
-    
+
+    // UPDATING FUNCTIONS
+
+    // Method Responsible for Updating the State of Our Solar System -> From Tn to T1
+    public void updateStateOfSolarSystem() {
+        
+    }
+
+    // Euler Solvers -> All the Calculation Functions
     public void setNetForceActingOnABody(CelestialBody body) {
 
         // Stores all the Forces acting on a Certain Celestial Body
