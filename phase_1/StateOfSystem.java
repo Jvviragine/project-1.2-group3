@@ -49,13 +49,11 @@ public class StateOfSystem {
 
     public void updateVelocity(){
         ArrayList <Vector> newvelocities=new ArrayList<>();
-        for(int i=1;i<positions.size();i++){//skip sun when calculating velocity
-            Vector force=getForce(bodies.get(i));
-            Vector acceleration=force.multi(bodies.get(i).getMass());//acceleration
-            Vector incr=(velocities.get(i)).multi(timestep);
-            Vector updated =positions.get(i).add(incr);
-
-
+        for(int i=1;i<velocities.size();i++){//skip sun when calculating velocity
+            Vector netforce=getForce(bodies.get(i)).multi(-1);
+            Vector acceleration=netforce.multi(bodies.get(i).getMass());//acceleration
+            Vector incr=(acceleration.multi(timestep));
+            Vector updated =velocities.get(i).add(incr);
             bodies.get(i).setVelocity(updated);
             newvelocities.add(updated);
         }
@@ -74,7 +72,7 @@ public class StateOfSystem {
                 double denominator=Math.pow(dist,2);
                 Vector unitVector=new Vector(numerator.getX()/dist,numerator.getY()/dist,numerator.getZ()/dist);
                 double gxm=G*masses;
-                force=unitVector.multi(gxm/denominator);
+                force=force.add(unitVector.multi(gxm/denominator));
             }
         }
         return force;
