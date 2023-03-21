@@ -10,6 +10,7 @@ public class StateOfSystem {
     ArrayList<ArrayList<Vector>> orbits = new ArrayList<>();
     int timeOfState; // Always an Integer -> T0, T1, T2... Tn
     double timestep;
+    private double totalRealTimeElapsed;
     final double G = 6.6743*(Math.pow(10,-20));
     
 
@@ -22,6 +23,8 @@ public class StateOfSystem {
         this.bodies = bodies;
         timeOfState = 0; // Starts at T0
         this.timestep = timeStepInSeconds;
+
+        this.totalRealTimeElapsed = 0; // At T0, no Real Time has passed
         
     }
     
@@ -237,6 +240,14 @@ public class StateOfSystem {
 
     public int getCurrentTime() {
         return this.timeOfState;
+    }
+
+    public void updateTotalTimePassed() {
+        this.totalRealTimeElapsed += timestep;
+    }
+
+    public double getTotalTimePassed() {
+        return this.totalRealTimeElapsed;
     }
 
 }

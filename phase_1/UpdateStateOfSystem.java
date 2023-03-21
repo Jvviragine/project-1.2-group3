@@ -46,7 +46,10 @@ public class UpdateStateOfSystem {
             setNewPrecisePosition(bodiesInSystem.get(i));
         } // Now all the New Positions for all the Bodies have been Established
 
-        System.out.println("Now our Solar Syste is on State T = " + currentTimeOfState);
+        solarSystem.updateTotalTimePassed(); // Increases the Total Real Time Passed by DeltaT(TimeStep Chosen)
+
+        System.out.println("Now our Solar System is on State T = " + currentTimeOfState);
+        System.out.println("And the Total Real Time passed = " + solarSystem.getTotalTimePassed() + " seconds");
     }
 
     // Method Responsible for Updating the State of Our Solar System -> From Tn to T1 -> Tamar's Methods

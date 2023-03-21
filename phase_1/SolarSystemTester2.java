@@ -22,9 +22,15 @@ public class SolarSystemTester2 {
         celestialBodies.add(sun);
         celestialBodies.add(probe);
 
-        StateOfSystem solarSystemState = new StateOfSystem(0, celestialBodies);
+        // Creating the Solar System
+        int timeStepInSeconds = 60 * 60 * 24; // 1 Day of Timestep
+        StateOfSystem solarSystemState = new StateOfSystem(timeStepInSeconds, celestialBodies); // Giging it a Time Step of 
         
-        //StateOfSystem solarSystemState = new StateOfSystem(0, null, null, null);
+        // Create the Object that can Update the State of the Solar System
+        UpdateStateOfSystem solarSystemUpdater = new UpdateStateOfSystem(solarSystemState);
+
+        // Loop controlling how many TimeSteps we are going to take
+        
 
 
     }
