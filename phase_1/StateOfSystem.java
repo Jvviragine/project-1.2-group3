@@ -156,9 +156,14 @@ public class StateOfSystem {
         body.setVelocity(newVelocity);
     }
 
-    // Find the new Position Vector
+    // Find the new Position Vector -> Purely using Euler's Method
     public void setNewPosition(CelestialBody body) {
-        
+
+        // This Method would have to be called BEFORE SetNewVelocity (same as Tamar's)
+        Vector previousVelocity = body.getVelocity(); 
+        Vector initialPosition = body.getPosition();
+
+        Vector newPosition = initialPosition.add(previousVelocity.multi(timestep)); // A purely LINEAR Approximation (considers the velocity Constant during tn -> tn+1)
     }
 
     public void setSingleVelocity(int id, Vector newVelocity){
