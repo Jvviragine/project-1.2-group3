@@ -23,8 +23,27 @@ public class UpdateStateOfSystem {
 
     // UPDATING FUNCTIONS
 
+    // Method to just calculate the Values for T0 -> Force and Acceleration
+    public void calculateMissingValuesForT0() {
+
+        System.out.println("State of our Solar System at T0: " + "\n");
+
+        for (int i = 1; i < bodiesInSystem.size(); i++) { // STARTS AT 1 BECAUSE THE SUN IS AT INDEX 0
+            setNetForceActingOnABody(bodiesInSystem.get(i));
+        } 
+
+        for (int i = 1; i < bodiesInSystem.size(); i++) {
+            setNetAccelerationActingOnABody(bodiesInSystem.get(i));
+        }
+
+        // Now, for T0, we also have NetForce and NetAcceleration
+    }
+
     // Method Responsible for Updating the State of Our Solar System -> From Tn to T1 -> João's Methods
     public void updateStateOfSolarSystem() {
+
+        solarSystem.updateTimeOfState();
+        System.out.println("Now our Solar System is on State T = " + solarSystem.getTimeOfState() + "\n");
 
         // Calculate the Net Forces for Each Body in Our Solar System -> We have to decide about the SUN - Doesn't get affected by the Forces
         for (int i = 1; i < bodiesInSystem.size(); i++) { // STARTS AT 1 BECAUSE THE SUN IS AT INDEX 0
@@ -47,10 +66,9 @@ public class UpdateStateOfSystem {
         } // Now all the New Positions for all the Bodies have been Established
 
         solarSystem.updateTotalTimePassed(); // Increases the Total Real Time Passed by DeltaT(TimeStep Chosen)
-        solarSystem.updateTimeOfState();
 
-        System.out.println("Now our Solar System is on State T = " + solarSystem.getTimeOfState());
         System.out.println("And the Total Real Time passed = " + solarSystem.getTotalTimePassed() + " seconds");
+        System.out.println("\n");
     }
 
     // Method Responsible for Updating the State of Our Solar System -> From Tn to T1 -> Tamar's Methods
@@ -72,7 +90,7 @@ public class UpdateStateOfSystem {
             
             // We have to Check if it's not the Current Body
             CelestialBody otherBody = bodiesInSystem.get(i);
-            if (bodiesInSystem.get(i) != body) {
+            if (otherBody != body) {
 
                 Vector forceOnBody = new Vector();
                 double massesProduct = otherBody.getMass() * body.getMass();
@@ -81,6 +99,7 @@ public class UpdateStateOfSystem {
 
                 double scalar = (G * massesProduct) / denominatorCubed;
                 forceOnBody = differenceOfPositions.multi(scalar);
+                //System.out.println(forceOnBody.toString());
                 forcesOnBody.add(forceOnBody);
             }
         }
