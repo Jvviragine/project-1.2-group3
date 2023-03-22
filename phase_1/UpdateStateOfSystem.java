@@ -99,6 +99,7 @@ public class UpdateStateOfSystem {
 
                 double scalar = (G * massesProduct) / denominatorCubed;
                 forceOnBody = differenceOfPositions.multi(scalar);
+                //System.out.println(forceOnBody.toString());
                 forcesOnBody.add(forceOnBody);
             }
         }
