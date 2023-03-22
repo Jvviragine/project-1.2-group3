@@ -94,7 +94,7 @@ public class SolarSystem extends JPanel implements ActionListener
 
         try 
         {
-            String path = "sun.png";
+            String path = "cbSun.png";
             trial = ImageIO.read(getClass().getResource(path));
             g2D.drawImage(trial, SolarSystemViewer.h/2 - 25, SolarSystemViewer.h/2 - 25, 50, 50, observer);
             g2D.drawString("sun", SolarSystemViewer.h/2, 400);
@@ -112,8 +112,8 @@ public class SolarSystem extends JPanel implements ActionListener
         //? STRING ARRAYS TO STORE THE IMAGE NAME AND CELESTIAL BODY NAME
         //? THIS HELPS US DISPLAY THEM USING A LOOP, INSTEAD OF INDIVIDUALLY GENERATING THEM
 
-        String image[] = {"venus.png", "earth.png", "moon.png", "mars.png", "jupiter.png", "saturn.png", "titan.png"}; 
-        String label[] = {"venus", "earth", "moon", "mars", "jupiter", "saturn", "titan"}; 
+        String image[] = {"cbVenus.png", "cbEarth.png", "cbMoon.png", "cbMars.png", "cbJupiter.png", "cbSaturn.png", "cbTitan.png"}; 
+        String label[] = {"VENUS", "EARTH", "MOON", "MARS", "JUPITER", "SATURN", "TITAN"}; 
 
         //? CALLS THE METHOD TO STORE ALL THE CELESTIAL BODIES IN THE ARRAYLIST 
         celestialObjects.list();

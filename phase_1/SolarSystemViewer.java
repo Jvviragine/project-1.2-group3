@@ -7,12 +7,12 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.plaf.metal.MetalLookAndFeel;
 
-public class SolarSystemViewer {
+public class SolarSystemViewer 
+{
     public static int h = 740;
     public static final int SOLAR_SYSTEM_HEIGHT = h;
 
     //? SCALING DONE BELOW
-
     //? CALCULATES THE SCALE BY ROUNDING THE MAXIMUM DISTANCE FROM THE SUN TO THE SCREEN 
     //? SCALE = MAXIMUM DISTANCE ROUNDED UP / (SCREEN WIDTH/2) SCREEN WIDTH KM/PX;
 
