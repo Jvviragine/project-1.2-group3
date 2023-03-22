@@ -23,6 +23,21 @@ public class UpdateStateOfSystem {
 
     // UPDATING FUNCTIONS
 
+    // Method to just calculate the Values for T0 -> Force and Acceleration
+    public void calculateMissingValuesForT0() {
+
+        for (int i = 1; i < bodiesInSystem.size(); i++) { // STARTS AT 1 BECAUSE THE SUN IS AT INDEX 0
+            setNetForceActingOnABody(bodiesInSystem.get(i));
+        } 
+
+        for (int i = 1; i < bodiesInSystem.size(); i++) {
+            setNetAccelerationActingOnABody(bodiesInSystem.get(i));
+        }
+
+        // Now, for T0, we also have NetForce and NetAcceleration
+        System.out.println("State of our Solar System = ");
+    }
+
     // Method Responsible for Updating the State of Our Solar System -> From Tn to T1 -> João's Methods
     public void updateStateOfSolarSystem() {
 
@@ -55,7 +70,7 @@ public class UpdateStateOfSystem {
 
     // Method Responsible for Updating the State of Our Solar System -> From Tn to T1 -> Tamar's Methods
     public void updateStateOfSolarSystemEuler() {
-
+        
     }
 
     // Euler Solvers -> All the Calculation Functions -> Joãos Version
