@@ -3,6 +3,8 @@ package phase_1;
 import javax.swing.plaf.ColorUIResource;
 import javax.swing.plaf.metal.DefaultMetalTheme;
 
+//? THE BLACK BACKGROUND IMPLEMENTATION DONE BELOW
+
 public class MyDefaultMetalTheme extends DefaultMetalTheme 
 {
     public ColorUIResource getWindowTitleInactiveBackground() 

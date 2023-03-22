@@ -34,14 +34,14 @@ public class celestialObjects
 
     public static void list()
     {
-        celestialObjectList.add(sun);
-        celestialObjectList.add(venus);
-        celestialObjectList.add(earth);
-        celestialObjectList.add(moon);
-        celestialObjectList.add(mars);
-        celestialObjectList.add(jupiter);
-        celestialObjectList.add(saturn);
-        celestialObjectList.add(titan);
+        celestialObjectList.add(sun); //? INDEX 0
+        celestialObjectList.add(venus); //? INDEX 1
+        celestialObjectList.add(earth); //? INDEX 2
+        celestialObjectList.add(moon); //? INDEX 3
+        celestialObjectList.add(mars); //? INDEX 4
+        celestialObjectList.add(jupiter); //? INDEX 5
+        celestialObjectList.add(saturn); //? INDEX 6
+        celestialObjectList.add(titan); //? INDEX 7
     }
 
     public double getX1()
@@ -89,6 +89,9 @@ public class celestialObjects
         double distanceSun = Math.sqrt(Math.pow(getX1(),2) + Math.pow(getX2(),2) + Math.pow(getX3(),2));
         return distanceSun;
     }
+
+    //? STORES THE DISTANCE FROM SATURN DIFFERENTLY SINCE THESE SET OF VALUES ARE USED TO DEVELOP THE SCALE OF THE SPACE
+    //? OTHER VALUES DO NOT NEED TO BE CALLED IN THE SAME CLASS, SO WE DID NOT WANT TO CHANGE THE CODE AND COMPLICATE IT
 
     public static double getSaturnDistanceFromSun(double x1, double x2, double x3)
     {

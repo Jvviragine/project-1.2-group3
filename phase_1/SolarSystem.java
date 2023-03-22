@@ -50,14 +50,17 @@ public class SolarSystem extends JPanel implements ActionListener
 {
     BufferedImage trial;
     ImageObserver observer;        
-    Timer timer = new Timer(1, this);
 
     public void paintComponent(Graphics g) 
     {
 
         Graphics2D g2D = (Graphics2D) g;
-        timer.start();
 
+        //? CREATION OF STARS IN SPACE. 300 CREATED WITH RANDOM POSITIONS WITHIN THE FRAME
+        //? FIRST 50 HAVE RANDOMISED COLOURS WHILE THE REMAINING 250 ARE WHITE
+        //? THEIR SIZE IS BETWEEN 0 AND 0.2 PIXELS
+        //? NO STARS WITHIN 25 PIXEL RADIUS OF THE SUN
+        
         double starX[] = new double[300];
         double starY[] = new double[300];
 
@@ -84,6 +87,11 @@ public class SolarSystem extends JPanel implements ActionListener
             }
         }
 
+        //? DISPLAYS THE SUN IN SPACE
+        //? SolarSystemViewer.h/2 - 25, SolarSystemViewer.h/2 - 25 ARE THE X AND Y COORDINATES OF THE SUN
+        //? THE IMAGE IS 50 PIXELS BIG
+        //? TRY AND CATCH INCASE AN IMAGE IN NOT FOUND WITHIN THE PACKAGE
+
         try 
         {
             String path = "sun.png";
@@ -101,8 +109,13 @@ public class SolarSystem extends JPanel implements ActionListener
         // Ellipse2D.Double venusOrbit = new Ellipse2D.Double(370-29.6, 370-29.6, 29.6*2, 29.6*2);
         // g2D.draw(venusOrbit);
 
+        //? STRING ARRAYS TO STORE THE IMAGE NAME AND CELESTIAL BODY NAME
+        //? THIS HELPS US DISPLAY THEM USING A LOOP, INSTEAD OF INDIVIDUALLY GENERATING THEM
+
         String image[] = {"venus.png", "earth.png", "moon.png", "mars.png", "jupiter.png", "saturn.png", "titan.png"}; 
         String label[] = {"venus", "earth", "moon", "mars", "jupiter", "saturn", "titan"}; 
+
+        //? CALLS THE METHOD TO STORE ALL THE CELESTIAL BODIES IN THE ARRAYLIST 
         celestialObjects.list();
         int i = 0;
         int t = 0;
@@ -110,7 +123,11 @@ public class SolarSystem extends JPanel implements ActionListener
         while(i < image.length)
         {
             t = i+1;
+            //? THIS IS BECAUSE THE LIST STORES THE SUN AT INDEX 0 
+
             celestialObjects r = celestialObjects.getBody(t);
+
+            //? CALLS THE COORDINATES AND SCALES THEM TO BE PLOTTED IN SPACE
             double ax = r.x1/SolarSystemViewer.scale;
             double ay = r.x2/SolarSystemViewer.scale;
 
@@ -120,7 +137,10 @@ public class SolarSystem extends JPanel implements ActionListener
                 trial = ImageIO.read(getClass().getResource(path));
                 g2D.drawImage(trial, (int) Math.round(-1*((SolarSystemViewer.h/2 - 25)-ax)+(SolarSystemViewer.h)) ,(int) Math.round((SolarSystemViewer.h/2 - 25)-ay) , 50, 50, observer);
                 g2D.drawString(label[i], (int) Math.round(-1*((SolarSystemViewer.h/2 - 25)-ax)+(SolarSystemViewer.h)) , (int) Math.round((SolarSystemViewer.h/2 - 25)-ay));
-
+                //? ALL THE IMAGES ARE PLOTTED IN RELATION TO THE SUN
+                //? THEIR LOCATION IS ROUNDED UP TO THE PIXEL
+                //? THE ROUNDING WAS JUSTIFIED SINCE THE RELATIVE LOCATION IS OF THE PLANET WILL NOT BE DRASTICALLY AFFECTED
+                //? DUE TO THE PLANET SIZE AND THE SPACE DIMENSIONS 
             } 
             catch (IOException e) 
             {

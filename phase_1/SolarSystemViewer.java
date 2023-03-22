@@ -11,9 +11,10 @@ public class SolarSystemViewer {
     public static int h = 740;
     public static final int SOLAR_SYSTEM_HEIGHT = h;
 
-    // public static final double scale = d/(((h/2)-(5*h/100))); backup scale
-    // scale = maximum distance rounded up / (screen width/2) screen width km/px;
-    // current scale
+    //? SCALING DONE BELOW
+
+    //? CALCULATES THE SCALE BY ROUNDING THE MAXIMUM DISTANCE FROM THE SUN TO THE SCREEN 
+    //? SCALE = MAXIMUM DISTANCE ROUNDED UP / (SCREEN WIDTH/2) SCREEN WIDTH KM/PX;
 
     public static double d = (celestialObjects.getSaturnDistanceFromSun(1253801723.95465, -760453007.810989,-36697431.1565206));
     public static final double scale = Math.ceil(d / 100000000) * 100000000 / ((h / 2));
@@ -21,11 +22,15 @@ public class SolarSystemViewer {
     public static void main(String[] args) {
 
         JFrame solarSystemFrame = new JFrame();
-        solarSystemFrame.setTitle("Solar System Visualization");
+        solarSystemFrame.setTitle("SOLAR SYSTEM VISUALISATION");
         solarSystemFrame.setUndecorated(true);
         solarSystemFrame.getRootPane().setWindowDecorationStyle(JRootPane.FRAME);
         solarSystemFrame.setBackground(new Color(000000));
 
+        //? THIS IS TO ENSURE THE WINDOW HAS A BLACK BORDER
+        //? BLENDS IN WELL WITH THE SCREEN
+        //? REMOVES NOISE IN A WAY???
+        
         MetalLookAndFeel.setCurrentTheme(new MyDefaultMetalTheme());
         try 
         {
