@@ -136,6 +136,7 @@ public class UpdateStateOfSystem {
         Vector previousVelocity = body.getVelocity(); 
         Vector initialPosition = body.getPosition();
 
+        // Assumes that the Velocity does NOT change
         Vector newPosition = initialPosition.add(previousVelocity.multi(timeStepInSeconds)); // A purely LINEAR Approximation (considers the velocity Constant during tn -> tn+1)
     }
 
