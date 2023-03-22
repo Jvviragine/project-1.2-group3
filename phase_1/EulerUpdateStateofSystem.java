@@ -34,7 +34,7 @@ public class EulerUpdateStateofSystem {
         updateVelocity();
 
         for(int i=0;i<bodiesInSystem.size();i++){ 
-            System.out.println("Initial Position of " + bodiesInSystem.get(i).getName() + " :"  + bodiesInSystem.get(i).getPosition());
+            //System.out.println("Initial Position of " + bodiesInSystem.get(i).getName() + " :"  + bodiesInSystem.get(i).getPosition());
             Vector incr = (initialvelocities.get(i).multi(timeStepInSeconds));
             Vector updated = bodiesInSystem.get(i).getPosition().add(incr);
             bodiesInSystem.get(i).setPosition(updated);
@@ -52,7 +52,7 @@ public class EulerUpdateStateofSystem {
         // newvelocities.add(bodiesInSystem.get(0).getVelocity()); //adds sun velocity first (unchanged)
     
         for(int i=1;i<bodiesInSystem.size();i++){//skip sun (index 0) when calculating velocity
-            System.out.println("Initial Velocity of " + bodiesInSystem.get(i).getName() + " :" + bodiesInSystem.get(i).getVelocity());
+            //System.out.println("Initial Velocity of " + bodiesInSystem.get(i).getName() + " :" + bodiesInSystem.get(i).getVelocity());
 
             Vector netforce = (getForce(bodiesInSystem.get(i))).multi(-1);
             Vector acceleration = netforce.multi(1/bodiesInSystem.get(i).getMass());
@@ -62,7 +62,7 @@ public class EulerUpdateStateofSystem {
 
             bodiesInSystem.get(i).setVelocity(updated);
             bodiesInSystem.get(i).getVelocitiesArray().add(updated);
-            System.out.println("Final Velocity of " + bodiesInSystem.get(i).getName() +" :" + bodiesInSystem.get(i).getVelocity());
+            //System.out.println("Final Velocity of " + bodiesInSystem.get(i).getName() +" :" + bodiesInSystem.get(i).getVelocity());
         }
     }
     

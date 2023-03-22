@@ -68,14 +68,14 @@ public class SolarSystemTester {
         
 
         // Creating the Solar System
-        int timeStepInSeconds = 60 * 60 * 24; // 1 Day of Timestep
+        int timeStepInSeconds = 60*60*24; // 1 Day of Timestep
         StateOfSystem solarSystemState = new StateOfSystem(timeStepInSeconds, celestialBodies); // Giging it a Time Step of 
         
         // Create the Object that can Update the State of the Solar System
         EulerUpdateStateofSystem solarSystemUpdater = new EulerUpdateStateofSystem(solarSystemState);
 
         // Loop controlling how many TimeSteps we are going to take
-        int lastT = 365;
+        int lastT = 2190;
         for (int t = 1; t <= lastT; t++) {
             solarSystemUpdater.updateStateOfSolarSystemEuler();
         }
