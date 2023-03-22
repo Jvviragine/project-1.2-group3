@@ -47,8 +47,9 @@ public class UpdateStateOfSystem {
         } // Now all the New Positions for all the Bodies have been Established
 
         solarSystem.updateTotalTimePassed(); // Increases the Total Real Time Passed by DeltaT(TimeStep Chosen)
+        solarSystem.updateTimeOfState();
 
-        System.out.println("Now our Solar System is on State T = " + currentTimeOfState);
+        System.out.println("Now our Solar System is on State T = " + solarSystem.getTimeOfState());
         System.out.println("And the Total Real Time passed = " + solarSystem.getTotalTimePassed() + " seconds");
     }
 
@@ -67,7 +68,7 @@ public class UpdateStateOfSystem {
         Vector netForce = new Vector();
 
         // Go through every pair of Forces
-        for (int i = 1; i < bodiesInSystem.size(); i++) { // STARTS AT 1 BECAUSE THE SUN IS AT INDEX 0
+        for (int i = 0; i < bodiesInSystem.size(); i++) { // STARTS AT 1 BECAUSE THE SUN IS AT INDEX 0
             
             // We have to Check if it's not the Current Body
             CelestialBody otherBody = bodiesInSystem.get(i);
@@ -85,13 +86,14 @@ public class UpdateStateOfSystem {
         }
 
         // Now that we have all the Forces on a Body, we can compute the Resultant Vector
-        for (int i = 1; i < forcesOnBody.size(); i++) { // STARTS AT 1 BECAUSE THE SUN IS AT INDEX 0
+        for (int i = 0; i < forcesOnBody.size(); i++) { // STARTS AT 1 BECAUSE THE SUN IS AT INDEX 0
             
             netForce = netForce.add(forcesOnBody.get(i));
         }
 
         // The Net Force will be associated with 1 Specific Body (Stored in CelestialBody Class)
         body.setNetForce(netForce);
+        System.out.println("The Force acting on " + body.getName() + " is =  " + body.getNetForce().getX() + " X; " + body.getNetForce().getY() + " Y; " + body.getNetForce().getZ() + " Z");
     }
 
     // Find the Net Acceleration for Each Componenet

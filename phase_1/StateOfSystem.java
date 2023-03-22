@@ -250,4 +250,8 @@ public class StateOfSystem {
         return this.totalRealTimeElapsed;
     }
 
+    public void updateTimeOfState() {
+        this.timeOfState = this.timeOfState + 1;
+    }
+
 }

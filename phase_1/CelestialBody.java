@@ -7,6 +7,7 @@ public class CelestialBody{
     private Vector velocity;
     private double mass;
     private double radius;
+    private String name;
 
     // Added more Instance Fields
     private Vector netForce;
@@ -17,13 +18,14 @@ public class CelestialBody{
     private ArrayList<Vector> velocities = new ArrayList<Vector>();
     
 
-    public CelestialBody(Vector initialposition,Vector initialvelocity,double mass,double radius){
+    public CelestialBody(Vector initialposition,Vector initialvelocity,double mass,double radius, String name){
         this.position=initialposition;
         this.velocity=initialvelocity;
         this.mass=mass;
         this.radius=radius;
         this.positions.add(initialposition);
         this.velocities.add(initialvelocity);
+        this.name = name;
     }
     
     public double getMass(){
@@ -72,6 +74,10 @@ public class CelestialBody{
 
     public ArrayList<Vector> getVelocitiesArray() {
         return this.velocities;
+    }
+
+    public String getName() {
+        return this.name;
     }
 
 }
