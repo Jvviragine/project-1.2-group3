@@ -54,16 +54,16 @@ public class UpdateStateOfSystem {
         for (int i = 1; i < bodiesInSystem.size(); i++) { // STARTS AT 1 BECAUSE THE SUN IS AT INDEX 0
             setNetAccelerationActingOnABody(bodiesInSystem.get(i));
         } // Now we have all Updated Net Accelerations in the Bodies of the System
-        
+
+        // Set new Positions -> Improved Euler Method 
+        for (int i = 1; i < bodiesInSystem.size(); i++) { // STARTS AT 1 BECAUSE THE SUN IS AT INDEX 0
+            setNewPosition(bodiesInSystem.get(i));
+        } // Now all the New Positions for all the Bodies have been Established
+
         // Sets the New Velocities for the New State in which the Solar System is in
         for (int i = 1; i < bodiesInSystem.size(); i++) { // STARTS AT 1 BECAUSE THE SUN IS AT INDEX 0
             setNewVelocity(bodiesInSystem.get(i));
         } // Now we have the Initial Velocity for this new State 
-
-        // Set new Positions -> Improved Euler Method 
-        for (int i = 1; i < bodiesInSystem.size(); i++) { // STARTS AT 1 BECAUSE THE SUN IS AT INDEX 0
-            setNewPrecisePosition(bodiesInSystem.get(i));
-        } // Now all the New Positions for all the Bodies have been Established
 
         solarSystem.updateTotalTimePassed(); // Increases the Total Real Time Passed by DeltaT(TimeStep Chosen)
 
@@ -137,6 +137,7 @@ public class UpdateStateOfSystem {
         Vector initialPosition = body.getPosition();
 
         Vector newPosition = initialPosition.add(previousVelocity.multi(timeStepInSeconds)); // A purely LINEAR Approximation (considers the velocity Constant during tn -> tn+1)
+        body.setPosition(newPosition);
     }
 
     // Finds the New Position by Using a Better Approximation than simple Euler's Version
