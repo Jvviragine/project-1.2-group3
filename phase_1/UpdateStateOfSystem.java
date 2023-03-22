@@ -116,6 +116,7 @@ public class UpdateStateOfSystem {
         // netForce.setY(netForceY);
         // double netForceZ = netForce.getZ();
         // netForce.setZ(netForceZ);
+        //body.setNetForce(netForce.multi(-1));
         body.setNetForce(netForce.multi(-1));
         System.out.println("The Force acting on " + body.getName() + " is =  " + body.getNetForce().getX() + " X; " + body.getNetForce().getY() + " Y; " + body.getNetForce().getZ() + " Z");
     }
