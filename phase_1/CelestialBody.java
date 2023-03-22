@@ -19,8 +19,8 @@ public class CelestialBody{
     
 
     public CelestialBody(Vector initialposition,Vector initialvelocity,double mass, String name){
-        this.position=initialposition.multi(1000);
-        this.velocity=initialvelocity.multi(1000);
+        this.position=initialposition;
+        this.velocity=initialvelocity;
         this.mass=mass;
         this.radius=radius;
         this.positions.add(initialposition);

@@ -11,7 +11,7 @@ public class StateOfSystem {
     int timeOfState; // Always an Integer -> T0, T1, T2... Tn
     double timestep;
     private double totalRealTimeElapsed;
-    final double G = 6.6743*(Math.pow(10,-11)); // In Meters
+    final double G = 6.6743*(Math.pow(10,-20)); // In Meters
     
 
     //constructor

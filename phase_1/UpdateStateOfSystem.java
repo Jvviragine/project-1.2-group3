@@ -110,7 +110,7 @@ public class UpdateStateOfSystem {
         }
 
         // The Net Force will be associated with 1 Specific Body (Stored in CelestialBody Class)
-        body.setNetForce(netForce);
+        body.setNetForce(netForce.multi(-1));
         System.out.println("The Force acting on " + body.getName() + " is =  " + body.getNetForce().getX() + " X; " + body.getNetForce().getY() + " Y; " + body.getNetForce().getZ() + " Z");
     }
 
