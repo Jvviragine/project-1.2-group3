@@ -15,7 +15,7 @@ public class SolarSystemTester2 {
         System.out.println(massOfSun);
 
         // Create the Probe
-        Vector probeInitialPosition = new Vector((-148186906.893642), (-27823158.5715694), (33746.8987977113));
+        Vector probeInitialPosition = new Vector(((-148186906.893642) * 1000), ((-27823158.5715694) * 1000), ((33746.8987977113) * 1000));
         Vector probeInitialVelocity = new Vector(0, 0, 0);
         CelestialBody probe = new CelestialBody(probeInitialPosition, probeInitialVelocity,  50000, "Probe");
 
@@ -25,7 +25,7 @@ public class SolarSystemTester2 {
         celestialBodies.add(probe);
 
         // Creating the Solar System
-        int timeStepInSeconds = 60 * 60 * 24 * 10; // 1 Day of Timestep
+        int timeStepInSeconds = 1; // 1 Second of Timestep
         StateOfSystem solarSystemState = new StateOfSystem(timeStepInSeconds, celestialBodies); // Giging it a Time Step of 
         
         // Create the Object that can Update the State of the Solar System
