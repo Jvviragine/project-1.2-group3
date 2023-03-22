@@ -1,8 +1,9 @@
 package phase_1;
 
 import javax.swing.*;
-
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.geom.*;
 import java.security.spec.EllipticCurve;
 import java.util.Iterator;
@@ -47,63 +48,54 @@ import javax.imageio.ImageIO;
             g2D.draw(Planet);
         }*/ 
         
-public class SolarSystem extends JPanel 
+public class SolarSystem extends JPanel implements ActionListener
 {
     BufferedImage trial;
-    ImageObserver observer;
+    ImageObserver observer;        
+    Timer timer = new Timer(1, this);
 
     public void paintComponent(Graphics g) 
     {
         Graphics2D g2D = (Graphics2D) g;
-    
-        for(int i = 0; i < 50; i++)
+        timer.start();
+
+        double starX[] = new double[300];
+        double starY[] = new double[300];
+
+        for(int i = 0; i < 300; i++)
+        {
+            double x = Math.random()*SolarSystemViewer.h;
+            double y = Math.random()*SolarSystemViewer.h;
+            starX[i] = x;
+            starY[i] = y;
+        }
+        
+        for(int i = 0; i < 300; i++)
         {
             g2D.setStroke(new BasicStroke((float) (Math.random()*0.2)));
             g.setColor(new Color(((int)Math.round(Math.random()*100000))));
-            double x = Math.random()*SolarSystemViewer.h;
-            double y = Math.random()*SolarSystemViewer.h;
-            if((x < SolarSystemViewer.h/2 - 25 || x > SolarSystemViewer.h/2 + 25) || (y < SolarSystemViewer.h/2 - 25 || y > SolarSystemViewer.h/2 + 25))
+            if(i>50)
             {
-                Line2D.Double star = new Line2D.Double(x, y, x, y);
-                g2D.draw(star);
+                g.setColor(Color.WHITE);
+                if((starX[i] < SolarSystemViewer.h/2 - 25 || starX[i] > SolarSystemViewer.h/2 + 25) || (starY[i] < SolarSystemViewer.h/2 - 25 || starY[i] > SolarSystemViewer.h/2 + 25))            
+                {
+                    Line2D.Double star = new Line2D.Double(starX[i], starY[i], starX[i], starY[i]);
+                    g2D.draw(star);
+                }
             }
         }
-
-        for(int i = 0; i < 250; i++)
-        {
-            g2D.setStroke(new BasicStroke((float) (Math.random()*0.2)));
-            g.setColor(Color.WHITE);
-            double x = Math.random()*SolarSystemViewer.h;
-            double y = Math.random()*SolarSystemViewer.h;
-            if((x < SolarSystemViewer.h/2 - 25 || x > SolarSystemViewer.h/2 + 25) || (y < SolarSystemViewer.h/2 - 25 || y > SolarSystemViewer.h/2 + 25))            {
-                Line2D.Double star = new Line2D.Double(x, y, x, y);
-                g2D.draw(star);
-            }
-        }
-        
-        // try 
-        // {   
-        //     pic = ImageIO.read(getClass().getResource("sun.png"));
-        //     g2D.drawImage(pic, SolarSystemViewer.h/2 - 25, SolarSystemViewer.h/2 - 25, 50, 50, observer);
-
-        // } 
-        // catch (IOException e) 
-        // {
-        //     e.printStackTrace();
-        // }
 
         try 
         {
             String path = "sun.png";
             trial = ImageIO.read(getClass().getResource(path));
             g2D.drawImage(trial, SolarSystemViewer.h/2 - 25, SolarSystemViewer.h/2 - 25, 50, 50, observer);
+            g2D.drawString("sun", SolarSystemViewer.h/2, 400);
         } 
         catch (IOException e) 
         {
             e.printStackTrace();
         }
-
-        g2D.drawString("sun", SolarSystemViewer.h/2, 400);
 
         // g2D.setStroke(new BasicStroke(1));
         // g.setColor(Color.GREEN);
@@ -114,30 +106,40 @@ public class SolarSystem extends JPanel
         String label[] = {"venus", "earth", "moon", "mars", "jupiter", "saturn", "titan"}; 
 
         // Iterator iterator = celestialObjects.celestialObjectList.iterator();
-        // int i = 0;
+        int i = 0;
 
-        // while(iterator.hasNext())
-        // {
-        //     double x = ((celestialObjects) iterator.next()).getX1();
-        //     double y = ((celestialObjects) iterator.next()).getX2();
-        //     // double y = celestialObjects.getNext().getX2();
+        System.out.println(celestialObjects.getBody(i).getX1());
 
-        //     try 
-        //     {
-        //         pic = ImageIO.read(getClass().getResource(image[i]));
-        //     } 
-        //     catch (IOException e) 
-        //     {
-        //         e.printStackTrace();
-        //     }
+        while(i < image.length)
+        {
+        // double ax = celestialObjects.getBody(i).getX1();
+        // double ay = celestialObjects.getBody(i).getX2();
+            // get coordinates for x and y
+            // double x = 
+            // double y = 
+            // double y = celestialObjects.getNext().getX2();
 
-        //     g2D.drawImage(pic, SolarSystemViewer.h/2, SolarSystemViewer.h/2, 50, 50, observer);
+            try 
+            {
+                String path = image[i];
+                trial = ImageIO.read(getClass().getResource(path));
+                g2D.drawImage(trial, (int) Math.round((SolarSystemViewer.h/2 - 25)) ,(int) Math.round((SolarSystemViewer.h/2 - 25)) , 50, 50, observer);
+                g2D.drawString(label[i], (int) Math.round((SolarSystemViewer.h/2 - 25)) , (int) Math.round((SolarSystemViewer.h/2 - 25)) );
 
-        //     Ellipse2D.Double arrayObject = new Ellipse2D.Double((x/SolarSystemViewer.scale)+(SolarSystemViewer.h)-(10/2), -y/SolarSystemViewer.scale+(SolarSystemViewer.h)-(10/2), 10, 10);
-        //     g2D.draw(arrayObject);
-        //     g2D.drawString(label[i], SolarSystemViewer.h/2, 400);
-        //     i++;
-        // }  
+            } 
+            catch (IOException e) 
+            {
+                e.printStackTrace();
+            }
+
+            i++;
+        }  
+
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) 
+    {
+        // repaint();         
     }
 }
-

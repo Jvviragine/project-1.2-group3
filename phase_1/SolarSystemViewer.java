@@ -24,7 +24,6 @@ public class SolarSystemViewer
         solarSystemFrame.setTitle("Solar System Visualization");
         solarSystemFrame.setUndecorated(true);
         solarSystemFrame.getRootPane().setWindowDecorationStyle(JRootPane.FRAME);
-  
         solarSystemFrame.setBackground(new Color(000000));
 
         MetalLookAndFeel.setCurrentTheme(new MyDefaultMetalTheme());
@@ -39,7 +38,6 @@ public class SolarSystemViewer
     
         SwingUtilities.updateComponentTreeUI(solarSystemFrame);
         solarSystemFrame.setVisible(true);
-        
         SolarSystem solarSystem = new SolarSystem();
         solarSystemFrame.add(solarSystem);
         solarSystemFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
