@@ -67,18 +67,19 @@ public class SolarSystemTester3 {
 
         // Creating the Solar System
         int timeStepInSeconds = 60 * 60 * 24; // 1 Day of Timestep
-        StateOfSystem solarSystemState3 = new StateOfSystem(timeStepInSeconds, celestialBodies); // Giging it a Time Step of 
+        StateOfSystem solarSystemState3 = new StateOfSystem(timeStepInSeconds, celestialBodies); // Giging it a Time Step of
         
         // Create the Object that can Update the State of the Solar System
-        UpdateStateOfSystem solarSystemUpdater = new UpdateStateOfSystem(solarSystemState3);
+        UpdateStateOfSystem solarSystemUpdater3 = new UpdateStateOfSystem(solarSystemState3);
+        solarSystemUpdater3.calculateMissingValuesForT0();
 
         // Loop controlling how many TimeSteps we are going to take
-        int lastT = 10;
+        int lastT = 365;
         for (int t = 1; t <= lastT; t++) {
-            solarSystemUpdater.updateStateOfSolarSystem();
+            solarSystemUpdater3.updateStateOfSolarSystem();
         }
-        //System.out.println(earth.getPositionsArray().get(0));
-        //System.out.println(earth.getPositionsArray().get(-1));
+        System.out.println(earth.getPositionsArray().get(0));
+        System.out.println(earth.getPositionsArray().get(lastT));
         
 
 
