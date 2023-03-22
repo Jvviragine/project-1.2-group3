@@ -72,13 +72,17 @@ public class SolarSystemTester3 {
         // Create the Object that can Update the State of the Solar System
         UpdateStateOfSystem solarSystemUpdater = new UpdateStateOfSystem(solarSystemState);
 
+        // Fill in the Blanks for T0
+        solarSystemUpdater.calculateMissingValuesForT0();
+
         // Loop controlling how many TimeSteps we are going to take
-        int lastT = 10;
+        int lastT = 365;
         for (int t = 1; t <= lastT; t++) {
             solarSystemUpdater.updateStateOfSolarSystem();
         }
-        //System.out.println(earth.getPositionsArray().get(0));
-        //System.out.println(earth.getPositionsArray().get(-1));
+        System.out.println(earth.getPositionsArray().get(0));
+        System.out.println(earth.getPositionsArray().get(earth.getPositionsArray().size()-1));
+        System.out.println(earth.getPositionsArray().size());
         
 
 
