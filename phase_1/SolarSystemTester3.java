@@ -5,6 +5,9 @@ import java.util.ArrayList;
 public class SolarSystemTester3 {
 
     public static void main(String[] args) {
+
+        double radiusTitan = 2.575;
+        double c = 0.1*radiusTitan;
         
         // Create a new Solar System
 
@@ -76,8 +79,11 @@ public class SolarSystemTester3 {
 
         // Loop controlling how many TimeSteps we are going to take
         int lastT = (365 * 24) + 6; // Years 10756
-        for (int t = 1; t <= lastT; t++) {
+        int currT = 0;
+        while(probe.getPosition().dist(titanInitialPositions) > radiusTitan+c && currT != lastT){
             solarSystemUpdater3.updateStateOfSolarSystem();
+            System.out.println(probe.getPosition().dist(titanInitialPositions));
+            currT += 1;
         }
         System.out.println(earth.getPositionsArray().get(0));
         System.out.println(earth.getPositionsArray().get(lastT));
