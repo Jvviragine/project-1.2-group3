@@ -76,12 +76,12 @@ public class SolarSystemTester3 {
         solarSystemUpdater.calculateMissingValuesForT0();
 
         // Loop controlling how many TimeSteps we are going to take
-        int lastT = (365 * 24 * 60);
+        int lastT = 365 * 24 * 60;
         for (int t = 1; t <= lastT; t++) {
             solarSystemUpdater.updateStateOfSolarSystem();
         }
-        System.out.println(earth.getPositionsArray().get(0));
-        System.out.println(earth.getPositionsArray().get(earth.getPositionsArray().size()-1));
+        System.out.println(earth.getPositionsArray().get(0)); // Inital
+        System.out.println(earth.getPositionsArray().get(earth.getPositionsArray().size()-1)); // Last
         System.out.println(earth.getPositionsArray().size());
         
 
