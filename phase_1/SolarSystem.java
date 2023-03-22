@@ -96,8 +96,9 @@ public class SolarSystem extends JPanel implements ActionListener
             // g2D.drawLine(0, 800, 800, 0);
             String path = "cbSun.png";
             trial = ImageIO.read(getClass().getResource(path));
-            g2D.drawImage(trial, SolarSystemViewer.h/2 - 5, SolarSystemViewer.h/2 - 5, 10, 10, observer);
-            g2D.drawString("Sun", SolarSystemViewer.h/2 - 10, 400 - 9);
+            
+            g2D.drawImage(trial, sunX, sunY, 80, 80, observer);
+            g2D.drawString("SUN", sunX, sunY + 80);
         } 
         catch (IOException e) 
         {
