@@ -49,7 +49,8 @@ public class SolarSystemTester3 {
         CelestialBody titan = new CelestialBody(titanInitialPositions, titanInitialVelocity, 13455.3*Math.pow(10,19), "Titan");
 
         // Create the Probe
-        Vector probeInitialPosition = new Vector((-148186906.893642), (-27823158.5715694), (33746.8987977113));
+        //Vector probeInitialPosition = new Vector((-148186906.893642), (-27823158.5715694), (33746.8987977113));
+        Vector probeInitialPosition = new Vector(-148186906.893642 + 6700, -27823158.5715694 + 6700, 33746.8987977113 + 6700);
         Vector probeInitialVelocity = new Vector(0, 0, 0);
         CelestialBody probe = new CelestialBody(probeInitialPosition, probeInitialVelocity,  50000, "Probe");
 
@@ -80,6 +81,12 @@ public class SolarSystemTester3 {
         }
         System.out.println(earth.getPositionsArray().get(0));
         System.out.println(earth.getPositionsArray().get(lastT));
+
+        System.out.println();
+        System.out.println(probe.getPositionsArray().get(0));
+        System.out.println(probe.getPositionsArray().get(lastT));
+
+
 
         System.out.println("Error on the X Coordinate = " + (Math.abs((earth.getPositionsArray().get(0).getX()) - earth.getPositionsArray().get(lastT).getX()) / (earth.getPositionsArray().get(0).getX())) * 100 + " %");
         System.out.println("Error on the Y Coordinate = " + (Math.abs((earth.getPositionsArray().get(0).getY()) - earth.getPositionsArray().get(lastT).getY()) / (earth.getPositionsArray().get(0).getY())) * 100 + " %");
