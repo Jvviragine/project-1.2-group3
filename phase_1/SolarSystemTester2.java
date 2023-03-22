@@ -10,12 +10,14 @@ public class SolarSystemTester2 {
         // Create the Sun
         Vector sunInitialPositions = new Vector(0, 0, 0);
         Vector sunInitialVelocity = new Vector(0, 0, 0);
-        CelestialBody sun = new CelestialBody(sunInitialPositions, sunInitialVelocity, 1,9885*Math.pow(10, 30), "Sun");
+        double massOfSun = 1.9885*Math.pow(10, 30);
+        CelestialBody sun = new CelestialBody(sunInitialPositions, sunInitialVelocity, massOfSun, "Sun");
+        System.out.println(massOfSun);
 
         // Create the Probe
         Vector probeInitialPosition = new Vector((-148186906.893642), (-27823158.5715694), (33746.8987977113));
         Vector probeInitialVelocity = new Vector(0, 0, 0);
-        CelestialBody probe = new CelestialBody(probeInitialPosition, probeInitialVelocity,  50000, 0, "Probe");
+        CelestialBody probe = new CelestialBody(probeInitialPosition, probeInitialVelocity,  50000, "Probe");
 
         // Collection of Celestial Bodies
         ArrayList<CelestialBody> celestialBodies = new ArrayList<CelestialBody>();
