@@ -47,7 +47,7 @@ import javax.imageio.ImageIO;
             Ellipse2D.Double Planet = new Ellipse2D.Double((arr[i].X/SOLAR_SYSTEM_PIXEL)+500-(PLANET_SIZE/2), -1*(arr[i].Y/SOLAR_SYSTEM_PIXEL)+500-(PLANET_SIZE/2), PLANET_SIZE, PLANET_SIZE);
             g2D.draw(Planet);
         }*/ 
-        
+
 public class SolarSystem extends JPanel implements ActionListener
 {
     BufferedImage trial;
@@ -56,6 +56,7 @@ public class SolarSystem extends JPanel implements ActionListener
 
     public void paintComponent(Graphics g) 
     {
+
         Graphics2D g2D = (Graphics2D) g;
         timer.start();
 
@@ -134,6 +135,6 @@ public class SolarSystem extends JPanel implements ActionListener
     @Override
     public void actionPerformed(ActionEvent e) 
     {
-        // repaint();         
+        // repaint();      
     }
 }
