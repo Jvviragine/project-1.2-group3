@@ -90,7 +90,7 @@ public class UpdateStateOfSystem {
             
             // We have to Check if it's not the Current Body
             CelestialBody otherBody = bodiesInSystem.get(i);
-            if (bodiesInSystem.get(i) != body) {
+            if (otherBody != body) {
 
                 Vector forceOnBody = new Vector();
                 double massesProduct = otherBody.getMass() * body.getMass();
