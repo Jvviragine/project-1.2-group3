@@ -127,10 +127,8 @@ public class SolarSystem extends JPanel implements ActionListener
             {
                 e.printStackTrace();
             }
-
             i++;
         }  
-
     }
 
     @Override
