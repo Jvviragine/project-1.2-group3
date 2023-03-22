@@ -45,6 +45,11 @@ public class UpdateStateOfSystem {
         solarSystem.updateTimeOfState();
         System.out.println("Now our Solar System is on State T = " + solarSystem.getTimeOfState() + "\n");
 
+        // Set new Positions -> Improved Euler Method 
+        for (int i = 1; i < bodiesInSystem.size(); i++) { // STARTS AT 1 BECAUSE THE SUN IS AT INDEX 0
+            setNewPosition(bodiesInSystem.get(i));
+        } // Now all the New Positions for all the Bodies have been Established
+
         // Calculate the Net Forces for Each Body in Our Solar System -> We have to decide about the SUN - Doesn't get affected by the Forces
         for (int i = 1; i < bodiesInSystem.size(); i++) { // STARTS AT 1 BECAUSE THE SUN IS AT INDEX 0
             setNetForceActingOnABody(bodiesInSystem.get(i));
@@ -54,16 +59,11 @@ public class UpdateStateOfSystem {
         for (int i = 1; i < bodiesInSystem.size(); i++) { // STARTS AT 1 BECAUSE THE SUN IS AT INDEX 0
             setNetAccelerationActingOnABody(bodiesInSystem.get(i));
         } // Now we have all Updated Net Accelerations in the Bodies of the System
-        
+
         // Sets the New Velocities for the New State in which the Solar System is in
         for (int i = 1; i < bodiesInSystem.size(); i++) { // STARTS AT 1 BECAUSE THE SUN IS AT INDEX 0
             setNewVelocity(bodiesInSystem.get(i));
         } // Now we have the Initial Velocity for this new State 
-
-        // Set new Positions -> Improved Euler Method 
-        for (int i = 1; i < bodiesInSystem.size(); i++) { // STARTS AT 1 BECAUSE THE SUN IS AT INDEX 0
-            setNewPrecisePosition(bodiesInSystem.get(i));
-        } // Now all the New Positions for all the Bodies have been Established
 
         solarSystem.updateTotalTimePassed(); // Increases the Total Real Time Passed by DeltaT(TimeStep Chosen)
 
@@ -138,6 +138,7 @@ public class UpdateStateOfSystem {
 
         // Assumes that the Velocity does NOT change
         Vector newPosition = initialPosition.add(previousVelocity.multi(timeStepInSeconds)); // A purely LINEAR Approximation (considers the velocity Constant during tn -> tn+1)
+        body.setPosition(newPosition);
     }
 
     // Finds the New Position by Using a Better Approximation than simple Euler's Version
