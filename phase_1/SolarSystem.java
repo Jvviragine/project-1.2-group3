@@ -87,10 +87,13 @@ public class SolarSystem extends JPanel implements ActionListener
 
         try 
         {
+            // g2D.setColor(Color.WHITE);
+            // g2D.drawLine(0, 0, 800, 800);
+            // g2D.drawLine(0, 800, 800, 0);
             String path = "sun.png";
             trial = ImageIO.read(getClass().getResource(path));
-            g2D.drawImage(trial, SolarSystemViewer.h/2 - 25, SolarSystemViewer.h/2 - 25, 50, 50, observer);
-            g2D.drawString("sun", SolarSystemViewer.h/2, 400);
+            g2D.drawImage(trial, SolarSystemViewer.h/2 - 5, SolarSystemViewer.h/2 - 5, 10, 10, observer);
+            g2D.drawString("Sun", SolarSystemViewer.h/2 - 10, 400 - 9);
         } 
         catch (IOException e) 
         {
@@ -103,7 +106,7 @@ public class SolarSystem extends JPanel implements ActionListener
         // g2D.draw(venusOrbit);
 
         String image[] = {"venus.png", "earth.png", "moon.png", "mars.png", "jupiter.png", "saturn.png", "titan.png"}; 
-        String label[] = {"venus", "earth", "moon", "mars", "jupiter", "saturn", "titan"}; 
+        String label[] = {"Venus", "Earth", "Moon", "Mars", "Jupiter", "Saturn", "Titan"}; 
         celestialObjects.list();
         int i = 0;
         int t = 0;
@@ -119,8 +122,8 @@ public class SolarSystem extends JPanel implements ActionListener
             {
                 String path = image[i];
                 trial = ImageIO.read(getClass().getResource(path));
-                g2D.drawImage(trial, (int) Math.round(-1*((SolarSystemViewer.h/2 - 25)-ax)+(SolarSystemViewer.h)) ,(int) Math.round((SolarSystemViewer.h/2 - 25)-ay) , 50, 50, observer);
-                g2D.drawString(label[i], (int) Math.round(-1*((SolarSystemViewer.h/2 - 25)-ax)+(SolarSystemViewer.h)) , (int) Math.round((SolarSystemViewer.h/2 - 25)-ay));
+                g2D.drawImage(trial, (int) Math.round(-1*((SolarSystemViewer.h/2 - 3)-ax)+(SolarSystemViewer.h)) ,(int) Math.round((SolarSystemViewer.h/2 - 3)-ay) , 7, 7, observer);
+                g2D.drawString(label[i], (int) Math.round(-1*((SolarSystemViewer.h/2 + 10)-ax)+(SolarSystemViewer.h)) , (int) Math.round((SolarSystemViewer.h/2 - 5)-ay));
 
             } 
             catch (IOException e) 
