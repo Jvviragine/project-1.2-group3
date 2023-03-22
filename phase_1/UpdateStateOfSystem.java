@@ -26,6 +26,8 @@ public class UpdateStateOfSystem {
     // Method to just calculate the Values for T0 -> Force and Acceleration
     public void calculateMissingValuesForT0() {
 
+        System.out.println("State of our Solar System at T0: " + "\n");
+
         for (int i = 1; i < bodiesInSystem.size(); i++) { // STARTS AT 1 BECAUSE THE SUN IS AT INDEX 0
             setNetForceActingOnABody(bodiesInSystem.get(i));
         } 
@@ -35,11 +37,13 @@ public class UpdateStateOfSystem {
         }
 
         // Now, for T0, we also have NetForce and NetAcceleration
-        System.out.println("State of our Solar System = ");
     }
 
     // Method Responsible for Updating the State of Our Solar System -> From Tn to T1 -> João's Methods
     public void updateStateOfSolarSystem() {
+
+        solarSystem.updateTimeOfState();
+        System.out.println("Now our Solar System is on State T = " + solarSystem.getTimeOfState() + "\n");
 
         // Calculate the Net Forces for Each Body in Our Solar System -> We have to decide about the SUN - Doesn't get affected by the Forces
         for (int i = 1; i < bodiesInSystem.size(); i++) { // STARTS AT 1 BECAUSE THE SUN IS AT INDEX 0
@@ -62,15 +66,14 @@ public class UpdateStateOfSystem {
         } // Now all the New Positions for all the Bodies have been Established
 
         solarSystem.updateTotalTimePassed(); // Increases the Total Real Time Passed by DeltaT(TimeStep Chosen)
-        solarSystem.updateTimeOfState();
 
-        System.out.println("Now our Solar System is on State T = " + solarSystem.getTimeOfState());
         System.out.println("And the Total Real Time passed = " + solarSystem.getTotalTimePassed() + " seconds");
+        System.out.println("\n");
     }
 
     // Method Responsible for Updating the State of Our Solar System -> From Tn to T1 -> Tamar's Methods
     public void updateStateOfSolarSystemEuler() {
-        
+
     }
 
     // Euler Solvers -> All the Calculation Functions -> Joãos Version
