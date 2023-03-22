@@ -6,9 +6,14 @@ import javax.swing.JRootPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.plaf.metal.MetalLookAndFeel;
+import javax.tools.Tool;
+
+import java.awt.Toolkit;
 
 public class SolarSystemViewer {
-    public static int h = 740;
+    public static Toolkit tk = Toolkit.getDefaultToolkit();
+    public static Dimension screenSize = tk.getScreenSize();
+    public static int h = screenSize.height;
     public static final int SOLAR_SYSTEM_HEIGHT = h;
 
     // public static final double scale = d/(((h/2)-(5*h/100))); backup scale
