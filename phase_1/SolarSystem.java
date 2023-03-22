@@ -53,6 +53,8 @@ public class SolarSystem extends JPanel implements ActionListener
 
         int sunX = (int) ((celestialObjects.mars.getDistanceFromSun()/SolarSystemViewer.scale) + 70);
         int sunY = (int) SolarSystemViewer.h/3;
+        // int rocketX = (int) Rocket.getXPos();
+        // int rocketY = (int) Rocket.getYPos();
 
         try 
         {
@@ -62,8 +64,8 @@ public class SolarSystem extends JPanel implements ActionListener
             String path = "cbSun.png";
             trial = ImageIO.read(getClass().getResource(path));
             
-            g2D.drawImage(trial, sunX, sunY, 80, 80, observer);
-            g2D.drawString("SUN", sunX, sunY + 80);
+            g2D.drawImage(trial, sunX, sunY, SolarSystemViewer.h/12, SolarSystemViewer.h/12, observer);
+            // g2D.drawString("SUN", sunX, sunY + 80);
         } 
         catch (IOException e) 
         {
@@ -75,11 +77,14 @@ public class SolarSystem extends JPanel implements ActionListener
         // Ellipse2D.Double venusOrbit = new Ellipse2D.Double(370-29.6, 370-29.6, 29.6*2, 29.6*2);
         // g2D.draw(venusOrbit);
 
-        String image[] = {"cbVenus.png", "cbEarth.png", "cbMoon.png", "cbMars.png", "cbJupiter.png", "cbSaturn.png", "cbTitan.png"}; 
+        String image[] = {"cbVenus.png", "cbEarth.png", "cbMoon.png", "cbMars.png", "cbJupiter.png", "cbSaturn.png", "cbTitan.png", "cbNormandy.png"}; 
         String label[] = {"VENUS", "EARTH", "MOON", "MARS", "JUPITER", "SATURN", "TITAN"}; 
         celestialObjects.list();
         int i = 0;
         int t = 0;
+        int adjustH = 0;
+        int adjustW = 0;
+        int offset = 0;
 
         while(i < image.length)
         {
@@ -92,9 +97,43 @@ public class SolarSystem extends JPanel implements ActionListener
             {
                 String path = image[i];
                 trial = ImageIO.read(getClass().getResource(path));
+                if(i < 2){
+                    offset = 0;
+                    adjustH = SolarSystemViewer.h/38;
+                    adjustW = adjustH;
+                }
+                else if(i == 2){
+                    offset = SolarSystemViewer.h/96;
+                    adjustH = SolarSystemViewer.h/96;
+                    adjustW = adjustH;
+            }
+                else if(i == 6){
+                    offset = 0;
+                    adjustH = SolarSystemViewer.h/96;
+                    adjustW = adjustH;
+        }
+                else if(i == 3){
+                    offset = 0;
+                    adjustH = SolarSystemViewer.h/48;
+                    adjustW = adjustH;
+        }
+                else if(i == 5){
+                    offset = 0;
+                    adjustH = SolarSystemViewer.h/28;
+                    adjustW = SolarSystemViewer.h/16;
+                }
+                else if(i == 4){
+                    offset = 0;
+                    adjustH = SolarSystemViewer.h/28;
+                    adjustW = adjustH;
+                }
+            //     else{
+            //       offset = 0;
+            //       g2D.drawImage(trial, rocketX, rocketY, SolarSystemViewer.h/96, SolarSystemViewer.h/96, observer);
+            // }
 
-                g2D.drawImage(trial, (int) (sunX+ax)-10,(int) (sunY-ay)-10 , 20, 20, observer);
-                g2D.drawString(label[i], (int) (sunX+ax)-10, (int) (sunY-ay)-10);
+                g2D.drawImage(trial, (int) (sunX+ax)-15-offset,(int) (sunY-ay)-15-offset , adjustW, adjustH, observer);
+                // g2D.drawString(label[i], (int) (sunX+ax)-10, (int) (sunY-ay)-10);
 
                 // g2D.drawImage(trial, (int) Math.round(-1*((SolarSystemViewer.h/2 - 3)-ax)+(SolarSystemViewer.h)) ,(int) Math.round((SolarSystemViewer.h/2 - 3)-ay) , 7, 7, observer);
                 // g2D.drawString(label[i], (int) Math.round(-1*((SolarSystemViewer.h/2 + 10)-ax)+(SolarSystemViewer.h)) , (int) Math.round((SolarSystemViewer.h/2 - 5)-ay));
