@@ -105,25 +105,20 @@ public class SolarSystem extends JPanel implements ActionListener
         String image[] = {"venus.png", "earth.png", "moon.png", "mars.png", "jupiter.png", "saturn.png", "titan.png"}; 
         String label[] = {"venus", "earth", "moon", "mars", "jupiter", "saturn", "titan"}; 
 
-        // Iterator iterator = celestialObjects.celestialObjectList.iterator();
         int i = 0;
-
-        System.out.println(celestialObjects.getBody(i).getX1());
 
         while(i < image.length)
         {
-        // double ax = celestialObjects.getBody(i).getX1();
-        // double ay = celestialObjects.getBody(i).getX2();
-            // get coordinates for x and y
-            // double x = 
-            // double y = 
-            // double y = celestialObjects.getNext().getX2();
+            celestialObjects r = celestialObjects.getBody(i);
+            double ax = celestialObjects.getX1(r)/SolarSystemViewer.scale;
+
+        // double ay = celestialObjects.getBody(i).getX2()/SolarSystemViewer.scale;
 
             try 
             {
                 String path = image[i];
                 trial = ImageIO.read(getClass().getResource(path));
-                g2D.drawImage(trial, (int) Math.round((SolarSystemViewer.h/2 - 25)) ,(int) Math.round((SolarSystemViewer.h/2 - 25)) , 50, 50, observer);
+                g2D.drawImage(trial, (int) Math.round((SolarSystemViewer.h/2 - 25)-ax) ,(int) Math.round((SolarSystemViewer.h/2 - 25)) , 50, 50, observer);
                 g2D.drawString(label[i], (int) Math.round((SolarSystemViewer.h/2 - 25)) , (int) Math.round((SolarSystemViewer.h/2 - 25)) );
 
             } 

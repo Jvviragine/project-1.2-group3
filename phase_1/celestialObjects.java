@@ -51,9 +51,9 @@ public class celestialObjects
         celestialObjectList.add(titan);
     }
 
-    public double getX1()
+    public static double getX1(celestialObjects obj)
     {
-        return x1;
+        return obj.x1;
     }
 
     public double getX2()
