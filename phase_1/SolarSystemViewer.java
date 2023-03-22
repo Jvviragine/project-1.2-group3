@@ -7,19 +7,20 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.plaf.metal.MetalLookAndFeel;
 
-public class SolarSystemViewer 
-{
+public class SolarSystemViewer {
     public static int h = 740;
     public static final int SOLAR_SYSTEM_HEIGHT = h;
-    
-    // public static final double scale = d/(((h/2)-(5*h/100))); backup scale
-    // scale = maximum distance rounded up / (screen width/2) screen width km/px; current scale
 
-    public static double d = (celestialObjects.getSaturnDistanceFromSun(1253801723.95465, -760453007.810989, -36697431.1565206));
-    public static final double scale = Math.ceil(d/100000000)*100000000/((h/2));
-    public static void main(String[] args) 
-    {
-        
+    // public static final double scale = d/(((h/2)-(5*h/100))); backup scale
+    // scale = maximum distance rounded up / (screen width/2) screen width km/px;
+    // current scale
+
+    public static double d = (celestialObjects.getSaturnDistanceFromSun(1253801723.95465, -760453007.810989,
+            -36697431.1565206));
+    public static final double scale = Math.ceil(d / 100000000) * 100000000 / ((h / 2));
+
+    public static void main(String[] args) {
+
         JFrame solarSystemFrame = new JFrame();
         solarSystemFrame.setTitle("Solar System Visualization");
         solarSystemFrame.setUndecorated(true);
@@ -27,15 +28,12 @@ public class SolarSystemViewer
         solarSystemFrame.setBackground(new Color(000000));
 
         MetalLookAndFeel.setCurrentTheme(new MyDefaultMetalTheme());
-        try 
-        {
+        try {
             UIManager.setLookAndFeel(new MetalLookAndFeel());
-        } 
-        catch (Exception e) 
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
-    
+
         SwingUtilities.updateComponentTreeUI(solarSystemFrame);
         solarSystemFrame.setVisible(true);
         SolarSystem solarSystem = new SolarSystem();
@@ -48,4 +46,3 @@ public class SolarSystemViewer
         solarSystemFrame.setVisible(true);
     }
 }
-
