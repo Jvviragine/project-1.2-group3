@@ -90,7 +90,7 @@ public class SolarSystem extends JPanel implements ActionListener
             // g2D.setColor(Color.WHITE);
             // g2D.drawLine(0, 0, 800, 800);
             // g2D.drawLine(0, 800, 800, 0);
-            String path = "sun.png";
+            String path = "cbSun.png";
             trial = ImageIO.read(getClass().getResource(path));
             g2D.drawImage(trial, SolarSystemViewer.h/2 - 5, SolarSystemViewer.h/2 - 5, 10, 10, observer);
             g2D.drawString("Sun", SolarSystemViewer.h/2 - 10, 400 - 9);
@@ -105,8 +105,8 @@ public class SolarSystem extends JPanel implements ActionListener
         // Ellipse2D.Double venusOrbit = new Ellipse2D.Double(370-29.6, 370-29.6, 29.6*2, 29.6*2);
         // g2D.draw(venusOrbit);
 
-        String image[] = {"venus.png", "earth.png", "moon.png", "mars.png", "jupiter.png", "saturn.png", "titan.png"}; 
-        String label[] = {"Venus", "Earth", "Moon", "Mars", "Jupiter", "Saturn", "Titan"}; 
+        String image[] = {"cbVenus.png", "cbEarth.png", "cbMoon.png", "cbMars.png", "cbJupiter.png", "cbSaturn.png", "cbTitan.png"}; 
+        String label[] = {"VENUS", "EARTH", "MOON", "MARS", "JUPITER", "SATURN", "TITAN"}; 
         celestialObjects.list();
         int i = 0;
         int t = 0;
