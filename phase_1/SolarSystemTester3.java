@@ -81,7 +81,11 @@ public class SolarSystemTester3 {
         System.out.println(earth.getPositionsArray().get(0));
         System.out.println(earth.getPositionsArray().get(lastT));
 
-        System.out.println(earth.getPositionsArray().get(lastT).getY() / earth.getPositionsArray().get(0).getY());
+        System.out.println("Error on the X Coordinate = " + (Math.abs((earth.getPositionsArray().get(0).getX()) - earth.getPositionsArray().get(lastT).getX()) / (earth.getPositionsArray().get(0).getX())) * 100 + " %");
+        System.out.println("Error on the Y Coordinate = " + (Math.abs((earth.getPositionsArray().get(0).getY()) - earth.getPositionsArray().get(lastT).getY()) / (earth.getPositionsArray().get(0).getY())) * 100 + " %");
+        System.out.println("Error on the Z Coordinate = " + (Math.abs((earth.getPositionsArray().get(0).getZ()) - earth.getPositionsArray().get(lastT).getZ()) / (earth.getPositionsArray().get(0).getZ())) * 100 + " %");
+
+
         
 
 
