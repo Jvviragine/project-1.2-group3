@@ -1,7 +1,6 @@
 package phase_1;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class celestialObjects 
 {
@@ -12,7 +11,6 @@ public class celestialObjects
     double x1, x2, x3;
     double v1, v2, v3;
     double mass;
-    // int index = 0;
     
     static celestialObjects sun = new celestialObjects(0, 0, 0, 0, 0, 0, Math.pow(1.9885*10,30), 0);
     static celestialObjects venus = new celestialObjects(-28216773.9426889, 103994008.541512, 3012326.64296788, -34.0236737066136, -8.96521274688838, 1.84061735279188, Math.pow(48.685*10,23), 1);
