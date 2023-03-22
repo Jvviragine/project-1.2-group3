@@ -38,7 +38,8 @@ public class SolarSystemViewer {
         SolarSystem solarSystem = new SolarSystem();
         solarSystemFrame.add(solarSystem);
         solarSystemFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        solarSystem.setPreferredSize(new Dimension(SOLAR_SYSTEM_HEIGHT, SOLAR_SYSTEM_HEIGHT));
+        solarSystemFrame.setPreferredSize(new Dimension(SOLAR_SYSTEM_HEIGHT, SOLAR_SYSTEM_HEIGHT));
+        solarSystemFrame.pack();
         solarSystemFrame.setResizable(false);
         //solarSystemFrame.setLocationRelativeTo(null);
         solarSystemFrame.pack();
