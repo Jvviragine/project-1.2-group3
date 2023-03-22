@@ -156,3 +156,4 @@ public class SolarSystem extends JPanel implements ActionListener
         // repaint();      
     }
 }
+
