@@ -96,8 +96,9 @@ public class SolarSystem extends JPanel implements ActionListener
         {
             String path = "cbSun.png";
             trial = ImageIO.read(getClass().getResource(path));
-            g2D.drawImage(trial, SolarSystemViewer.h/2 - 25, SolarSystemViewer.h/2 - 25, 50, 50, observer);
-            g2D.drawString("sun", SolarSystemViewer.h/2, 400);
+            g2D.drawImage(trial, SolarSystemViewer.h/2 - 10, SolarSystemViewer.h/2 - 10, 20, 20, observer);
+            g2D.setFont(new Font("SHERIF", Font.PLAIN, 11)); 
+            g2D.drawString("SUN", SolarSystemViewer.h/2+10, SolarSystemViewer.h/2+10);
         } 
         catch (IOException e) 
         {
@@ -135,8 +136,10 @@ public class SolarSystem extends JPanel implements ActionListener
             {
                 String path = image[i];
                 trial = ImageIO.read(getClass().getResource(path));
-                g2D.drawImage(trial, (int) Math.round(-1*((SolarSystemViewer.h/2 - 25)-ax)+(SolarSystemViewer.h)) ,(int) Math.round((SolarSystemViewer.h/2 - 25)-ay) , 50, 50, observer);
-                g2D.drawString(label[i], (int) Math.round(-1*((SolarSystemViewer.h/2 - 25)-ax)+(SolarSystemViewer.h)) , (int) Math.round((SolarSystemViewer.h/2 - 25)-ay));
+                g2D.drawImage(trial, (int) Math.round(-1*((SolarSystemViewer.h/2 - 2.5)-ax)+(SolarSystemViewer.h)) ,(int) Math.round((SolarSystemViewer.h/2 - 2.5)-ay) , 5, 5, observer);
+                g2D.setFont(new Font("SHERIF", Font.PLAIN, 11)); 
+                g2D.drawString(label[i], (int) Math.round(-1*((SolarSystemViewer.h/2 - 2.5)-ax)+(SolarSystemViewer.h)) , (int) Math.round((SolarSystemViewer.h/2 - 2.5)-ay));
+
                 //? ALL THE IMAGES ARE PLOTTED IN RELATION TO THE SUN
                 //? THEIR LOCATION IS ROUNDED UP TO THE PIXEL
                 //? THE ROUNDING WAS JUSTIFIED SINCE THE RELATIVE LOCATION IS OF THE PLANET WILL NOT BE DRASTICALLY AFFECTED
