@@ -127,6 +127,7 @@ public class UpdateStateOfSystem {
         Vector currentAcceleration = body.getNetAcceleration();
         Vector newVelocity = previousVelocity.add(currentAcceleration.multi(timeStepInSeconds)); // Time Step is the Step Size for Euler's Method
         body.setVelocity(newVelocity);
+        body.addNewVelocity(newVelocity);
     }
 
     // Find the new Position Vector -> Purely using Euler's Method
@@ -139,6 +140,7 @@ public class UpdateStateOfSystem {
         // Assumes that the Velocity does NOT change
         Vector newPosition = initialPosition.add(previousVelocity.multi(timeStepInSeconds)); // A purely LINEAR Approximation (considers the velocity Constant during tn -> tn+1)
         body.setPosition(newPosition);
+        body.addNewPosition(newPosition);
     }
 
     // Finds the New Position by Using a Better Approximation than simple Euler's Version

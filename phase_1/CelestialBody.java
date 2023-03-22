@@ -80,4 +80,12 @@ public class CelestialBody{
         return this.name;
     }
 
+    public void addNewPosition(Vector newPosition) {
+        positions.add(newPosition);
+    }
+
+    public void addNewVelocity(Vector newVelocity) {
+        velocities.add(newVelocity);
+    }
+
 }
