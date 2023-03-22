@@ -92,7 +92,7 @@ public class celestialObjects
         return distanceSun;
     }
 
-    public static double getSaturnDistanceFromSun(double x1, double x2, double x3)
+    public static double getMaxDistanceFromSun(double x1, double x2, double x3)
     {
         double distanceSun = Math.sqrt(Math.pow(x1,2) + Math.pow(x2,2) + Math.pow(x3,2));
         return distanceSun;

@@ -86,6 +86,9 @@ public class SolarSystem extends JPanel implements ActionListener
             }
         }
 
+        int sunX = (int) ((celestialObjects.mars.getDistanceFromSun()/SolarSystemViewer.scale) + 70);
+        int sunY = (int) SolarSystemViewer.h/3;
+
         try 
         {
             // g2D.setColor(Color.WHITE);
@@ -123,9 +126,12 @@ public class SolarSystem extends JPanel implements ActionListener
             {
                 String path = image[i];
                 trial = ImageIO.read(getClass().getResource(path));
-                g2D.drawImage(trial, (int) Math.round(-1*((SolarSystemViewer.h/2 - 3)-ax)+(SolarSystemViewer.h)) ,(int) Math.round((SolarSystemViewer.h/2 - 3)-ay) , 7, 7, observer);
-                g2D.drawString(label[i], (int) Math.round(-1*((SolarSystemViewer.h/2 + 10)-ax)+(SolarSystemViewer.h)) , (int) Math.round((SolarSystemViewer.h/2 - 5)-ay));
 
+                g2D.drawImage(trial, (int) (sunX+ax)-10,(int) (sunY-ay)-10 , 20, 20, observer);
+                g2D.drawString(label[i], (int) (sunX+ax)-10, (int) (sunY-ay)-10);
+
+                // g2D.drawImage(trial, (int) Math.round(-1*((SolarSystemViewer.h/2 - 3)-ax)+(SolarSystemViewer.h)) ,(int) Math.round((SolarSystemViewer.h/2 - 3)-ay) , 7, 7, observer);
+                // g2D.drawString(label[i], (int) Math.round(-1*((SolarSystemViewer.h/2 + 10)-ax)+(SolarSystemViewer.h)) , (int) Math.round((SolarSystemViewer.h/2 - 5)-ay));
             } 
             catch (IOException e) 
             {
