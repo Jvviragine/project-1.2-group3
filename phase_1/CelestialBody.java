@@ -18,7 +18,7 @@ public class CelestialBody{
     private ArrayList<Vector> velocities = new ArrayList<Vector>();
     
 
-    public CelestialBody(Vector initialposition,Vector initialvelocity,double mass,double radius, String name){
+    public CelestialBody(Vector initialposition,Vector initialvelocity,double mass, String name){
         this.position=initialposition;
         this.velocity=initialvelocity;
         this.mass=mass;
