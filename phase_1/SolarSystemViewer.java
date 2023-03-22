@@ -1,19 +1,15 @@
 
 package phase_1;
 import java.awt.*;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
+import javax.swing.*;
 
 public class SolarSystemViewer 
 {
     public static void main(String[] args) 
     {
-        JFrame solarSystemFrame = new JFrame();
-        solarSystemFrame.setTitle("Solar System Visualization");
-        solarSystemFrame.setBackground(new Color(000000));
+        JFrame Frame = new JFrame();
+        Frame.setTitle("Solar System Visualization");
+        Frame.setBackground(Color.BLACK);
         SolarSystem solarSystem = new SolarSystem();
 
         // JLabel planet;
@@ -23,18 +19,16 @@ public class SolarSystemViewer
         // planet = new JLabel(sun);
         // SolarSystemViewer.add(planet);
 
-        int w = 740;
-        int h = 740;
-        final int SOLAR_SYSTEM_WIDTH = w;
-        final int SOLAR_SYSTEM_HEIGHT = h;
+        final int SOLAR_SYSTEM_WIDTH = 740;
+        final int SOLAR_SYSTEM_HEIGHT = 740;
 
-        solarSystemFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        solarSystemFrame.add(solarSystem);
-        solarSystem.setPreferredSize(new Dimension(SOLAR_SYSTEM_WIDTH, SOLAR_SYSTEM_HEIGHT));
-        solarSystemFrame.pack();
-        solarSystemFrame.setResizable(false);
-        solarSystemFrame.setLocationRelativeTo(null);
-        solarSystemFrame.setVisible(true);
+        Frame.add(solarSystem);
+        Frame.setPreferredSize(new Dimension(SOLAR_SYSTEM_WIDTH, SOLAR_SYSTEM_HEIGHT)); 
+        Frame.pack();
+        Frame.setResizable(false);
+        Frame.setLocationRelativeTo(null);
+        Frame.setVisible(true);
     }
 }
