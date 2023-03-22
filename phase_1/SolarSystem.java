@@ -61,10 +61,10 @@ public class SolarSystem extends JPanel implements ActionListener
         //? THEIR SIZE IS BETWEEN 0 AND 0.2 PIXELS
         //? NO STARS WITHIN 25 PIXEL RADIUS OF THE SUN
         
-        double starX[] = new double[300];
-        double starY[] = new double[300];
+        double starX[] = new double[SolarSystemViewer.h/3];
+        double starY[] = new double[SolarSystemViewer.h/3];
 
-        for(int i = 0; i < 300; i++)
+        for(int i = 0; i < SolarSystemViewer.h/3; i++)
         {
             double x = Math.random()*SolarSystemViewer.h;
             double y = Math.random()*SolarSystemViewer.h;
@@ -72,11 +72,11 @@ public class SolarSystem extends JPanel implements ActionListener
             starY[i] = y;
         }
         
-        for(int i = 0; i < 300; i++)
+        for(int i = 0; i < SolarSystemViewer.h/3; i++)
         {
-            g2D.setStroke(new BasicStroke((float) (Math.random()*0.2)));
+            g2D.setStroke(new BasicStroke((float) (Math.random()*0.4)));
             g.setColor(new Color(((int)Math.round(Math.random()*100000))));
-            if(i>50)
+            if(i>SolarSystemViewer.h/8)
             {
                 g.setColor(Color.WHITE);
                 if((starX[i] < SolarSystemViewer.h/2 - 25 || starX[i] > SolarSystemViewer.h/2 + 25) || (starY[i] < SolarSystemViewer.h/2 - 25 || starY[i] > SolarSystemViewer.h/2 + 25))            
@@ -96,9 +96,9 @@ public class SolarSystem extends JPanel implements ActionListener
         {
             String path = "cbSun.png";
             trial = ImageIO.read(getClass().getResource(path));
-            g2D.drawImage(trial, SolarSystemViewer.h/2 - 10, SolarSystemViewer.h/2 - 10, 20, 20, observer);
+            g2D.drawImage(trial, SolarSystemViewer.h/2-100, SolarSystemViewer.h/2-100, 200, 200, observer);
             g2D.setFont(new Font("SHERIF", Font.PLAIN, 11)); 
-            g2D.drawString("SUN", SolarSystemViewer.h/2+10, SolarSystemViewer.h/2+10);
+            g2D.drawString("SUN", SolarSystemViewer.h/2+100, SolarSystemViewer.h/2+100);
         } 
         catch (IOException e) 
         {
