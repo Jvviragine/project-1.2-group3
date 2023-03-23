@@ -55,7 +55,7 @@ public class SolarSystem extends JPanel implements ActionListener
 
                     label[i] = new JLabel(icon[i]);
 
-                    label[i].setBounds((int)(sunX+ax)-(SolarSystemViewer.h/20 + 1)/2, (int) -(sunY+ay)-(SolarSystemViewer.h/20 + 1)/2 + (2*sunY), SolarSystemViewer.h/20 + 1, SolarSystemViewer.h/20 + 1);
+                    label[i].setBounds((int)(sunX+ax)+(SolarSystemViewer.h/28 + 1)/2, (int) -(sunY+ay)+(SolarSystemViewer.h/28 + 1)/2 + (2*sunY), SolarSystemViewer.h/20 + 1, SolarSystemViewer.h/20 + 1);
                 }
                 else if(i == 2)// earth
                 {
@@ -69,7 +69,7 @@ public class SolarSystem extends JPanel implements ActionListener
 
                     label[i] = new JLabel(icon[i]);
 
-                    label[i].setBounds((int)(sunX+ax)-(SolarSystemViewer.h/20 + 1)/2, (int) -(sunY+ay)-(SolarSystemViewer.h/20 + 1)/2 + (2*sunY), SolarSystemViewer.h/20 + 1, SolarSystemViewer.h/20 + 1);
+                    label[i].setBounds((int)(sunX+ax)+(SolarSystemViewer.h/28 + 1)/2, (int) -(sunY+ay)+(SolarSystemViewer.h/28 + 1)/2 + (2*sunY), SolarSystemViewer.h/20 + 1, SolarSystemViewer.h/20 + 1);
                 }
                 else if(i == 3)// moon
                 {
@@ -77,12 +77,12 @@ public class SolarSystem extends JPanel implements ActionListener
                     double ay = r.x2/SolarSystemViewer.scale;
 
                     image[i] = ImageIO.read(getClass().getResource(picID[i]));
-                    icon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/40, SolarSystemViewer.h/40, Image.SCALE_SMOOTH));
-                    zoomIcon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/32, SolarSystemViewer.h/32, Image.SCALE_SMOOTH));
+                    icon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/50, SolarSystemViewer.h/50, Image.SCALE_SMOOTH));
+                    zoomIcon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/40, SolarSystemViewer.h/40, Image.SCALE_SMOOTH));
 
                     label[i] = new JLabel(icon[i]);
 
-                    label[i].setBounds((int)((sunX+ax)-(SolarSystemViewer.h/32 + 1)/2), (int) -((sunY+ay)-(SolarSystemViewer.h/32 + 1)/2 + (2*sunY)), SolarSystemViewer.h/32 + 1, SolarSystemViewer.h/32 + 1);
+                    label[i].setBounds(200, 200, SolarSystemViewer.h/50 + 1, SolarSystemViewer.h/50 + 1);
                 }
                 else if(i == 4)// mars
                 {
@@ -95,7 +95,7 @@ public class SolarSystem extends JPanel implements ActionListener
 
                     label[i] = new JLabel(icon[i]);
 
-                    label[i].setBounds((int)(sunX+ax)-(SolarSystemViewer.h/22 + 1)/2, (int) -(sunY+ay)-(SolarSystemViewer.h/22 + 1)/2 + (2*sunY), SolarSystemViewer.h/22 + 1, SolarSystemViewer.h/22 + 1);
+                    label[i].setBounds((int)(sunX+ax)+(SolarSystemViewer.h/30 + 1)/2, (int) -(sunY+ay)+(SolarSystemViewer.h/30 + 1)/2 + (2*sunY), SolarSystemViewer.h/22 + 1, SolarSystemViewer.h/22 + 1);
                 }
                 else if(i == 5)// jupiter
                 {
@@ -108,7 +108,7 @@ public class SolarSystem extends JPanel implements ActionListener
 
                     label[i] = new JLabel(icon[i]);
 
-                    label[i].setBounds((int)(sunX+ax)-(SolarSystemViewer.h/16 + 1)/2, (int) -(sunY+ay)-(SolarSystemViewer.h/16 + 1)/2 + (2*sunY), SolarSystemViewer.h/16 + 1, SolarSystemViewer.h/16 + 1);
+                    label[i].setBounds((int)(sunX+ax)+(SolarSystemViewer.h/19 + 1)/2, (int) -(sunY+ay)+(SolarSystemViewer.h/19 + 1)/2 + (2*sunY), SolarSystemViewer.h/16 + 1, SolarSystemViewer.h/16 + 1);
                 }
                 else if(i == 6)// saturn
                 {
@@ -121,7 +121,7 @@ public class SolarSystem extends JPanel implements ActionListener
 
                     label[i] = new JLabel(icon[i]);
 
-                    label[i].setBounds((int)(sunX+ax)-(SolarSystemViewer.h/9 + 1)/2, (int) -(sunY+ay)-(SolarSystemViewer.h/16 + 1)/2 + (2*sunY), SolarSystemViewer.h/9 + 1, SolarSystemViewer.h/16 + 1);
+                    label[i].setBounds((int)(sunX+ax)+(SolarSystemViewer.h/11 + 1)/2, (int) -(sunY+ay)+(SolarSystemViewer.h/19 + 1)/2 + (2*sunY), SolarSystemViewer.h/9 + 1, SolarSystemViewer.h/16 + 1);
                 }
                 else if(i == 7)// titan
                 {
@@ -129,12 +129,12 @@ public class SolarSystem extends JPanel implements ActionListener
                     double ay = r.x2/SolarSystemViewer.scale;
 
                     image[i] = ImageIO.read(getClass().getResource(picID[i]));
-                    icon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/40, SolarSystemViewer.h/40, Image.SCALE_SMOOTH));
-                    zoomIcon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/32, SolarSystemViewer.h/32, Image.SCALE_SMOOTH));
+                    icon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/50, SolarSystemViewer.h/50, Image.SCALE_SMOOTH));
+                    zoomIcon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/40, SolarSystemViewer.h/40, Image.SCALE_SMOOTH));
 
                     label[i] = new JLabel(icon[i]);
 
-                    label[i].setBounds((int) ((sunX+ax)-(SolarSystemViewer.h/32 + 1)/2), (int) -((sunY+ay)-(SolarSystemViewer.h/32 + 1)/2 + (2*sunY)), SolarSystemViewer.h/32 + 1, SolarSystemViewer.h/32 + 1);
+                    label[i].setBounds((int) ((sunX+ax)+(SolarSystemViewer.h/50 + 1)/2), (int) -((sunY+ay)+(SolarSystemViewer.h/50 + 1)/2 + (2*sunY)), SolarSystemViewer.h/32 + 1, SolarSystemViewer.h/32 + 1);
                 }      
             } 
             catch (IOException e) 
@@ -176,6 +176,7 @@ public class SolarSystem extends JPanel implements ActionListener
         overlayPanel.setOpaque(false);
         overlayPanel.setBounds(labelPanel.getBounds());
         add(overlayPanel);
+<<<<<<< Updated upstream
 
         // Start the timer to update the positions of the labels
         Timer timer = new Timer(DELAY, new ActionListener() {
@@ -197,6 +198,9 @@ public class SolarSystem extends JPanel implements ActionListener
         throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
     }
 }
+=======
+    }}
+>>>>>>> Stashed changes
 // mport javax.imageio.ImageIO;
         
 // public class SolarSystem extends JPanel implements ActionListener
