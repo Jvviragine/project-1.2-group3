@@ -2,7 +2,7 @@ package phase_1;
 
 import java.util.ArrayList;
 
-// This is the Class Responsible for Launching the Whole Simulation
+// This is the Class containing all the actions for running the simulation
 
 public class Main {
     public double[][] orbitOfVenus;
