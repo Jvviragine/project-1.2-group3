@@ -41,7 +41,7 @@ public class SolarSystem extends JPanel implements ActionListener
         celestialObjects.list();
         //Coordinates of the sun
         final int sunX = (int) ((celestialObjects.mars.getDistanceFromSun()/SolarSystemViewer.scale) + 120)-((SolarSystemViewer.h/8 + 1)/2);
-        final int sunY = (int) SolarSystemViewer.h/3-((SolarSystemViewer.h/8 + 1)/2);
+        final int sunY = (int) SolarSystemViewer.h/2-((SolarSystemViewer.h/8 + 1)/2);
 
         String picID[] = {"cbSun.png", "cbVenus.png", "cbEarth.png", "cbMoon.png", "cbMars.png", "cbJupiter.png", "cbSaturn.png", "cbTitan.png", "cbNormandy.png", "space.png"}; 
 
