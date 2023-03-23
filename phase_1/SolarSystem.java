@@ -41,8 +41,8 @@ public class SolarSystem extends JPanel implements ActionListener
     {
         celestialObjects.list();
         //Coordinates of the sun
-        final int sunX = (int) ((celestialObjects.mars.getDistanceFromSun()/SolarSystemViewer.scale) + 120)-((SolarSystemViewer.h/8 + 1));
-        final int sunY = (int) SolarSystemViewer.h/2-((SolarSystemViewer.h/8 + 1));
+        final int sunX = (int) ((celestialObjects.mars.getDistanceFromSun()/SolarSystemViewer.scale) + 120) + 100 -((SolarSystemViewer.h/8 + 1));
+        final int sunY = (int) SolarSystemViewer.h/2 + 100 -((SolarSystemViewer.h/8 + 1));
 
         String picID[] = {"cbSun.png", "cbVenus.png", "cbEarth.png", "cbMoon.png", "cbMars.png", "cbJupiter.png", "cbSaturn.png", "cbTitan.png", "cbNormandy.png", "space.png"}; 
 
@@ -263,7 +263,7 @@ public class SolarSystem extends JPanel implements ActionListener
                 // int xProbe = xStartEarth + (int) angle * 21;
                 // int yProbe = yStartEarth + (int) angle * 21;
 
-                counter+= 5;
+                counter+= 10;
 
                 double xVenusDouble = venusPath[counter][0];
                 int xVenus = sunX + (int) (xVenusDouble/SolarSystemViewer.scale);
