@@ -63,7 +63,7 @@ public class SolarSystem extends JPanel implements ActionListener
                     sunDiameter = SolarSystemViewer.h/8 + 1;
                     label[i] = new JLabel(icon[i]);
 
-                    label[i].setBounds(sunX, sunY, SolarSystemViewer.h/8 + 1, SolarSystemViewer.h/8 + 1);
+                    label[i].setBounds(sunX, sunY, SolarSystemViewer.h/20 + 1, SolarSystemViewer.h/20 + 1);
                 }
                 else if(i == 1)// venus
                 {
@@ -151,7 +151,7 @@ public class SolarSystem extends JPanel implements ActionListener
 
                     label[i] = new JLabel(icon[i]);
 
-                    label[i].setBounds((int)(sunX+ax)+(SolarSystemViewer.h/18 + 1)/2, (int) -(sunY+ay)+(SolarSystemViewer.h/25 + 1)/2 + (2*sunY), SolarSystemViewer.h/14 + 1, SolarSystemViewer.h/20 + 1);
+                    label[i].setBounds((int)(sunX+ax)+(SolarSystemViewer.h/15 + 1)/2, (int) -(sunY+ay)+(SolarSystemViewer.h/25 + 1)/2 + (2*sunY), SolarSystemViewer.h/14 + 1, SolarSystemViewer.h/20 + 1);
                 }
                 else if(i == 7)// titan
                 {
@@ -177,7 +177,7 @@ public class SolarSystem extends JPanel implements ActionListener
 
                     label[i] = new JLabel(icon[i]);
 
-                    label[i].setBounds((int) (earthDiameter + (sunX+ax)+(SolarSystemViewer.h/38 + 1)/2), (int) (earthDiameter + -(sunY+ay)+(SolarSystemViewer.h/38 + 1)/2 + (2*sunY)), SolarSystemViewer.h/20 + 1, SolarSystemViewer.h/20 + 1);
+                    label[i].setBounds((int) (earthDiameter + (sunX+ax)+(SolarSystemViewer.h/30 + 1)/2), (int) (earthDiameter + -(sunY+ay)+(SolarSystemViewer.h/30 + 1)/2 + (2*sunY)), SolarSystemViewer.h/20 + 1, SolarSystemViewer.h/20 + 1);
                 }
                 else if(i == 9)// space
                 {
