@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+
 public class SolarSystem extends JPanel implements ActionListener
 {
     JLabel label[] = new JLabel[9];
@@ -22,8 +23,9 @@ public class SolarSystem extends JPanel implements ActionListener
     private int xStartEarth, yStartEarth;
     private int sunDiameter, earthDiameter, saturnDiameter;
 
-    public SolarSystem() 
+    public SolarSystem()
     {
+
         celestialObjects.list();
         final int sunX = (int) ((celestialObjects.mars.getDistanceFromSun()/SolarSystemViewer.scale) + 120)-((SolarSystemViewer.h/8 + 1)/2);
         final int sunY = (int) SolarSystemViewer.h/3-((SolarSystemViewer.h/8 + 1)/2);

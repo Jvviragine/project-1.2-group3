@@ -19,7 +19,8 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class SolarSystemViewer{
+public class SolarSystemViewer
+{
     public static Toolkit tk = Toolkit.getDefaultToolkit();
     public static Dimension screenSize = tk.getScreenSize();
     public static int h = screenSize.height;
@@ -36,7 +37,7 @@ public class SolarSystemViewer{
     public static double[][] rocketLaunch = new double[2][3];
 
     public static void main(String[] args) {
-        
+
         // JFrame initialConditions = new JFrame();
         // initialConditions.setTitle("Starting Conditions");
         // JPanel format = new JPanel();
@@ -113,8 +114,8 @@ public class SolarSystemViewer{
         //     }
         // });
      
-
-        JFrame solarSystemFrame = new JFrame();
+        
+        JFrame solarSystemFrame = new JFrame();        
         solarSystemFrame.setTitle("Solar System Visualization");
         solarSystemFrame.setUndecorated(true);
         solarSystemFrame.getRootPane().setWindowDecorationStyle(JRootPane.FRAME);
