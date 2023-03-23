@@ -55,9 +55,20 @@ public class SolarSystemTester {
         Vector titanInitialVelocity = new Vector((8.99593229549645), (11.1085713608453), (-2.25130986174761));
         CelestialBody titan = new CelestialBody(titanInitialPosition, titanInitialVelocity,13455.3*Math.pow(10,19),16, "Titan");
         
+        // Create Uranus
+        Vector uranusInitialPositions = new Vector((1958732435.99338), (2191808553.21893 ), (-17235283.8321992));
+        Vector uranusInitialVelocity = new Vector((-5.12766216337626), (4.22055347264457), (0.082119033640306386));
+        CelestialBody uranus = new CelestialBody(uranusInitialPositions, uranusInitialVelocity, 13455.3*Math.pow(10,19), "Uranus");
+
+        // Create Neptune
+        Vector neptuneInitialPositions = new Vector((4454487339.09447), (-397895128.763904), (-94464151.3421107));
+        Vector neptuneInitialVelocity = new Vector((0.447991656952326), (5.44610697514907), (-0.122638125365954102));
+        CelestialBody neptune = new CelestialBody(neptuneInitialPositions, neptuneInitialVelocity, 13455.3*Math.pow(10,19), "Neptune");
+
+
         // Collection of Celestial Bodies
         ArrayList<CelestialBody> celestialBodies = new ArrayList<CelestialBody>();
-        celestialBodies.add(sun);  
+        celestialBodies.add(sun);
         celestialBodies.add(venus);
         celestialBodies.add(earth);
         celestialBodies.add(moon);
@@ -65,17 +76,19 @@ public class SolarSystemTester {
         celestialBodies.add(jupiter);
         celestialBodies.add(saturn);
         celestialBodies.add(titan);
+        celestialBodies.add(neptune);
+        celestialBodies.add(uranus);
         celestialBodies.add(probe);
 
         // Creating the Solar System
-        int timeStepInSeconds = 60; // 1 Hour of Timestep
+        int timeStepInSeconds = 60*60*24; // 1 Hour of Timestep
         StateOfSystem solarSystemState = new StateOfSystem(timeStepInSeconds, celestialBodies); // Giging it a Time Step of 
         
         // Create the Object that can Update the State of the Solar System
         EulerUpdateStateofSystem solarSystemUpdater = new EulerUpdateStateofSystem(solarSystemState);
 
         //Loop controlling how many TimeSteps we are going to take
-        int lastT = 24*365*60 +6*60;
+        int lastT = 687;
         for (int t = 1; t <= lastT; t++) {
             solarSystemUpdater.updateStateOfSolarSystemEuler();
         }        
@@ -89,9 +102,10 @@ public class SolarSystemTester {
         // OrbitFinder findSaturn=new OrbitFinder(saturn, celestialBodies);
         // findSaturn.getOrbit();
 
-        // System.out.println("Error on the X Coordinate = " + Math.abs(Math.abs((earth.getPositionsArray().get(0).getX()) - earth.getPositionsArray().get(lastT).getX()) / (earth.getPositionsArray().get(0).getX())) * 100 + " %");
-        // System.out.println("Error on the Y Coordinate = " + Math.abs(Math.abs((earth.getPositionsArray().get(0).getY()) - earth.getPositionsArray().get(lastT).getY()) / (earth.getPositionsArray().get(0).getY())) * 100 + " %");
-        // System.out.println("Error on the Z Coordinate = " + Math.abs(Math.abs((earth.getPositionsArray().get(0).getZ()) - earth.getPositionsArray().get(lastT).getZ()) / (earth.getPositionsArray().get(0).getZ())) * 100 + " %");
+        int marsposition=mars.getPositionsArray().size()-1;
+        System.out.println("Error on the X Coordinate = " + Math.abs(Math.abs((mars.getPositionsArray().get(0).getX()) - mars.getPositionsArray().get(marsposition).getX()) / (mars.getPositionsArray().get(0).getX())) * 100 + " %");
+        System.out.println("Error on the Y Coordinate = " + Math.abs(Math.abs((mars.getPositionsArray().get(0).getY()) - mars.getPositionsArray().get(marsposition).getY()) / (mars.getPositionsArray().get(0).getY())) * 100 + " %");
+        System.out.println("Error on the Z Coordinate = " + Math.abs(Math.abs((mars.getPositionsArray().get(0).getZ()) - mars.getPositionsArray().get(marsposition).getZ()) / (mars.getPositionsArray().get(0).getZ())) * 100 + " %");
 
 
 
