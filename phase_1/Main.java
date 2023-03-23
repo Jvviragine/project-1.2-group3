@@ -84,8 +84,8 @@ public class Main {
 
         // Create the Probe
         //Vector probeInitialPosition = new Vector((-148186906.893642), (-27823158.5715694), (33746.8987977113));
-        Vector probeInitialPosition = new Vector(-148458048.395164+6370, -27524868.1841142, 70233.6499287411);
-        Vector probeInitialVelocity = new Vector(42.42270135156, -43.62738201925, -3.1328169170);
+        Vector probeInitialPosition = new Vector(0, 0, 0);
+        Vector probeInitialVelocity = new Vector(0, 0, 0);
         CelestialBody probe = new CelestialBody(probeInitialPosition, probeInitialVelocity,  50000, "Probe");
 
         // Collection of Celestial Bodies
@@ -134,7 +134,8 @@ public class Main {
         neptune.setVelocity(neptuneInitialVelocity);
 
         celestialBodies.add(probe);
-
+        probe.setPosition(RunMe.initPos);
+        probe.setVelocity(RunMe.initVelo);
 
             int timeStepInSeconds = 60 * 60; // 1 Month of Timestep
             StateOfSystem solarSystemState3 = new StateOfSystem(timeStepInSeconds, celestialBodies); // Giging it a Time Step of

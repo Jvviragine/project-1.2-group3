@@ -20,8 +20,8 @@ public class RunMe implements ActionListener{
     JTextField v2Text;
     JTextField v3Text;
     JButton button;
-    Vector initPos = new Vector();
-    Vector initVelo = new Vector();
+    static Vector initPos = new Vector();
+    static Vector initVelo = new Vector();
     public boolean clicked = false;
 
     public static void main(String[] args) {
