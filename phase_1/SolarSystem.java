@@ -36,6 +36,7 @@ public class SolarSystem extends JPanel implements ActionListener
             starY[i] = y;
         }
         
+        //Randomly generate background stars
         for(int i = 0; i < 300; i++)
         {
             g2D.setStroke(new BasicStroke((float) (Math.random()*0.2)));
@@ -56,6 +57,7 @@ public class SolarSystem extends JPanel implements ActionListener
         // int rocketX = (int) Rocket.getXPos();
         // int rocketY = (int) Rocket.getYPos();
 
+        //Generate the sun
         try 
         {
             // g2D.setColor(Color.WHITE);
@@ -80,13 +82,12 @@ public class SolarSystem extends JPanel implements ActionListener
         String image[] = {"cbVenus.png", "cbEarth.png", "cbMoon.png", "cbMars.png", "cbJupiter.png", "cbSaturn.png", "cbTitan.png", "cbNormandy.png"}; 
         String label[] = {"VENUS", "EARTH", "MOON", "MARS", "JUPITER", "SATURN", "TITAN"}; 
         celestialObjects.list();
-        int i = 0;
         int t = 0;
         int adjustH = 0;
         int adjustW = 0;
         int offset = 0;
 
-        while(i < image.length)
+        for(int i = 0; i < image.length; i++)
         {
             t = i+1;
             celestialObjects r = celestialObjects.getBody(t);
@@ -97,36 +98,44 @@ public class SolarSystem extends JPanel implements ActionListener
             {
                 String path = image[i];
                 trial = ImageIO.read(getClass().getResource(path));
-                if(i < 2){
-                    offset = 0;
-                    adjustH = SolarSystemViewer.h/38;
-                    adjustW = adjustH;
+                switch(i) {
+                    case 0: 
+                        offset = 0;
+                        adjustH = SolarSystemViewer.h/38;
+                        adjustW = adjustH;
+                        break;
+                    case 1: 
+                        offset = 0;
+                        adjustH = SolarSystemViewer.h/38;
+                        adjustW = adjustH;
+                        break;
+                    case 2: 
+                        offset = SolarSystemViewer.h/96;
+                        adjustH = SolarSystemViewer.h/96;
+                        adjustW = adjustH;
+                        break;
+                    case 3: 
+                        offset = 0;
+                        adjustH = SolarSystemViewer.h/48;
+                        adjustW = adjustH;
+                        break;
+                    case 4: 
+                        offset = 0;
+                        adjustH = SolarSystemViewer.h/28;
+                        adjustW = adjustH;
+                        break;
+                    case 5: 
+                        offset = 0;
+                        adjustH = SolarSystemViewer.h/28;
+                        adjustW = SolarSystemViewer.h/16;
+                        break;
+                    case 6: 
+                        offset = 0;
+                        adjustH = SolarSystemViewer.h/96;
+                        adjustW = adjustH;
+                        break;
                 }
-                else if(i == 2){
-                    offset = SolarSystemViewer.h/96;
-                    adjustH = SolarSystemViewer.h/96;
-                    adjustW = adjustH;
-            }
-                else if(i == 6){
-                    offset = 0;
-                    adjustH = SolarSystemViewer.h/96;
-                    adjustW = adjustH;
-        }
-                else if(i == 3){
-                    offset = 0;
-                    adjustH = SolarSystemViewer.h/48;
-                    adjustW = adjustH;
-        }
-                else if(i == 5){
-                    offset = 0;
-                    adjustH = SolarSystemViewer.h/28;
-                    adjustW = SolarSystemViewer.h/16;
-                }
-                else if(i == 4){
-                    offset = 0;
-                    adjustH = SolarSystemViewer.h/28;
-                    adjustW = adjustH;
-                }
+                
             //     else{
             //       offset = 0;
             //       g2D.drawImage(trial, rocketX, rocketY, SolarSystemViewer.h/96, SolarSystemViewer.h/96, observer);
@@ -142,10 +151,7 @@ public class SolarSystem extends JPanel implements ActionListener
             {
                 e.printStackTrace();
             }
-
-            i++;
         }  
-
     }
 
     @Override

@@ -2,7 +2,7 @@ package phase_1;
 
 public class Rocket {
     
-    public final int mass = 5000;
+    public final int mass = 50000;
     public Vector rocketPosition;
     public Vector rocketVelocity;
     public Vector startPosition;
