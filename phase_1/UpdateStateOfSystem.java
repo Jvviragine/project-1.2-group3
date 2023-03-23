@@ -75,6 +75,7 @@ public class UpdateStateOfSystem {
 
         // WATCH OUT FOR THE INDEX OF PROBE AND TITAN
         System.out.println("The Distance from the Probe to Titan = " + calculateDistanceFromProbeToTitan(bodiesInSystem.get(8), bodiesInSystem.get(7)) + " KM"); 
+        System.out.println("Has the Distance between the Probe and Titan decreased? " + hasDistanceBetweenProbeAndTitanDecreased(bodiesInSystem.get(8), bodiesInSystem.get(7)));
         System.out.println("And the Total Real Time passed = " + solarSystem.getTotalTimePassed() + " seconds = " + (solarSystem.getTotalTimePassed() / (60 * 60 * 24 * 365)) + " Years");
         System.out.println("\n");
     }
@@ -114,7 +115,7 @@ public class UpdateStateOfSystem {
 
         // The Net Force will be associated with 1 Specific Body (Stored in CelestialBody Class)
         body.setNetForce(netForce.multi(-1));
-        System.out.println("The Force acting on " + body.getName() + " is =  " + body.getNetForce().getX() + " X; " + body.getNetForce().getY() + " Y; " + body.getNetForce().getZ() + " Z");
+        //System.out.println("The Force acting on " + body.getName() + " is =  " + body.getNetForce().getX() + " X; " + body.getNetForce().getY() + " Y; " + body.getNetForce().getZ() + " Z");
     }
 
     // Find the Net Acceleration for Each Componenet
@@ -172,8 +173,10 @@ public class UpdateStateOfSystem {
     public boolean hasDistanceBetweenProbeAndTitanDecreased(CelestialBody probe, CelestialBody titan) {
         // Compare if the Previous Distance has Decreased
 
-        double previousDistance = distancesToTitan.get(currentTimeOfState - 1);
-        double currentDistance = distancesToTitan.get(currentTimeOfState);
+        int currentT = solarSystem.getCurrentTime();
+
+        double previousDistance = distancesToTitan.get(currentT - 1);
+        double currentDistance = distancesToTitan.get(currentT);
 
         return (currentDistance < previousDistance);
     }
