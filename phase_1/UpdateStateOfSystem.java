@@ -170,8 +170,8 @@ public class UpdateStateOfSystem {
         return distance;
     }
 
+    // Method to compare if the Previous Distance has Decreased
     public boolean hasDistanceBetweenProbeAndTitanDecreased(CelestialBody probe, CelestialBody titan) {
-        // Compare if the Previous Distance has Decreased
 
         int currentT = solarSystem.getCurrentTime();
 
@@ -181,6 +181,7 @@ public class UpdateStateOfSystem {
         return (currentDistance < previousDistance);
     }
 
+    // Method that checks whether we reached Titan
     public boolean reachedTitan(CelestialBody probe, CelestialBody titan, double stateTime){
         if(probe.getPosition().dist(titan.getPosition()) < radiusOfTitan || stateTime == yearInSec){
             positionWhenReached = probe.getPosition();
