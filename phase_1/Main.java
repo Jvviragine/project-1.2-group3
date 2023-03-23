@@ -1,5 +1,9 @@
 package phase_1;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.beans.VetoableChangeSupport;
 import java.awt.Button;
 import java.awt.event.ActionEvent;
 import java.lang.reflect.Array;
@@ -11,7 +15,7 @@ public class Main {
 
 
     // Main Method -> Where all the Calculations will be Instantiated and GUIs Launched
-    public static void main(String[] args) {
+    public Main() {
         
         // Launch the JFrame with Initial Conditions -> Garrick
             // Get the Initial Position and Velocity for the Probe
@@ -26,8 +30,8 @@ public class Main {
         // Create a new Solar System
 
         // Open the login window for entering the initial positions and velocities
-        Login login = new Login();
-        
+        //Login login = new Login();
+
         // Create the Sun
         Vector sunInitialPositions = new Vector(0, 0, 0);
         Vector sunInitialVelocity = new Vector(0, 0, 0);
@@ -131,14 +135,6 @@ public class Main {
 
         celestialBodies.add(probe);
 
-        if(login.clicked){
-            System.out.println("ciao");
-            if(login.initPos!=null){
-                probe.setPosition(login.initPos);
-            }
-            if(login.initVelo!=null){
-                probe.setVelocity(login.initVelo);
-            }
 
             int timeStepInSeconds = 60 * 60; // 1 Month of Timestep
             StateOfSystem solarSystemState3 = new StateOfSystem(timeStepInSeconds, celestialBodies); // Giging it a Time Step of
@@ -169,8 +165,8 @@ public class Main {
             System.out.println("Error on the X Coordinate = " + (Math.abs((earth.getPositionsArray().get(0).getX()) - earth.getPositionsArray().get(positionsSize).getX()) / (earth.getPositionsArray().get(0).getX())) * 100 + " %");
             System.out.println("Error on the Y Coordinate = " + (Math.abs((earth.getPositionsArray().get(0).getY()) - earth.getPositionsArray().get(positionsSize).getY()) / (earth.getPositionsArray().get(0).getY())) * 100 + " %");
             System.out.println("Error on the Z Coordinate = " + (Math.abs((earth.getPositionsArray().get(0).getZ()) - earth.getPositionsArray().get(positionsSize).getZ()) / (earth.getPositionsArray().get(0).getZ())) * 100 + " %");
-        }
-
+        
 
     }
+
 }

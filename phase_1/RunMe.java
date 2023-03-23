@@ -110,6 +110,9 @@ public class Login implements ActionListener{
                 initVelo.setX(Double.parseDouble(v1Text.getText()));
                 initVelo.setY(Double.parseDouble(v2Text.getText()));
                 initVelo.setZ(Double.parseDouble(v3Text.getText()));
+
+                Main carl = new Main();
+
             }catch(Exception p){
                 
                 System.out.println("sorry somthing is wrong");
@@ -121,7 +124,8 @@ public class Login implements ActionListener{
                 initVelo.setX(42.42270135156);
                 initVelo.setY(-43.62738201925);
                 initVelo.setZ(-3.1328169170);
-                clicked = true;
+                
+                Main carl = new Main();
             }
 
 
