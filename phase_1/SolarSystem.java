@@ -220,7 +220,7 @@ public class SolarSystem extends JPanel implements ActionListener
         Timer timer = new Timer(DELAY, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 
-                counter+= 100;
+                counter+= 20;
 
                 double xVenusDouble = venusPath[counter][0];
                 int xVenus = sunX + (int) (xVenusDouble/SolarSystemViewer.scale);
