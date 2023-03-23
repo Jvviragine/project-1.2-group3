@@ -18,7 +18,7 @@ public class SolarSystem extends JPanel implements ActionListener
     BufferedImage image[] = new BufferedImage[10];
     ImageIcon icon[] = new ImageIcon[10];
     ImageIcon zoomIcon[] = new ImageIcon[9];
-    private final int DELAY = 1;
+    private final int DELAY = 10;
     private int earthDiameter;
     Main carl = new Main();
     private double xProbeDouble = 0, yProbeDouble = 0;
@@ -162,7 +162,7 @@ public class SolarSystem extends JPanel implements ActionListener
 
                     label[i] = new JLabel(icon[i]);
 
-                    label[i].setBounds((int) (-2*earthDiameter + (sunX)-SolarSystemViewer.h/15), (int) (-earthDiameter + -(sunY)-(SolarSystemViewer.h/15 + (sunY))), SolarSystemViewer.h/30 + 1, SolarSystemViewer.h/30 + 1);
+                    label[i].setBounds((int) (-2*earthDiameter - 20 + (sunX)-SolarSystemViewer.h/15), (int) (-earthDiameter + -(sunY)-(SolarSystemViewer.h/15 + (sunY))), SolarSystemViewer.h/30 + 1, SolarSystemViewer.h/30 + 1);
 
                 }
                 else if(i == 9)// space
