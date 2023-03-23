@@ -64,29 +64,29 @@ public class SolarSystem extends JPanel implements ActionListener
                     double ax = r.x1/SolarSystemViewer.scale;
                     double ay = r.x2/SolarSystemViewer.scale;
                     radiusEarth = (int) (r.getDistanceFromSun() / SolarSystemViewer.scale);
-                    earthDiameter = SolarSystemViewer.h/20 + 1;
+                    earthDiameter = SolarSystemViewer.h/38 + 1;
 
                     image[i] = ImageIO.read(getClass().getResource(picID[i]));
-                    icon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/28, SolarSystemViewer.h/28, Image.SCALE_SMOOTH));
-                    zoomIcon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/20, SolarSystemViewer.h/20, Image.SCALE_SMOOTH));
+                    icon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/38, SolarSystemViewer.h/38, Image.SCALE_SMOOTH));
+                    zoomIcon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/30, SolarSystemViewer.h/30, Image.SCALE_SMOOTH));
 
                     label[i] = new JLabel(icon[i]);
 
-                    label[i].setBounds((int)(sunX+ax)+(SolarSystemViewer.h/28 + 1)/2, (int) -(sunY+ay)+(SolarSystemViewer.h/28 + 1)/2 + (2*sunY), SolarSystemViewer.h/20 + 1, SolarSystemViewer.h/20 + 1);
+                    label[i].setBounds((int)(sunX+ax)+(SolarSystemViewer.h/38 + 1)/2, (int) -(sunY+ay)+(SolarSystemViewer.h/38 + 1)/2 + (2*sunY), SolarSystemViewer.h/30 + 1, SolarSystemViewer.h/30 + 1);
                 }
                 else if(i == 3)// moon
                 {
                     double ax = r.x1/SolarSystemViewer.scale;
                     double ay = r.x2/SolarSystemViewer.scale;
-                    radiusMoon = 25;
+                    radiusMoon = 20;
 
                     image[i] = ImageIO.read(getClass().getResource(picID[i]));
-                    icon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/50, SolarSystemViewer.h/50, Image.SCALE_SMOOTH));
-                    zoomIcon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/40, SolarSystemViewer.h/40, Image.SCALE_SMOOTH));
+                    icon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/65, SolarSystemViewer.h/65, Image.SCALE_SMOOTH));
+                    zoomIcon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/50, SolarSystemViewer.h/50, Image.SCALE_SMOOTH));
 
                     label[i] = new JLabel(icon[i]);
 
-                    label[i].setBounds((int)(sunX+ax)+(SolarSystemViewer.h/50 + 1)/2, (int) -(sunY+ay)+(SolarSystemViewer.h/50 + 1)/2 + (2*sunY), SolarSystemViewer.h/40 + 1, SolarSystemViewer.h/40 + 1);
+                    label[i].setBounds((int)(sunX+ax)+(SolarSystemViewer.h/65 + 1)/2, (int) -(sunY+ay)+(SolarSystemViewer.h/65 + 1)/2 + (2*sunY), SolarSystemViewer.h/50 + 1, SolarSystemViewer.h/50 + 1);
                 }
                 else if(i == 4)// mars
                 {
@@ -95,12 +95,12 @@ public class SolarSystem extends JPanel implements ActionListener
                     radiusMars = (int) (r.getDistanceFromSun() / SolarSystemViewer.scale);
 
                     image[i] = ImageIO.read(getClass().getResource(picID[i]));
-                    icon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/30, SolarSystemViewer.h/30, Image.SCALE_SMOOTH));
-                    zoomIcon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/22, SolarSystemViewer.h/22, Image.SCALE_SMOOTH));
+                    icon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/38, SolarSystemViewer.h/38, Image.SCALE_SMOOTH));
+                    zoomIcon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/30, SolarSystemViewer.h/30, Image.SCALE_SMOOTH));
 
                     label[i] = new JLabel(icon[i]);
 
-                    label[i].setBounds((int)(sunX+ax)+(SolarSystemViewer.h/30 + 1)/2, (int) -(sunY+ay)+(SolarSystemViewer.h/30 + 1)/2 + (2*sunY), SolarSystemViewer.h/22 + 1, SolarSystemViewer.h/22 + 1);
+                    label[i].setBounds((int)(sunX+ax)+(SolarSystemViewer.h/38 + 1)/2, (int) -(sunY+ay)+(SolarSystemViewer.h/38 + 1)/2 + (2*sunY), SolarSystemViewer.h/30 + 1, SolarSystemViewer.h/30 + 1);
                 }
                 else if(i == 5)// jupiter
                 {
@@ -109,12 +109,12 @@ public class SolarSystem extends JPanel implements ActionListener
                     radiusJupiter = (int) (r.getDistanceFromSun() / SolarSystemViewer.scale);
 
                     image[i] = ImageIO.read(getClass().getResource(picID[i]));
-                    icon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/19, SolarSystemViewer.h/19, Image.SCALE_SMOOTH));
-                    zoomIcon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/16, SolarSystemViewer.h/16, Image.SCALE_SMOOTH));
+                    icon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/30, SolarSystemViewer.h/30, Image.SCALE_SMOOTH));
+                    zoomIcon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/25, SolarSystemViewer.h/25, Image.SCALE_SMOOTH));
 
                     label[i] = new JLabel(icon[i]);
 
-                    label[i].setBounds((int)(sunX+ax)+(SolarSystemViewer.h/19 + 1)/2, (int) -(sunY+ay)+(SolarSystemViewer.h/19 + 1)/2 + (2*sunY), SolarSystemViewer.h/16 + 1, SolarSystemViewer.h/16 + 1);
+                    label[i].setBounds((int)(sunX+ax)+(SolarSystemViewer.h/30 + 1)/2, (int) -(sunY+ay)+(SolarSystemViewer.h/30 + 1)/2 + (2*sunY), SolarSystemViewer.h/25 + 1, SolarSystemViewer.h/25 + 1);
                 }
                 else if(i == 6)// saturn
                 {
@@ -124,26 +124,26 @@ public class SolarSystem extends JPanel implements ActionListener
                     saturnDiameter = SolarSystemViewer.h/16 + 1;
 
                     image[i] = ImageIO.read(getClass().getResource(picID[i]));
-                    icon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/11, SolarSystemViewer.h/19, Image.SCALE_SMOOTH));
-                    zoomIcon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/9, SolarSystemViewer.h/16, Image.SCALE_SMOOTH));
+                    icon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/18, SolarSystemViewer.h/25, Image.SCALE_SMOOTH));
+                    zoomIcon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/14, SolarSystemViewer.h/20, Image.SCALE_SMOOTH));
 
                     label[i] = new JLabel(icon[i]);
 
-                    label[i].setBounds((int)(sunX+ax)+(SolarSystemViewer.h/11 + 1)/2, (int) -(sunY+ay)+(SolarSystemViewer.h/19 + 1)/2 + (2*sunY), SolarSystemViewer.h/9 + 1, SolarSystemViewer.h/16 + 1);
+                    label[i].setBounds((int)(sunX+ax)+(SolarSystemViewer.h/18 + 1)/2, (int) -(sunY+ay)+(SolarSystemViewer.h/25 + 1)/2 + (2*sunY), SolarSystemViewer.h/14 + 1, SolarSystemViewer.h/20 + 1);
                 }
                 else if(i == 7)// titan
                 {
                     double ax = r.x1/SolarSystemViewer.scale;
                     double ay = r.x2/SolarSystemViewer.scale;
-                    radiusTitan = 25;
+                    radiusTitan = 20;
 
                     image[i] = ImageIO.read(getClass().getResource(picID[i]));
-                    icon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/50, SolarSystemViewer.h/50, Image.SCALE_SMOOTH));
-                    zoomIcon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/40, SolarSystemViewer.h/40, Image.SCALE_SMOOTH));
+                    icon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/65, SolarSystemViewer.h/65, Image.SCALE_SMOOTH));
+                    zoomIcon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/50, SolarSystemViewer.h/50, Image.SCALE_SMOOTH));
 
                     label[i] = new JLabel(icon[i]);
 
-                    label[i].setBounds((int)(sunX+ax)+(SolarSystemViewer.h/50 + 1)/2, (int) -(sunY+ay)+(SolarSystemViewer.h/50 + 1)/2 + (2*sunY), SolarSystemViewer.h/40 + 1, SolarSystemViewer.h/40 + 1);
+                    label[i].setBounds((int)(sunX+ax)+(SolarSystemViewer.h/65 + 1)/2, (int) -(sunY+ay)+(SolarSystemViewer.h/65 + 1)/2 + (2*sunY), SolarSystemViewer.h/50 + 1, SolarSystemViewer.h/50 + 1);
                 }      
             } 
             catch (IOException e) 
