@@ -8,6 +8,7 @@ public class SolarSystemTester3 {
 
         double radiusTitan = 2.575;
         double c = 0.1*radiusTitan;
+        double radiusOfTitan = 2.575;
         
         // Create a new Solar System
 
@@ -64,7 +65,7 @@ public class SolarSystemTester3 {
         // Create the Probe
         //Vector probeInitialPosition = new Vector((-148186906.893642), (-27823158.5715694), (33746.8987977113));
         Vector probeInitialPosition = new Vector(-148458048.395164+6370, -27524868.1841142, 70233.6499287411);
-        Vector probeInitialVelocity = new Vector(42.42100000, -43.6277300, -3.13300000);
+        Vector probeInitialVelocity = new Vector(42.42270135156, -43.62738201925, -3.1328169170);
         CelestialBody probe = new CelestialBody(probeInitialPosition, probeInitialVelocity,  50000, "Probe");
 
         
@@ -93,17 +94,20 @@ public class SolarSystemTester3 {
 
 
         double min = probeInitialPosition.dist(titanInitialPositions);
-        while(!solarSystemUpdater3.reachedTitan(probe, titan, solarSystemState3.getTotalTimePassed())){
+        while(probe.getPosition().dist(titan.getPosition()) > radiusOfTitan){
             solarSystemUpdater3.updateStateOfSolarSystem();
-            System.out.println(probe.getPosition().dist(titanInitialPositions));
+            //System.out.println(probe.getPosition().dist(titanInitialPositions));
             if(probe.getPosition().dist(titan.getPosition())<min){
                 min = probe.getPosition().dist(titan.getPosition());
             }
         }
+
         System.out.println(solarSystemUpdater3.getPositionWhenReached());
+        System.out.println(titan.getPosition());
         System.out.println("\n");
         System.out.println("min distance to titan: " + min);
         System.out.println("\n");
+        System.out.println(min<radiusTitan);
 
         int positionsSize = earth.getPositionsArray().size()-1;
 

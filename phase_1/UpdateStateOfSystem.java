@@ -182,11 +182,11 @@ public class UpdateStateOfSystem {
     }
 
     public boolean reachedTitan(CelestialBody probe, CelestialBody titan, double stateTime){
-        if(probe.getPosition().dist(titan.getPosition()) > radiusOfTitan && stateTime != yearInSec){
-            return false;
+        if(probe.getPosition().dist(titan.getPosition()) < radiusOfTitan){
+            positionWhenReached = probe.getPosition();
+            return true;
         }
-        positionWhenReached = probe.getPosition();
-        return true;
+        return false;
     }
 
     public Vector getPositionWhenReached(){
