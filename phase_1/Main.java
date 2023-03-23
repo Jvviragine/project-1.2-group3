@@ -122,7 +122,7 @@ public class Main {
         }
 
         System.out.println("\n");
-        System.out.println("min distance to titan: " + min);
+        System.out.println("Minimum distance to titan: " + min);
         System.out.println("Titan reached at: " + minTime);
         System.out.println("When probe reached Titan it had positions: " + solarSystemUpdater3.getPositionWhenReached().toString());
 
