@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.VetoableChangeSupport;
 
-public class Login implements ActionListener{
+public class RunMe implements ActionListener{
     JFrame frame;
     JLabel x1;
     JLabel x2;
@@ -25,10 +25,10 @@ public class Login implements ActionListener{
     public boolean clicked = false;
 
     public static void main(String[] args) {
-        Login login = new Login();
+        RunMe login = new RunMe();
     }
 
-    public Login(){
+    public RunMe(){
 
         frame = new JFrame();
         JPanel panel = new JPanel();
@@ -124,7 +124,7 @@ public class Login implements ActionListener{
                 initVelo.setX(42.42270135156);
                 initVelo.setY(-43.62738201925);
                 initVelo.setZ(-3.1328169170);
-                
+
                 Main carl = new Main();
             }
 
