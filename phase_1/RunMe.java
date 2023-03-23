@@ -111,6 +111,7 @@ public class RunMe implements ActionListener{
                 initVelo.setZ(Double.parseDouble(v3Text.getText()));
 
                 Main carl = new Main();
+                frame.dispose();
                 SolarSystemViewer.main(null);
 
             }catch(Exception p){
@@ -126,6 +127,7 @@ public class RunMe implements ActionListener{
                 initVelo.setZ(-3.1328169170);
 
                 Main carl = new Main();
+                frame.dispose();
                 SolarSystemViewer.main(null);
             }
 
