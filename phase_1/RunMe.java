@@ -32,7 +32,7 @@ public class RunMe implements ActionListener{
 
         frame = new JFrame();
         JPanel panel = new JPanel();
-        panel.setLayout(null);
+        panel.setLayout(null);        
 
         JLabel label = new JLabel("Please enter initial positions (x, y, z) in km and velocities (v1, v2, v3) in km/s;p");
         label.setBounds(30, 10, 500, 25);
@@ -125,7 +125,7 @@ public class RunMe implements ActionListener{
 
             }catch(Exception p){
                 
-                System.out.println("Values where filled by default.");
+                System.out.println("Default values used.");
 
                 initPos.setX(-148458048.395164+6370);
                 initPos.setY(-27524868.1841142);
