@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,6 +23,10 @@ public class SolarSystem extends JPanel implements ActionListener
     private int radiusVenus, radiusEarth, radiusMoon, radiusMars, radiusJupiter, radiusSaturn, radiusTitan;
     private int xStartEarth, yStartEarth;
     private int sunDiameter, earthDiameter, saturnDiameter;
+    Main carl = new Main();
+    private double xProbeDouble = 0, yProbeDouble = 0;
+    private int xProbe = 0, yProbe = 0;
+    private ArrayList<ArrayList<Double>> probePath = carl.probePath;
 
     public SolarSystem()
     {
@@ -243,12 +248,21 @@ public class SolarSystem extends JPanel implements ActionListener
                 int xSaturn = sunX + sunDiameter / 3 + (int)(radiusSaturn * Math.cos(0.010 * angle + 0.7));
                 int ySaturn = sunY + sunDiameter / 3 + (int)(radiusSaturn * Math.sin(0.010 * angle + 0.7));
                 
-                int xTitan = 10 + xSaturn + saturnDiameter / 4 + (int)(radiusTitan * Math.cos(7.03 * angle + Math.PI));
-                int yTitan = ySaturn + saturnDiameter / 4 - 4 + (int)(radiusTitan * Math.sin(7.03 * angle + Math.PI));
+                int xTitan = 10 + xSaturn + saturnDiameter / 4 + (int)(radiusTitan * Math.cos(7.03 * angle));
+                int yTitan = ySaturn + saturnDiameter / 4 - 4 + (int)(radiusTitan * Math.sin(7.03 * angle));
                 
-                int xProbe = xStartEarth + (int) angle * 21;
-                int yProbe = yStartEarth + (int) angle * 21;
+                // int xProbe = xStartEarth + (int) angle * 21;
+                // int yProbe = yStartEarth + (int) angle * 21;
                 
+                for(int i = 0; i < probePath.size(); i++) {
+                    xProbeDouble = probePath.get(i).get(0);
+                    xProbe = (int) (xProbeDouble / SolarSystemViewer.scale);
+                    yProbeDouble = probePath.get(i).get(1);
+                    yProbe = (int) (yProbeDouble / SolarSystemViewer.scale);
+                }
+
+                System.out.println(probePath.get(2).get(0));
+
                 label[1].setLocation(xVenus, yVenus);
                 label[2].setLocation(xEarth, yEarth);
                 label[3].setLocation(xMoon, yMoon);
@@ -257,6 +271,8 @@ public class SolarSystem extends JPanel implements ActionListener
                 label[6].setLocation(xSaturn, ySaturn);
                 label[7].setLocation(xTitan, yTitan);
                 label[8].setLocation(xProbe, yProbe);
+                // System.out.println(xProbe);
+                // System.out.println(yProbe);
             }
         });
         timer.start();
