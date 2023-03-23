@@ -188,13 +188,13 @@ public class SolarSystem extends JPanel implements ActionListener
         labelPanel.setOpaque(false);
         labelPanel.setBounds(0, 0, SolarSystemViewer.h, SolarSystemViewer.h);
         add(labelPanel);
- 
+
         for(int j = 0; j < 10; j++)
         {
             labelPanel.add(label[j]);
             System.out.println(j);
         }
- 
+
         for(int t = 0; t < 9; t++)
         {
             int h = t;
