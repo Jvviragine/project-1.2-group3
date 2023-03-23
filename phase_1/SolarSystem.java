@@ -30,7 +30,7 @@ public class SolarSystem extends JPanel implements ActionListener
         final int sunX = (int) ((celestialObjects.mars.getDistanceFromSun()/SolarSystemViewer.scale) + 120)-((SolarSystemViewer.h/8 + 1)/2);
         final int sunY = (int) SolarSystemViewer.h/3-((SolarSystemViewer.h/8 + 1)/2);
 
-        String picID[] = {"cbSun.png", "cbVenus.png", "cbEarth.png", "cbMoon.png", "cbMars.png", "cbJupiter.png", "cbSaturn.png", "cbTitan.png", "URETHRA!.png"}; 
+        String picID[] = {"cbSun.png", "cbVenus.png", "cbEarth.png", "cbMoon.png", "cbMars.png", "cbJupiter.png", "cbSaturn.png", "cbTitan.png", "cbNormandy.png"}; 
 
         for(int i = 0; i < picID.length; i++)
         {
@@ -155,15 +155,15 @@ public class SolarSystem extends JPanel implements ActionListener
                     double ax = r.x1/SolarSystemViewer.scale;
                     double ay = r.x2/SolarSystemViewer.scale;
                     image[i] = ImageIO.read(getClass().getResource(picID[i]));
-                    icon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/10, SolarSystemViewer.h/10, Image.SCALE_SMOOTH));
-                    zoomIcon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/8, SolarSystemViewer.h/8, Image.SCALE_SMOOTH));
+                    icon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/30, SolarSystemViewer.h/30, Image.SCALE_SMOOTH));
+                    zoomIcon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/30, SolarSystemViewer.h/30, Image.SCALE_SMOOTH));
 
                     System.out.println(ax);
                     System.out.println(ay);
 
                     label[i] = new JLabel(icon[i]);
 
-                    label[i].setBounds((int)(sunX+ax)+(SolarSystemViewer.h/38 + 1)/2, (int) -(sunY+ay)+(SolarSystemViewer.h/38 + 1)/2 + (2*sunY), SolarSystemViewer.h/10 + 1, SolarSystemViewer.h/10 + 1);
+                    label[i].setBounds((int)(sunX+ax)+(SolarSystemViewer.h/38 + 1)/2, (int) -(sunY+ay)+(SolarSystemViewer.h/38 + 1)/2 + (2*sunY), SolarSystemViewer.h/30 + 1, SolarSystemViewer.h/30 + 1);
                 }         
             } 
             catch (IOException e) 
@@ -235,8 +235,8 @@ public class SolarSystem extends JPanel implements ActionListener
                 int xTitan = 10 + xSaturn + saturnDiameter / 4 + (int)(radiusTitan * Math.cos(7.03 * angle + Math.PI));
                 int yTitan = ySaturn + saturnDiameter / 4 - 4 + (int)(radiusTitan * Math.sin(7.03 * angle + Math.PI));
                 
-                int xProbe = xStartEarth + (int) angle * 20;
-                int yProbe = yStartEarth + (int) angle * 20;
+                int xProbe = xStartEarth + (int) angle * 21;
+                int yProbe = yStartEarth + (int) angle * 21;
                 
                 label[1].setLocation(xVenus, yVenus);
                 label[2].setLocation(xEarth, yEarth);
@@ -256,53 +256,3 @@ public class SolarSystem extends JPanel implements ActionListener
         throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
     }
 }
-// mport javax.imageio.ImageIO;
-        
-// public class SolarSystem extends JPanel implements ActionListener
-// {
-//     BufferedImage trial;
-//     BufferedImage imageBuffer;
-//     ImageObserver observer;        
-//     Timer timer = new Timer(1, this);
-//     private int planetX = 0;
-//     private int planetY = 0;
-
-//     public void paintComponent(Graphics g) 
-//     {
-//         Graphics2D g2D = (Graphics2D) g;
-//         timer.start();
-
-//         double starX[] = new double[300];
-//         double starY[] = new double[300];
-
-// @ -63,9 +64,9 @@ public class SolarSystem extends JPanel implements ActionListener
-//             // g2D.drawLine(0, 0, 800, 800);
-//             // g2D.drawLine(0, 800, 800, 0);
-//             String path = "cbSun.png";
-//             trial = ImageIO.read(getClass().getResource(path));
-//             imageBuffer = ImageIO.read(getClass().getResource(path));
-            
-//             g2D.drawImage(trial, sunX, sunY, SolarSystemViewer.h/15, SolarSystemViewer.h/15, observer);
-//             g2D.drawImage(imageBuffer, sunX, sunY, SolarSystemViewer.h/15, SolarSystemViewer.h/15, observer);
-//             // g2D.drawString("SUN", sunX, sunY + 80);
-//         } 
-//         catch (IOException e) 
-// @ -174,7 +175,7 @@ public class SolarSystem extends JPanel implements ActionListener
-//                 {
-//                     System.out.println(ax);
-//                     String path = image[j - 1];
-//                     trial = ImageIO.read(getClass().getResource(path));
-//                     imageBuffer = ImageIO.read(getClass().getResource(path));
-//                     switch(j - 1) {
-//                         case 0, 1: 
-//                             offset = 0;
-// @ -213,7 +214,7 @@ public class SolarSystem extends JPanel implements ActionListener
-
-//                     }
-
-//                     g2D.drawImage(trial, (int) ((sunX+SolarSystemViewer.h/30)+ax)-15-offset,(int) ((sunY+SolarSystemViewer.h/30)-ay)-15-offset , adjustW, adjustH, observer);
-//                     g2D.drawImage(imageBuffer, (int) ((sunX+SolarSystemViewer.h/30)+ax)-15-offset,(int) ((sunY+SolarSystemViewer.h/30)-ay)-15-offset , adjustW, adjustH, observer);
-//                     // g2D.drawString(label[i], (int) (sunX+ax)-10, (int) (sunY-ay)-10);
-
-//                     // g2D.drawImage(trial, (int) Math.round(-1*((SolarSystemViewer.h/2 - 3)-ax)+(SolarSystemViewer.h)) ,(int) Math.round((SolarSystemViewer.h/2 - 3)-ay) , 7, 7, observer);
-
