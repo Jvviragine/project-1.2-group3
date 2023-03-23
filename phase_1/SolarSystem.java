@@ -13,9 +13,9 @@ import java.awt.event.MouseEvent;
 
 public class SolarSystem extends JPanel implements ActionListener
 {
-    JLabel label[] = new JLabel[9];
-    BufferedImage image[] = new BufferedImage[9];
-    ImageIcon icon[] = new ImageIcon[9];
+    JLabel label[] = new JLabel[10];
+    BufferedImage image[] = new BufferedImage[10];
+    ImageIcon icon[] = new ImageIcon[10];
     ImageIcon zoomIcon[] = new ImageIcon[9];
     private double angle = 0;
     private final int DELAY = 10;
@@ -30,11 +30,15 @@ public class SolarSystem extends JPanel implements ActionListener
         final int sunX = (int) ((celestialObjects.mars.getDistanceFromSun()/SolarSystemViewer.scale) + 120)-((SolarSystemViewer.h/8 + 1)/2);
         final int sunY = (int) SolarSystemViewer.h/3-((SolarSystemViewer.h/8 + 1)/2);
 
-        String picID[] = {"cbSun.png", "cbVenus.png", "cbEarth.png", "cbMoon.png", "cbMars.png", "cbJupiter.png", "cbSaturn.png", "cbTitan.png", "cbNormandy.png"}; 
+        String picID[] = {"cbSun.png", "cbVenus.png", "cbEarth.png", "cbMoon.png", "cbMars.png", "cbJupiter.png", "cbSaturn.png", "cbTitan.png", "cbNormandy.png", "space.png"}; 
 
         for(int i = 0; i < picID.length; i++)
         {
-            celestialObjects r = celestialObjects.getBody(i);
+            celestialObjects r = new celestialObjects();
+            if(i<picID.length - 1)
+            {
+                r = celestialObjects.getBody(i);
+            }
             try 
             {
                 if(i == 0)// sun
@@ -172,10 +176,11 @@ public class SolarSystem extends JPanel implements ActionListener
         setLayout(null);
         JPanel labelPanel = new JPanel();
         labelPanel.setLayout(null);
+        labelPanel.setOpaque(false);
         labelPanel.setBounds(0, 0, SolarSystemViewer.h, SolarSystemViewer.h);
         add(labelPanel);
  
-        for(int j = 0; j < 9; j++)
+        for(int j = 0; j < 10; j++)
         {
             labelPanel.add(label[j]);
         }
