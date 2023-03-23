@@ -77,32 +77,34 @@ public class SolarSystemTester3 {
         UpdateStateOfSystem solarSystemUpdater3 = new UpdateStateOfSystem(solarSystemState3);
         solarSystemUpdater3.calculateMissingValuesForT0();
 
-        // Loop controlling how many TimeSteps we are going to take
-        int lastT = (365 * 24) + 6; // Years 10756
-        int currT = 0;
-        while(probe.getPosition().dist(titanInitialPositions) > radiusTitan+c && currT != lastT){
+
+
+        while(!solarSystemUpdater3.reachedTitan(probe, titan, solarSystemState3.getTotalTimePassed())){
             solarSystemUpdater3.updateStateOfSolarSystem();
             System.out.println(probe.getPosition().dist(titanInitialPositions));
-            currT += 1;
         }
+        System.out.println(solarSystemUpdater3.getPositionWhenReached());
+
+        int positionsSize = earth.getPositionsArray().size()-1;
+
         System.out.println(earth.getPositionsArray().get(0));
-        System.out.println(earth.getPositionsArray().get(lastT));
+        System.out.println(earth.getPositionsArray().get(positionsSize));
 
         // System.out.println();
         // System.out.println(probe.getPositionsArray().get(0));
         // System.out.println(probe.getPositionsArray().get(lastT));
 
         System.out.println(venus.getPositionsArray().get(0));
-        System.out.println(venus.getPositionsArray().get(lastT));
+        System.out.println(venus.getPositionsArray().get(positionsSize));
 
         System.out.println();
         System.out.println(saturn.getPositionsArray().get(0));
-        System.out.println(saturn.getPositionsArray().get(lastT));
+        System.out.println(saturn.getPositionsArray().get(positionsSize));
 
 
-        System.out.println("Error on the X Coordinate = " + (Math.abs((earth.getPositionsArray().get(0).getX()) - earth.getPositionsArray().get(lastT).getX()) / (earth.getPositionsArray().get(0).getX())) * 100 + " %");
-        System.out.println("Error on the Y Coordinate = " + (Math.abs((earth.getPositionsArray().get(0).getY()) - earth.getPositionsArray().get(lastT).getY()) / (earth.getPositionsArray().get(0).getY())) * 100 + " %");
-        System.out.println("Error on the Z Coordinate = " + (Math.abs((earth.getPositionsArray().get(0).getZ()) - earth.getPositionsArray().get(lastT).getZ()) / (earth.getPositionsArray().get(0).getZ())) * 100 + " %");
+        System.out.println("Error on the X Coordinate = " + (Math.abs((earth.getPositionsArray().get(0).getX()) - earth.getPositionsArray().get(positionsSize).getX()) / (earth.getPositionsArray().get(0).getX())) * 100 + " %");
+        System.out.println("Error on the Y Coordinate = " + (Math.abs((earth.getPositionsArray().get(0).getY()) - earth.getPositionsArray().get(positionsSize).getY()) / (earth.getPositionsArray().get(0).getY())) * 100 + " %");
+        System.out.println("Error on the Z Coordinate = " + (Math.abs((earth.getPositionsArray().get(0).getZ()) - earth.getPositionsArray().get(positionsSize).getZ()) / (earth.getPositionsArray().get(0).getZ())) * 100 + " %");
 
 
         

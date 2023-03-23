@@ -12,6 +12,10 @@ public class UpdateStateOfSystem {
     private int currentTimeOfState;
     final double G = 6.6743*(Math.pow(10,-20));
     private ArrayList<Double> distancesToTitan = new ArrayList<Double>();
+    private double radiusOfTitan = 2.575;
+    private double c = 0.0*radiusOfTitan;
+    private double yearInSec = 60*60*24*365;
+    Vector positionWhenReached = new Vector();
 
     // Constructor 
     public UpdateStateOfSystem(StateOfSystem solarSystem) {
@@ -172,5 +176,17 @@ public class UpdateStateOfSystem {
         double currentDistance = distancesToTitan.get(currentTimeOfState);
 
         return (currentDistance < previousDistance);
+    }
+
+    public boolean reachedTitan(CelestialBody probe, CelestialBody titan, double stateTime){
+        if(probe.getPosition().dist(titan.getPosition()) > radiusOfTitan * c && stateTime != yearInSec){
+            return false;
+        }
+        positionWhenReached = probe.getPosition();
+        return true;
+    }
+
+    public Vector getPositionWhenReached(){
+        return positionWhenReached;
     }
 }
