@@ -11,6 +11,11 @@ public class UpdateStateOfSystem {
     private double timeStepInSeconds;
     private int currentTimeOfState;
     final double G = 6.6743*(Math.pow(10,-20));
+    private ArrayList<Double> distancesToTitan = new ArrayList<Double>();
+    private double radiusOfTitan = 2.575;
+    private double c = 0.0*radiusOfTitan;
+    private double yearInSec = 60*60*24*365;
+    static Vector positionWhenReached = new Vector();
 
     // Constructor 
     public UpdateStateOfSystem(StateOfSystem solarSystem) {
@@ -26,7 +31,7 @@ public class UpdateStateOfSystem {
     // Method to just calculate the Values for T0 -> Force and Acceleration
     public void calculateMissingValuesForT0() {
 
-        System.out.println("State of our Solar System at T0: " + "\n");
+        //System.out.println("State of our Solar System at T0: " + "\n");
 
         for (int i = 1; i < bodiesInSystem.size(); i++) { // STARTS AT 1 BECAUSE THE SUN IS AT INDEX 0
             setNetForceActingOnABody(bodiesInSystem.get(i));
@@ -35,7 +40,8 @@ public class UpdateStateOfSystem {
         for (int i = 1; i < bodiesInSystem.size(); i++) {
             setNetAccelerationActingOnABody(bodiesInSystem.get(i));
         }
-
+        //System.out.println("The Distance from the Probe to Titan = " + calculateDistanceFromProbeToTitan(bodiesInSystem.get(bodiesInSystem.size()-1), bodiesInSystem.get(7)) + " KM"); 
+        //System.out.println("And the Total Real Time passed = " + solarSystem.getTotalTimePassed() + " seconds = " + (solarSystem.getTotalTimePassed() / (60 * 60 * 24 * 365)) + " Years");
         // Now, for T0, we also have NetForce and NetAcceleration
     }
 
@@ -43,7 +49,7 @@ public class UpdateStateOfSystem {
     public void updateStateOfSolarSystem() {
 
         solarSystem.updateTimeOfState();
-        System.out.println("Now our Solar System is on State T = " + solarSystem.getTimeOfState() + "\n");
+        // System.out.println("Now our Solar System is on State T = " + solarSystem.getTimeOfState() + "\n");
 
         // Set new Positions -> Improved Euler Method 
         for (int i = 1; i < bodiesInSystem.size(); i++) { // STARTS AT 1 BECAUSE THE SUN IS AT INDEX 0
@@ -67,13 +73,11 @@ public class UpdateStateOfSystem {
 
         solarSystem.updateTotalTimePassed(); // Increases the Total Real Time Passed by DeltaT(TimeStep Chosen)
 
-        System.out.println("And the Total Real Time passed = " + solarSystem.getTotalTimePassed() + " seconds");
-        System.out.println("\n");
-    }
-
-    // Method Responsible for Updating the State of Our Solar System -> From Tn to T1 -> Tamar's Methods
-    public void updateStateOfSolarSystemEuler() {
-
+        // WATCH OUT FOR THE INDEX OF PROBE AND TITAN
+        // System.out.println("The Distance from the Probe to Titan = " + calculateDistanceFromProbeToTitan(bodiesInSystem.get(10), bodiesInSystem.get(7)) + " KM"); 
+        // System.out.println("Has the Distance between the Probe and Titan decreased? " + hasDistanceBetweenProbeAndTitanDecreased(bodiesInSystem.get(8), bodiesInSystem.get(7)));
+        // System.out.println("And the Total Real Time passed = " + solarSystem.getTotalTimePassed() + " seconds = " + (solarSystem.getTotalTimePassed() / (60 * 60 * 24 * 365)) + " Years");
+        // System.out.println("\n");
     }
 
     // Euler Solvers -> All the Calculation Functions -> Joãos Version
@@ -110,15 +114,8 @@ public class UpdateStateOfSystem {
         }
 
         // The Net Force will be associated with 1 Specific Body (Stored in CelestialBody Class)
-        // double netForceX = netForce.getX();
-        // netForce.setX(netForceX);
-        // double netForceY = netForce.getY() * -1;
-        // netForce.setY(netForceY);
-        // double netForceZ = netForce.getZ();
-        // netForce.setZ(netForceZ);
-        //body.setNetForce(netForce.multi(-1));
         body.setNetForce(netForce.multi(-1));
-        System.out.println("The Force acting on " + body.getName() + " is =  " + body.getNetForce().getX() + " X; " + body.getNetForce().getY() + " Y; " + body.getNetForce().getZ() + " Z");
+        //System.out.println("The Force acting on " + body.getName() + " is =  " + body.getNetForce().getX() + " X; " + body.getNetForce().getY() + " Y; " + body.getNetForce().getZ() + " Z");
     }
 
     // Find the Net Acceleration for Each Componenet
@@ -164,5 +161,36 @@ public class UpdateStateOfSystem {
 
         Vector newPosition = initialPosition.add(averageVelocity.multi(timeStepInSeconds)); //How it increases the Precision
         body.setPosition(newPosition);
+    }
+
+    public double calculateDistanceFromProbeToTitan(CelestialBody probe, CelestialBody titan) {
+
+        double distance = (probe.getPosition()).dist(titan.getPosition());
+        distancesToTitan.add(distance);
+        return distance;
+    }
+
+    // Method to compare if the Previous Distance has Decreased
+    public boolean hasDistanceBetweenProbeAndTitanDecreased(CelestialBody probe, CelestialBody titan) {
+
+        int currentT = solarSystem.getCurrentTime();
+
+        double previousDistance = distancesToTitan.get(currentT - 1);
+        double currentDistance = distancesToTitan.get(currentT);
+
+        return (currentDistance < previousDistance);
+    }
+
+    // Method that checks whether we reached Titan
+    public boolean reachedTitan(CelestialBody probe, CelestialBody titan, double stateTime){
+        if(probe.getPosition().dist(titan.getPosition()) < radiusOfTitan || stateTime == yearInSec){
+            positionWhenReached = probe.getPosition();
+            return true;
+        }
+        return false;
+    }
+
+    public static Vector getPositionWhenReached(){
+        return positionWhenReached;
     }
 }

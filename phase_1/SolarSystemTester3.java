@@ -51,11 +51,23 @@ public class SolarSystemTester3 {
         Vector titanInitialVelocity = new Vector((8.99593229549645), (11.1085713608453), (-2.25130986174761));
         CelestialBody titan = new CelestialBody(titanInitialPositions, titanInitialVelocity, 13455.3*Math.pow(10,19), "Titan");
 
+        // Create Uranus
+        Vector uranusInitialPositions = new Vector((1958732435.99338), (2191808553.21893 ), (-17235283.8321992));
+        Vector uranusInitialVelocity = new Vector((-5.12766216337626), (4.22055347264457), (0.082119033640306386));
+        CelestialBody uranus = new CelestialBody(uranusInitialPositions, uranusInitialVelocity, 13455.3*Math.pow(10,19), "Uranus");
+
+        // Create Neptune
+        Vector neptuneInitialPositions = new Vector((4454487339.09447), (-397895128.763904), (-94464151.3421107));
+        Vector neptuneInitialVelocity = new Vector((0.447991656952326), (5.44610697514907), (-0.122638125365954102));
+        CelestialBody neptune = new CelestialBody(neptuneInitialPositions, neptuneInitialVelocity, 13455.3*Math.pow(10,19), "Neptune");
+
         // Create the Probe
         //Vector probeInitialPosition = new Vector((-148186906.893642), (-27823158.5715694), (33746.8987977113));
-        Vector probeInitialPosition = new Vector(-148186906.893642 + 6700, -27823158.5715694 + 6700, 33746.8987977113 + 6700);
-        Vector probeInitialVelocity = new Vector(0, 0, 0);
+        Vector probeInitialPosition = new Vector(-148458048.395164+6370, -27524868.1841142, 70233.6499287411);
+        Vector probeInitialVelocity = new Vector(42.42270135156, -43.62738201925, -3.1328169170);
         CelestialBody probe = new CelestialBody(probeInitialPosition, probeInitialVelocity,  50000, "Probe");
+
+        
 
         // Collection of Celestial Bodies
         ArrayList<CelestialBody> celestialBodies = new ArrayList<CelestialBody>();
@@ -67,6 +79,8 @@ public class SolarSystemTester3 {
         celestialBodies.add(jupiter);
         celestialBodies.add(saturn);
         celestialBodies.add(titan);
+        celestialBodies.add(neptune);
+        celestialBodies.add(uranus);
         celestialBodies.add(probe);
 
         // Creating the Solar System
@@ -77,32 +91,29 @@ public class SolarSystemTester3 {
         UpdateStateOfSystem solarSystemUpdater3 = new UpdateStateOfSystem(solarSystemState3);
         solarSystemUpdater3.calculateMissingValuesForT0();
 
-        // Loop controlling how many TimeSteps we are going to take
-        int lastT = (365 * 24) + 6; // Years 10756
-        int currT = 0;
-        while(probe.getPosition().dist(titanInitialPositions) > radiusTitan+c && currT != lastT){
+
+        double min = probeInitialPosition.dist(titanInitialPositions);
+        double minTime = 0;
+        while(!solarSystemUpdater3.reachedTitan(probe, titan, solarSystemState3.getTotalTimePassed())){
             solarSystemUpdater3.updateStateOfSolarSystem();
-            System.out.println(probe.getPosition().dist(titanInitialPositions));
-            currT += 1;
+            //System.out.println(probe.getPosition().dist(titanInitialPositions));
+            if(probe.getPosition().dist(titan.getPosition())<min){
+                min = probe.getPosition().dist(titan.getPosition());
+                minTime = solarSystemState3.getTotalTimePassed();
+            }
         }
-        System.out.println(earth.getPositionsArray().get(0));
-        System.out.println(earth.getPositionsArray().get(lastT));
+        System.out.println(solarSystemUpdater3.getPositionWhenReached());
+        System.out.println("\n");
+        System.out.println("min distance to titan: " + min);
+        System.out.println("\n");
+        System.out.println(minTime);
+        System.out.println(min<radiusTitan);
 
-        // System.out.println();
-        // System.out.println(probe.getPositionsArray().get(0));
-        // System.out.println(probe.getPositionsArray().get(lastT));
+        int positionsSize = earth.getPositionsArray().size()-1;
 
-        System.out.println(venus.getPositionsArray().get(0));
-        System.out.println(venus.getPositionsArray().get(lastT));
-
-        System.out.println();
-        System.out.println(saturn.getPositionsArray().get(0));
-        System.out.println(saturn.getPositionsArray().get(lastT));
-
-
-        System.out.println("Error on the X Coordinate = " + (Math.abs((earth.getPositionsArray().get(0).getX()) - earth.getPositionsArray().get(lastT).getX()) / (earth.getPositionsArray().get(0).getX())) * 100 + " %");
-        System.out.println("Error on the Y Coordinate = " + (Math.abs((earth.getPositionsArray().get(0).getY()) - earth.getPositionsArray().get(lastT).getY()) / (earth.getPositionsArray().get(0).getY())) * 100 + " %");
-        System.out.println("Error on the Z Coordinate = " + (Math.abs((earth.getPositionsArray().get(0).getZ()) - earth.getPositionsArray().get(lastT).getZ()) / (earth.getPositionsArray().get(0).getZ())) * 100 + " %");
+        System.out.println("Error on the X Coordinate = " + (Math.abs((earth.getPositionsArray().get(0).getX()) - earth.getPositionsArray().get(positionsSize).getX()) / (earth.getPositionsArray().get(0).getX())) * 100 + " %");
+        System.out.println("Error on the Y Coordinate = " + (Math.abs((earth.getPositionsArray().get(0).getY()) - earth.getPositionsArray().get(positionsSize).getY()) / (earth.getPositionsArray().get(0).getY())) * 100 + " %");
+        System.out.println("Error on the Z Coordinate = " + (Math.abs((earth.getPositionsArray().get(0).getZ()) - earth.getPositionsArray().get(positionsSize).getZ()) / (earth.getPositionsArray().get(0).getZ())) * 100 + " %");
 
 
         

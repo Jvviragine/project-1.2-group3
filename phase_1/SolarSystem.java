@@ -2,245 +2,286 @@ package phase_1;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.util.ArrayList;
+import javax.imageio.ImageIO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.geom.*;
-import java.security.spec.EllipticCurve;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.awt.image.BufferedImage;
-import java.awt.image.ImageObserver;
-import java.io.IOException;
-import javax.imageio.ImageIO;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
-        
+
 public class SolarSystem extends JPanel implements ActionListener
 {
-    BufferedImage trial;
-    ImageObserver observer;        
-    Timer timer = new Timer(1, this);
+    JLabel label[] = new JLabel[10];
+    BufferedImage image[] = new BufferedImage[10];
+    ImageIcon icon[] = new ImageIcon[10];
+    ImageIcon zoomIcon[] = new ImageIcon[9];
+    private final int DELAY = 10;
+    private int earthDiameter;
+    Main carl = new Main();
+    private double xProbeDouble = 0, yProbeDouble = 0;
+    private int xProbe = 0, yProbe = 0;
+    
+    private ArrayList<ArrayList<Double>> probePath = carl.probePath;
+    private double[][] venusPath = carl.venus.fromListToArray2D(carl.venus.getPositionsArray());
+    private double[][] earthPath = carl.earth.fromListToArray2D(carl.earth.getPositionsArray());
+    private double[][] moonPath = carl.moon.fromListToArray2D(carl.moon.getPositionsArray());
+    private double[][] marsPath = carl.mars.fromListToArray2D(carl.mars.getPositionsArray());
+    private double[][] jupiterPath = carl.jupiter.fromListToArray2D(carl.jupiter.getPositionsArray());
+    private double[][] saturnPath = carl.saturn.fromListToArray2D(carl.saturn.getPositionsArray());
+    private double[][] titanPath = carl.titan.fromListToArray2D(carl.titan.getPositionsArray());
+    private int counter = 0;
 
-    public void paintComponent(Graphics g) 
+    public SolarSystem()
     {
-        Graphics2D g2D = (Graphics2D) g;
-        timer.start();
-
-        double starX[] = new double[300];
-        double starY[] = new double[300];
-
-        for(int i = 0; i < 300; i++)
-        {
-            double x = Math.random()*SolarSystemViewer.h;
-            double y = Math.random()*SolarSystemViewer.h;
-            starX[i] = x;
-            starY[i] = y;
-        }
-        
-        for(int i = 0; i < 300; i++)
-        {
-            g2D.setStroke(new BasicStroke((float) (Math.random()*0.2)));
-            g.setColor(new Color(((int)Math.round(Math.random()*100000))));
-            if(i>50)
-            {
-                g.setColor(Color.WHITE);
-                if((starX[i] < SolarSystemViewer.h/2 - 25 || starX[i] > SolarSystemViewer.h/2 + 25) || (starY[i] < SolarSystemViewer.h/2 - 25 || starY[i] > SolarSystemViewer.h/2 + 25))            
-                {
-                    Line2D.Double star = new Line2D.Double(starX[i], starY[i], starX[i], starY[i]);
-                    g2D.draw(star);
-                }
-            }
-        }
-
-        int sunX = (int) ((celestialObjects.mars.getDistanceFromSun()/SolarSystemViewer.scale) + 70);
-        int sunY = (int) SolarSystemViewer.h/3;
-        // int rocketX = (int) Rocket.getXPos();
-        // int rocketY = (int) Rocket.getYPos();
-
-        try 
-        {
-            // g2D.setColor(Color.WHITE);
-            // g2D.drawLine(0, 0, 800, 800);
-            // g2D.drawLine(0, 800, 800, 0);
-            String path = "cbSun.png";
-            trial = ImageIO.read(getClass().getResource(path));
-            
-            g2D.drawImage(trial, sunX, sunY, SolarSystemViewer.h/12, SolarSystemViewer.h/12, observer);
-            // g2D.drawString("SUN", sunX, sunY + 80);
-        } 
-        catch (IOException e) 
-        {
-            e.printStackTrace();
-        }
-
-        // g2D.setStroke(new BasicStroke(1));
-        // g.setColor(Color.GREEN);
-        // Ellipse2D.Double venusOrbit = new Ellipse2D.Double(370-29.6, 370-29.6, 29.6*2, 29.6*2);
-        // g2D.draw(venusOrbit);
-
-        String image[] = {"cbVenus.png", "cbEarth.png", "cbMoon.png", "cbMars.png", "cbJupiter.png", "cbSaturn.png", "cbTitan.png", "cbNormandy.png"}; 
-        String label[] = {"VENUS", "EARTH", "MOON", "MARS", "JUPITER", "SATURN", "TITAN"}; 
         celestialObjects.list();
-        int i = 0;
-        int t = 0;
-        int adjustH = 0;
-        int adjustW = 0;
-        int offset = 0;
+        //Coordinates of the sun
+        final int sunX = (int) ((celestialObjects.mars.getDistanceFromSun()/SolarSystemViewer.scale) + 120) -((SolarSystemViewer.h/8 + 1)) + 100;
+        final int sunY = (int) (SolarSystemViewer.h/2 -((SolarSystemViewer.h/8 + 1))) + 100;
 
-        while(i < image.length)
+        String picID[] = {"cbSun.png", "cbVenus.png", "cbEarth.png", "cbMoon.png", "cbMars.png", "cbJupiter.png", "cbSaturn.png", "cbTitan.png", "cbNormandy.png", "space.png"}; 
+
+        for(int i = 0; i < picID.length; i++)
         {
-            t = i+1;
-            celestialObjects r = celestialObjects.getBody(t);
-            double ax = r.x1/SolarSystemViewer.scale;
-            double ay = r.x2/SolarSystemViewer.scale;
-
+            celestialObjects r = new celestialObjects();
+            if(i<picID.length - 1)
+            {
+                r = celestialObjects.getBody(i);
+            }
             try 
             {
-                String path = image[i];
-                trial = ImageIO.read(getClass().getResource(path));
-                if(i < 2){
-                    offset = 0;
-                    adjustH = SolarSystemViewer.h/38;
-                    adjustW = adjustH;
-                }
-                else if(i == 2){
-                    offset = SolarSystemViewer.h/96;
-                    adjustH = SolarSystemViewer.h/96;
-                    adjustW = adjustH;
-            }
-                else if(i == 6){
-                    offset = 0;
-                    adjustH = SolarSystemViewer.h/96;
-                    adjustW = adjustH;
-        }
-                else if(i == 3){
-                    offset = 0;
-                    adjustH = SolarSystemViewer.h/48;
-                    adjustW = adjustH;
-        }
-                else if(i == 5){
-                    offset = 0;
-                    adjustH = SolarSystemViewer.h/28;
-                    adjustW = SolarSystemViewer.h/16;
-                }
-                else if(i == 4){
-                    offset = 0;
-                    adjustH = SolarSystemViewer.h/28;
-                    adjustW = adjustH;
-                }
-            //     else{
-            //       offset = 0;
-            //       g2D.drawImage(trial, rocketX, rocketY, SolarSystemViewer.h/96, SolarSystemViewer.h/96, observer);
-            // }
+                if(i == 0)// sun
+                {
+                    image[i] = ImageIO.read(getClass().getResource(picID[i]));
+                    icon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/20, SolarSystemViewer.h/20, Image.SCALE_SMOOTH));
+                    zoomIcon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/16, SolarSystemViewer.h/16, Image.SCALE_SMOOTH));
+                    
+                    label[i] = new JLabel(icon[i]);
 
-                g2D.drawImage(trial, (int) (sunX+ax)-15-offset,(int) (sunY-ay)-15-offset , adjustW, adjustH, observer);
-                // g2D.drawString(label[i], (int) (sunX+ax)-10, (int) (sunY-ay)-10);
+                    label[i].setBounds(sunX, sunY, SolarSystemViewer.h/20 + 1, SolarSystemViewer.h/20 + 1);
+                }
+                else if(i == 1)// venus
+                {
+                    double ax = r.x1/SolarSystemViewer.scale;
+                    double ay = r.x2/SolarSystemViewer.scale;
 
-                // g2D.drawImage(trial, (int) Math.round(-1*((SolarSystemViewer.h/2 - 3)-ax)+(SolarSystemViewer.h)) ,(int) Math.round((SolarSystemViewer.h/2 - 3)-ay) , 7, 7, observer);
-                // g2D.drawString(label[i], (int) Math.round(-1*((SolarSystemViewer.h/2 + 10)-ax)+(SolarSystemViewer.h)) , (int) Math.round((SolarSystemViewer.h/2 - 5)-ay));
+                    image[i] = ImageIO.read(getClass().getResource(picID[i]));
+                    icon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/38, SolarSystemViewer.h/38, Image.SCALE_SMOOTH));
+                    zoomIcon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/30, SolarSystemViewer.h/30, Image.SCALE_SMOOTH));
+
+                    label[i] = new JLabel(icon[i]);
+
+                    label[i].setBounds((int)(sunX+ax)+(SolarSystemViewer.h/38 + 1), (int) -(sunY+ay)+(SolarSystemViewer.h/38 + 1) + (2*sunY), SolarSystemViewer.h/30 + 1, SolarSystemViewer.h/30 + 1);
+                }
+                else if(i == 2)// earth
+                {
+                    double ax = r.x1/SolarSystemViewer.scale;
+                    double ay = r.x2/SolarSystemViewer.scale;
+                    earthDiameter = SolarSystemViewer.h/38 + 1;
+
+                    image[i] = ImageIO.read(getClass().getResource(picID[i]));
+                    icon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/38, SolarSystemViewer.h/38, Image.SCALE_SMOOTH));
+                    zoomIcon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/30, SolarSystemViewer.h/30, Image.SCALE_SMOOTH));
+
+                    label[i] = new JLabel(icon[i]);
+
+                    label[i].setBounds((int)(sunX+ax)+(SolarSystemViewer.h/38 + 1), (int) -(sunY+ay)+(SolarSystemViewer.h/38 + 1) + (2*sunY), SolarSystemViewer.h/30 + 1, SolarSystemViewer.h/30 + 1);
+                }
+                else if(i == 3)// moon
+                {
+                    double ax = r.x1/SolarSystemViewer.scale;
+                    double ay = r.x2/SolarSystemViewer.scale;
+
+                    image[i] = ImageIO.read(getClass().getResource(picID[i]));
+                    icon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/65, SolarSystemViewer.h/65, Image.SCALE_SMOOTH));
+                    zoomIcon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/50, SolarSystemViewer.h/50, Image.SCALE_SMOOTH));
+
+                    label[i] = new JLabel(icon[i]);
+
+                    label[i].setBounds((int)(sunX+ax)+(SolarSystemViewer.h/65 + 1), (int) -(sunY+ay)+(SolarSystemViewer.h/65 + 1) + (2*sunY), SolarSystemViewer.h/50 + 1, SolarSystemViewer.h/50 + 1);
+                }
+                else if(i == 4)// mars
+                {
+                    double ax = r.x1/SolarSystemViewer.scale;
+                    double ay = r.x2/SolarSystemViewer.scale;
+
+                    image[i] = ImageIO.read(getClass().getResource(picID[i]));
+                    icon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/38, SolarSystemViewer.h/38, Image.SCALE_SMOOTH));
+                    zoomIcon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/30, SolarSystemViewer.h/30, Image.SCALE_SMOOTH));
+
+                    label[i] = new JLabel(icon[i]);
+
+                    label[i].setBounds((int)(sunX+ax)+(SolarSystemViewer.h/38 + 1), (int) -(sunY+ay)+(SolarSystemViewer.h/38 + 1) + (2*sunY), SolarSystemViewer.h/30 + 1, SolarSystemViewer.h/30 + 1);
+                }
+                else if(i == 5)// jupiter
+                {
+                    double ax = r.x1/SolarSystemViewer.scale;
+                    double ay = r.x2/SolarSystemViewer.scale;
+
+                    image[i] = ImageIO.read(getClass().getResource(picID[i]));
+                    icon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/30, SolarSystemViewer.h/30, Image.SCALE_SMOOTH));
+                    zoomIcon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/25, SolarSystemViewer.h/25, Image.SCALE_SMOOTH));
+
+                    label[i] = new JLabel(icon[i]);
+
+                    label[i].setBounds((int)(sunX+ax)+(SolarSystemViewer.h/30 + 1), (int) -(sunY+ay)+(SolarSystemViewer.h/30 + 1) + (2*sunY), SolarSystemViewer.h/25 + 1, SolarSystemViewer.h/25 + 1);
+                }
+                else if(i == 6)// saturn
+                {
+                    double ax = r.x1/SolarSystemViewer.scale;
+                    double ay = r.x2/SolarSystemViewer.scale;
+
+                    image[i] = ImageIO.read(getClass().getResource(picID[i]));
+                    icon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/15, SolarSystemViewer.h/25, Image.SCALE_SMOOTH));
+                    zoomIcon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/12, SolarSystemViewer.h/20, Image.SCALE_SMOOTH));
+
+                    label[i] = new JLabel(icon[i]);
+
+                    label[i].setBounds((int)(sunX+ax)+(SolarSystemViewer.h/15 + 1)/2, (int) -(sunY+ay)+(SolarSystemViewer.h/25 + 1)/2 + (2*sunY), SolarSystemViewer.h/12 + 1, SolarSystemViewer.h/20 + 1);
+                }
+                else if(i == 7)// titan
+                {
+                    double ax = r.x1/SolarSystemViewer.scale;
+                    double ay = r.x2/SolarSystemViewer.scale;
+
+                    image[i] = ImageIO.read(getClass().getResource(picID[i]));
+                    icon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/65, SolarSystemViewer.h/65, Image.SCALE_SMOOTH));
+                    zoomIcon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/50, SolarSystemViewer.h/50, Image.SCALE_SMOOTH));
+
+                    label[i] = new JLabel(icon[i]);
+
+                    label[i].setBounds((int)(sunX+ax)+(SolarSystemViewer.h/65 + 1), (int) -(sunY+ay)+(SolarSystemViewer.h/65 + 1) + (2*sunY), SolarSystemViewer.h/50 + 1, SolarSystemViewer.h/50 + 1);
+                }      
+                else if(i == 8)// probe
+                {
+                    image[i] = ImageIO.read(getClass().getResource(picID[i]));
+                    icon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/30, SolarSystemViewer.h/30, Image.SCALE_SMOOTH));
+                    zoomIcon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/20, SolarSystemViewer.h/20, Image.SCALE_SMOOTH));
+
+                    label[i] = new JLabel(icon[i]);
+
+                    label[i].setBounds((int) (-2*earthDiameter + (sunX)-SolarSystemViewer.h/15), (int) (-earthDiameter + -(sunY)-(SolarSystemViewer.h/15 + (sunY))), SolarSystemViewer.h/45 + 1, SolarSystemViewer.h/45 + 1);
+
+                }
+                else if(i == 9)// space
+                {
+                    image[i] = ImageIO.read(getClass().getResource(picID[i]));
+                    icon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h, SolarSystemViewer.h, Image.SCALE_SMOOTH));
+
+                    label[i] = new JLabel(icon[i]);
+
+                    label[i].setBounds(0, 0, SolarSystemViewer.h, SolarSystemViewer.h);
+                }      
             } 
             catch (IOException e) 
             {
                 e.printStackTrace();
             }
+        }
+        
+        setLayout(null);
+        JPanel labelPanel = new JPanel();
+        labelPanel.setLayout(null);
+        labelPanel.setOpaque(false);
+        labelPanel.setBounds(0, 0, SolarSystemViewer.h, SolarSystemViewer.h);
+        add(labelPanel);
 
-            i++;
-        }  
+        for(int j = 0; j < 10; j++)
+        {
+            labelPanel.add(label[j]);
+        }
 
+        for(int t = 0; t < 9; t++)
+        {
+            int h = t;
+            label[t].addMouseListener(new MouseAdapter() 
+            {
+                @Override
+                public void mouseEntered(MouseEvent e) 
+                {
+                    label[h].setIcon(zoomIcon[h]);
+                }
+    
+                @Override
+                public void mouseExited(MouseEvent e) {
+                    label[h].setIcon(icon[h]);
+                }
+            });
+        }     
+        
+        JPanel overlayPanel = new JPanel();
+        overlayPanel.setOpaque(false);
+        overlayPanel.setBounds(labelPanel.getBounds());
+        add(overlayPanel);
+
+        // Start the timer to update the positions of the labels
+        Timer timer = new Timer(DELAY, new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                
+                counter+= 20;
+
+                double xVenusDouble = venusPath[counter][0];
+                int xVenus = sunX + (int) (xVenusDouble/SolarSystemViewer.scale);
+                double yVenusDouble = venusPath[counter][1];
+                int yVenus = sunY + (int) (yVenusDouble/SolarSystemViewer.scale);
+
+                double xEarthDouble = earthPath[counter][0];
+                int xEarth = sunX + (int) (xEarthDouble/SolarSystemViewer.scale);
+                double yEarthDouble = earthPath[counter][1];
+                int yEarth = sunY + (int) (yEarthDouble/SolarSystemViewer.scale);
+
+                double xMoonDouble = moonPath[counter][0];
+                int xMoon = sunX + (int) (xMoonDouble/SolarSystemViewer.scale);
+                double yMoonDouble = moonPath[counter][1];
+                int yMoon = sunY + (int) (yMoonDouble/SolarSystemViewer.scale);
+
+                double xMarsDouble = marsPath[counter][0];
+                int xMars = sunX + (int) (xMarsDouble/SolarSystemViewer.scale);
+                double yMarsDouble = marsPath[counter][1];
+                int yMars = sunY + (int) (yMarsDouble/SolarSystemViewer.scale);
+
+                double xJupiterDouble = jupiterPath[counter][0];
+                int xJupiter = sunX + (int) (xJupiterDouble/SolarSystemViewer.scale);
+                double yJupiterDouble = jupiterPath[counter][1];
+                int yJupiter = sunY + (int) (yJupiterDouble/SolarSystemViewer.scale);
+
+                double xSaturnDouble = saturnPath[counter][0];
+                int xSaturn = sunX + (int) (xSaturnDouble/SolarSystemViewer.scale);
+                double ySaturnDouble = saturnPath[counter][1];
+                int ySaturn = sunY + (int) (ySaturnDouble/SolarSystemViewer.scale);
+
+                double xTitanDouble = titanPath[counter][0];
+                int xTitan = sunX + (int) (xTitanDouble/SolarSystemViewer.scale);
+                double yTitanDouble = titanPath[counter][1];
+                int yTitan = sunY + (int) (yTitanDouble/SolarSystemViewer.scale);
+                
+                xProbeDouble = probePath.get(counter).get(0);
+                xProbe = sunX + (int) (xProbeDouble/SolarSystemViewer.scale);
+                yProbeDouble = probePath.get(counter).get(1);
+                yProbe = sunY + (int) (yProbeDouble/SolarSystemViewer.scale);
+
+                label[1].setLocation(xVenus, yVenus);
+                label[2].setLocation(xEarth, yEarth);
+                label[3].setLocation(xMoon, yMoon);
+                label[4].setLocation(xMars, yMars);
+                label[5].setLocation(xJupiter, yJupiter);
+                label[6].setLocation(xSaturn, ySaturn);
+                label[7].setLocation(xTitan, yTitan);
+                label[8].setLocation(xProbe, yProbe);
+
+                if((int) (probePath.get(counter).get(0) / SolarSystemViewer.scale) >= (int) (UpdateStateOfSystem.getPositionWhenReached().getX() / SolarSystemViewer.scale) - 19) {
+                    System.out.println("Reached!");
+                    counter = 100000;
+                }
+            }
+        });
+        timer.start();
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) 
-    {
-        // repaint();         
-    }
-
-    class OrbitDrawer extends JComponent {
-        //nested class used to draw an orbit by tracing between the given points
-        
-        private double[][] positions;
-        //points are stored inside a two dimensional double array which contains a set of (x, y) coordinates for each points
-    
-        OrbitDrawer(double pos[][]) {
-        //generic function that stores the given input points to the local "positions" variable
-            positions = new double[pos.length][];
-            for (int i = 0; i < pos.length; i++) {
-                positions[i] = Arrays.copyOf(pos[i], pos[i].length);
-            }
-        }
-    
-        public void paintComponent(Graphics g) {
-            //this method connects each points by drawing lines from one to another to form a polygon representing the orbit
-            //the more points are given in the entry the smoother and round the orbit will appear
-            int numberOfPositions = positions.length;
-    
-            int[] x = new int[numberOfPositions];
-            int[] y = new int[numberOfPositions];
-            
-            //each x and y coordinates are stored in seperate arrays
-            for (int i = 0; i < positions.length; i++) {
-                x[i] = (int) positions[i][0];
-                y[i] = (int) positions[i][1];
-            }
-            
-            //draw the polygon using Graphics2D
-            Graphics2D g2D = (Graphics2D) g;
-            g2D.setColor(Color.BLUE);
-            g2D.draw(new Polygon(x, y, positions.length));
-        }
-    
-        public void setPositions(double pos[][]) {
-            //manually sets the position array from the given input
-            positions = new double[pos.length][];
-            for (int i = 0; i < pos.length; i++) {
-                positions[i] = Arrays.copyOf(pos[i], pos[i].length);
-            }
-        }
-    
-        public double[][] getPosition() {
-            //get the position array
-            return this.positions;
-        }
-    }
-
-    class PathDrawer extends JComponent {
-
-        private double[][] positions;
-        //points are stored inside a two dimensional double array which contains a set of (x, y) coordinates for each points
-    
-        PathDrawer(double pos[][]) {
-        //generic function that stores the given input points to the local "positions" variable
-            positions = new double[pos.length][];
-            for (int i = 0; i < pos.length; i++) {
-                positions[i] = Arrays.copyOf(pos[i], pos[i].length);
-            }
-        }
-
-        public void paintComponent(Graphics g) {
-            //
-            Graphics2D g2D = (Graphics2D) g;
-            g2D.setColor(Color.RED);
-            for (int i = 1; i < positions.length; i++) {
-                int x1 = (int) positions[i - 1][0];
-                int x2 = (int) positions[i][0];
-                
-                int y1 = (int) positions[i - 1][1];
-                int y2 = (int) positions[i][1];
-                
-                g2D.drawLine(x1, y1, x2, y2);
-            }
-        }
-
-        public void setPositions(double pos[][]) {
-            //manually sets the position array from the given input
-            positions = new double[pos.length][];
-            for (int i = 0; i < pos.length; i++) {
-                positions[i] = Arrays.copyOf(pos[i], pos[i].length);
-            }
-        }
-    
-        public double[][] getPosition() {
-            //get the position array
-            return this.positions;
-        }
+    public void actionPerformed(ActionEvent e) {
+        throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
     }
 }
