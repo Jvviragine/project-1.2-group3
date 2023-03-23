@@ -10,8 +10,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+
 public class SolarSystem extends JPanel implements ActionListener
 {
+    JPanel labelPanel = new JPanel();
+
     JLabel label[] = new JLabel[8];
     BufferedImage image[] = new BufferedImage[8];
     ImageIcon icon[] = new ImageIcon[8];
@@ -22,6 +25,7 @@ public class SolarSystem extends JPanel implements ActionListener
 
     public SolarSystem() 
     {
+
         celestialObjects.list();
         final int sunX = (int) ((celestialObjects.mars.getDistanceFromSun()/SolarSystemViewer.scale) + 120)-((SolarSystemViewer.h/8 + 1)/2);
         final int sunY = (int) SolarSystemViewer.h/3-((SolarSystemViewer.h/8 + 1)/2);
@@ -145,7 +149,8 @@ public class SolarSystem extends JPanel implements ActionListener
         }
         
         setLayout(null);
-        JPanel labelPanel = new JPanel();
+        labelPanel.setOpaque(true);
+        labelPanel.setBackground(new Color(0,0,0,0));    
         labelPanel.setLayout(null);
         labelPanel.setBounds(0, 0, SolarSystemViewer.h, SolarSystemViewer.h);
         add(labelPanel);
@@ -247,3 +252,4 @@ public class SolarSystem extends JPanel implements ActionListener
 //                     // g2D.drawString(label[i], (int) (sunX+ax)-10, (int) (sunY-ay)-10);
 
 //                     // g2D.drawImage(trial, (int) Math.round(-1*((SolarSystemViewer.h/2 - 3)-ax)+(SolarSystemViewer.h)) ,(int) Math.round((SolarSystemViewer.h/2 - 3)-ay) , 7, 7, observer);
+

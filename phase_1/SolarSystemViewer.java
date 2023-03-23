@@ -6,9 +6,9 @@ import javax.swing.JRootPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.plaf.metal.MetalLookAndFeel;
-import java.awt.Toolkit;
 
-public class SolarSystemViewer{
+public class SolarSystemViewer
+{
     public static Toolkit tk = Toolkit.getDefaultToolkit();
     public static Dimension screenSize = tk.getScreenSize();
     public static int h = screenSize.height;
@@ -24,6 +24,7 @@ public class SolarSystemViewer{
     public static final double scale = Math.ceil(sum / 100000000) * 100000000 / (h-200);
 
     public static void main(String[] args) {
+
 
         // JFrame initialConditions = new JFrame();
         // initialConditions.setTitle("Starting Conditions");
@@ -87,8 +88,8 @@ public class SolarSystemViewer{
         //     }
         // });
      
-
-        JFrame solarSystemFrame = new JFrame();
+        
+        JFrame solarSystemFrame = new JFrame();        
         solarSystemFrame.setTitle("Solar System Visualization");
         solarSystemFrame.setUndecorated(true);
         solarSystemFrame.getRootPane().setWindowDecorationStyle(JRootPane.FRAME);
