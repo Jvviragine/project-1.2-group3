@@ -64,7 +64,7 @@ public class SolarSystemTester3 {
         // Create the Probe
         //Vector probeInitialPosition = new Vector((-148186906.893642), (-27823158.5715694), (33746.8987977113));
         Vector probeInitialPosition = new Vector(-148458048.395164+6370, -27524868.1841142, 70233.6499287411);
-        Vector probeInitialVelocity = new Vector(42.417934121, -43.62666433, -3.1358620);
+        Vector probeInitialVelocity = new Vector(42.51799990, -43.6276633, -3.13401000);
         CelestialBody probe = new CelestialBody(probeInitialPosition, probeInitialVelocity,  50000, "Probe");
 
         
@@ -102,7 +102,8 @@ public class SolarSystemTester3 {
         }
         System.out.println(solarSystemUpdater3.getPositionWhenReached());
         System.out.println("\n");
-        System.out.println(min);
+        System.out.println("min distance to titan: " + min);
+        System.out.println("\n");
 
         int positionsSize = earth.getPositionsArray().size()-1;
 
