@@ -92,39 +92,6 @@ public class Main {
         celestialBodies.add(titan);
         celestialBodies.add(uranus);
         celestialBodies.add(neptune);
-
-
-        //Calculate the orbits of each planet skipping the uranus and neptune
-        orbitOfVenus = OrbitFinder.getOrbit(venus, celestialBodies);
-        orbitOfEarth = OrbitFinder.getOrbit(earth, celestialBodies);
-        orbitOfMoon = OrbitFinder.getOrbit(moon, celestialBodies);
-        orbitOfMars = OrbitFinder.getOrbit(mars, celestialBodies);
-        orbitOfJupiter = OrbitFinder.getOrbit(jupiter, celestialBodies);
-        orbitOfSaturn = OrbitFinder.getOrbit(saturn, celestialBodies);
-        orbitOfTitan = OrbitFinder.getOrbit(titan, celestialBodies);
-
-        // Restarting the positions of solar system after calculating the orbits
-        sun.setPosition(sunInitialPositions);
-        sun.setVelocity(sunInitialVelocity);
-        venus.setPosition(venusInitialPosition);
-        venus.setVelocity(venusInitialVelocity);
-        earth.setPosition(earthInitialPosition);
-        earth.setVelocity(earthInitialVelocity);
-        moon.setPosition(moonInitialPosition);
-        moon.setVelocity(moonInitialVelocity);
-        mars.setPosition(marsInitialPosition);
-        mars.setVelocity(marsInitialVelocity);
-        jupiter.setPosition(jupiterInitialPosition);
-        jupiter.setVelocity(jupiterInitialVelocity);
-        saturn.setPosition(saturnInitialPosition);
-        saturn.setVelocity(saturnInitialVelocity);
-        titan.setPosition(titanInitialPosition);
-        titan.setVelocity(titanInitialVelocity);
-        uranus.setPosition(uranusInitialPositions);
-        uranus.setVelocity(uranusInitialVelocity);
-        neptune.setPosition(neptuneInitialPositions);
-        neptune.setVelocity(neptuneInitialVelocity);
-
         celestialBodies.add(probe);
         probe.setPosition(RunMe.initPos);
         probe.setVelocity(RunMe.initVelo);
