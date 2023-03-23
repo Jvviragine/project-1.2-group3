@@ -5,15 +5,20 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class SolarSystem extends JPanel
+public class SolarSystem extends JPanel implements ActionListener
 {
     JLabel label[] = new JLabel[8];
     BufferedImage image[] = new BufferedImage[8];
     ImageIcon icon[] = new ImageIcon[8];
     ImageIcon zoomIcon[] = new ImageIcon[8];
+    private double angle = 0;
+    private final int DELAY = 10;
+    private int radiusVenus, radiusEarth;
 
     public SolarSystem() 
     {
@@ -42,6 +47,7 @@ public class SolarSystem extends JPanel
                 {
                     double ax = r.x1/SolarSystemViewer.scale;
                     double ay = r.x2/SolarSystemViewer.scale;
+                    radiusVenus = (int) (r.getDistanceFromSun() / SolarSystemViewer.scale);
 
                     image[i] = ImageIO.read(getClass().getResource(picID[i]));
                     icon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/28, SolarSystemViewer.h/28, Image.SCALE_SMOOTH));
@@ -55,6 +61,7 @@ public class SolarSystem extends JPanel
                 {
                     double ax = r.x1/SolarSystemViewer.scale;
                     double ay = r.x2/SolarSystemViewer.scale;
+                    radiusEarth = (int) (r.getDistanceFromSun() / SolarSystemViewer.scale);
 
                     image[i] = ImageIO.read(getClass().getResource(picID[i]));
                     icon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/28, SolarSystemViewer.h/28, Image.SCALE_SMOOTH));
@@ -169,6 +176,25 @@ public class SolarSystem extends JPanel
         overlayPanel.setOpaque(false);
         overlayPanel.setBounds(labelPanel.getBounds());
         add(overlayPanel);
+
+        // Start the timer to update the positions of the labels
+        Timer timer = new Timer(DELAY, new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                angle += 0.05;
+                int xVenus = sunX + (int)(radiusVenus * Math.cos(angle));
+                int yVenus = sunY + (int)(radiusVenus * Math.sin(angle));
+                int xEarth = sunX + (int)(radiusEarth * Math.cos(angle + Math.PI));
+                int yEarth = sunY + (int)(radiusEarth * Math.sin(angle + Math.PI));
+                label[1].setLocation(xVenus, yVenus);
+                label[2].setLocation(xEarth, yEarth);
+            }
+        });
+        timer.start();
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
     }
 }
 // mport javax.imageio.ImageIO;
