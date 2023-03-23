@@ -77,6 +77,7 @@ public class Vector{
         return Math.sqrt(Math.pow(x - other.getX(), 2) + Math.pow(y - other.getY(), 2) + Math.pow(z - other.getZ(), 2));
     }
 
+    @Override
     public String toString(){
         return x + ", " + y + ", " + z;
     }
