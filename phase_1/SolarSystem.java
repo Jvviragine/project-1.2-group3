@@ -178,7 +178,7 @@ public class SolarSystem extends JPanel implements ActionListener
 
                     label[i] = new JLabel(icon[i]);
 
-                    label[i].setBounds((int) (earthDiameter + (sunX+ax)+(SolarSystemViewer.h/30 + 1)), (int) (earthDiameter + -(sunY+ay)+(SolarSystemViewer.h/30 + 1) + (2*sunY)), SolarSystemViewer.h/20 + 1, SolarSystemViewer.h/20 + 1);
+                    label[i].setBounds((int) (-earthDiameter + (sunX+ax)-SolarSystemViewer.h/30), (int) (-earthDiameter + -(sunY+ay)-(SolarSystemViewer.h/30 + (sunY))), SolarSystemViewer.h/30 + 1, SolarSystemViewer.h/30 + 1);
                 }
                 else if(i == 9)// space
                 {

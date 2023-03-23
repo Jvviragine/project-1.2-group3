@@ -124,7 +124,7 @@ public class Main {
         System.out.println("\n");
         System.out.println("min distance to titan: " + min);
         System.out.println("Titan reached at: " + minTime);
-        System.out.println("When probe reached Titan it had positions: " + solarSystemUpdater3.getPositionWhenReached());
+        System.out.println("When probe reached Titan it had positions: " + solarSystemUpdater3.getPositionWhenReached().toString());
 
         // int positionsSize = earth.getPositionsArray().size()-1;
         // System.out.println("Error on the X Coordinate = " + (Math.abs((earth.getPositionsArray().get(0).getX()) - earth.getPositionsArray().get(positionsSize).getX()) / (earth.getPositionsArray().get(0).getX())) * 100 + " %");
