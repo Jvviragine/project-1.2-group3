@@ -48,6 +48,16 @@ public class SolarSystemOrbitTester {
         Vector titanInitialVelocity = new Vector((8.99593229549645), (11.1085713608453), (-2.25130986174761));
         CelestialBody titan = new CelestialBody(titanInitialPositions, titanInitialVelocity, 13455.3*Math.pow(10,19), "Titan");
 
+        // Create Neptune
+        Vector neptuneInitialPositions = new Vector((4454487339.09447), (-397895128.763904), (-94464151.3421107));
+        Vector neptuneInitialVelocity = new Vector((0.447991656952326), (5.44610697514907), (-0.122638125365954102));
+        CelestialBody neptune = new CelestialBody(neptuneInitialPositions, neptuneInitialVelocity, 13455.3*Math.pow(10,19), "Neptune");
+
+        // Create Uranus
+        Vector uranusInitialPositions = new Vector((1958732435.99338), (2191808553.21893 ), (-17235283.8321992));
+        Vector uranusInitialVelocity = new Vector((-5.12766216337626), (4.22055347264457), (0.082119033640306386));
+        CelestialBody uranus = new CelestialBody(uranusInitialPositions, uranusInitialVelocity, 13455.3*Math.pow(10,19), "Uranus");
+
         // Create the Probe
         
         //Vector probeInitialPosition = new Vector(-148186906.893642 + 6700, -27823158.5715694 + 6700, 33746.8987977113 + 6700);
@@ -72,6 +82,8 @@ public class SolarSystemOrbitTester {
         celestialBodies.add(jupiter);
         celestialBodies.add(saturn);
         celestialBodies.add(titan);
+        celestialBodies.add(neptune);
+        celestialBodies.add(uranus);
         celestialBodies.add(probe);
 
         // Creating the Solar System
