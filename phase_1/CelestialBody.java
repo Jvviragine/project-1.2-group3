@@ -7,6 +7,7 @@ public class CelestialBody{
     private Vector velocity;
     private double mass;
     private double radius;
+    private int period;
     private String name;
 
     // Added more Instance Fields
@@ -27,9 +28,24 @@ public class CelestialBody{
         this.velocities.add(initialvelocity);
         this.name = name;
     }
+
+    public CelestialBody(Vector initialposition,Vector initialvelocity,double mass, int period, String name){
+        this.position=initialposition;
+        this.velocity=initialvelocity;
+        this.mass=mass;
+        this.radius=radius;
+        this.positions.add(initialposition);
+        this.velocities.add(initialvelocity);
+        this.name = name;
+        this.period=period;
+    }
     
     public double getMass(){
         return mass;
+    }
+
+    public int getPeriod(){
+        return period; //returns period in seconds
     }
 
     public void setPosition(Vector position){

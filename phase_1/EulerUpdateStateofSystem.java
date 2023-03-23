@@ -23,8 +23,8 @@ public class EulerUpdateStateofSystem {
     }
 
     //Euler's Update Position Method -> Tamar
+    
     public void updatePosition(){
-        //ArrayList <Vector> newpositions = new ArrayList<>();
         ArrayList <Vector> initialvelocities = new ArrayList<>();
         for(int i=0;i<bodiesInSystem.size();i++){
             Vector initialvelocity = bodiesInSystem.get(i).getVelocity();
@@ -40,18 +40,17 @@ public class EulerUpdateStateofSystem {
             bodiesInSystem.get(i).setPosition(updated);
             bodiesInSystem.get(i).getPositionsArray().add(updated);
             //newpositions.add(updated);
-            System.out.println("Final Position of " + bodiesInSystem.get(i).getName() + " :"  + bodiesInSystem.get(i).getPosition());
+            //System.out.println("Final Position of " + bodiesInSystem.get(i).getName() + " :"  + bodiesInSystem.get(i).getPosition());
         }
     
         //positions = newpositions;
     }
 
-    public void updateVelocity(){
     
-        // ArrayList <Vector> newvelocities=new ArrayList<>();
-        // newvelocities.add(bodiesInSystem.get(0).getVelocity()); //adds sun velocity first (unchanged)
-             
+    public void updateVelocity(){
+
         for(int i=1;i<bodiesInSystem.size();i++){//skip sun (index 0) when calculating velocity
+           
             //System.out.println("Initial Velocity of " + bodiesInSystem.get(i).getName() + " :" + bodiesInSystem.get(i).getVelocity());
 
             Vector netforce = (getForce(bodiesInSystem.get(i))).multi(-1);
@@ -62,10 +61,16 @@ public class EulerUpdateStateofSystem {
 
             bodiesInSystem.get(i).setVelocity(updated);
             bodiesInSystem.get(i).getVelocitiesArray().add(updated);
+            
             //System.out.println("Final Velocity of " + bodiesInSystem.get(i).getName() +" :" + bodiesInSystem.get(i).getVelocity());
         }
     }
     
+    /**
+     * Finds the net force on a body.
+     * @param body the body on which net force is to be calculated
+     * @return vector representing FiG
+     */
     public Vector getForce(CelestialBody body){
         Vector force = new Vector();
     
