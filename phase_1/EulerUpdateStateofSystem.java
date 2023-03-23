@@ -1,5 +1,7 @@
 package phase_1;
+
 import java.util.ArrayList;
+
 public class EulerUpdateStateofSystem {
     // Instance Fields
     private StateOfSystem solarSystem;

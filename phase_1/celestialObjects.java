@@ -33,7 +33,8 @@ public class celestialObjects
         this.mass = mass;
     }
 
-    public celestialObjects() {
+    public celestialObjects() 
+    {
     }
 
     public static void list()
