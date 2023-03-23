@@ -12,6 +12,7 @@ public class StateOfSystem {
     double timestep;
     private double totalRealTimeElapsed;
     final double G = 6.6743*(Math.pow(10,-20)); // In Meters
+    private ArrayList<Double> distancesToTitan = new ArrayList<Double>();
     
 
     //constructor

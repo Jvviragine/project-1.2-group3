@@ -11,6 +11,7 @@ public class UpdateStateOfSystem {
     private double timeStepInSeconds;
     private int currentTimeOfState;
     final double G = 6.6743*(Math.pow(10,-20));
+    private ArrayList<Double> distancesToTitan = new ArrayList<Double>();
 
     // Constructor 
     public UpdateStateOfSystem(StateOfSystem solarSystem) {
@@ -35,7 +36,8 @@ public class UpdateStateOfSystem {
         for (int i = 1; i < bodiesInSystem.size(); i++) {
             setNetAccelerationActingOnABody(bodiesInSystem.get(i));
         }
-
+        System.out.println("The Distance from the Probe to Titan = " + calculateDistanceFromProbeToTitan(bodiesInSystem.get(8), bodiesInSystem.get(7)) + " KM"); 
+        System.out.println("And the Total Real Time passed = " + solarSystem.getTotalTimePassed() + " seconds = " + (solarSystem.getTotalTimePassed() / (60 * 60 * 24 * 365)) + " Years");
         // Now, for T0, we also have NetForce and NetAcceleration
     }
 
@@ -67,13 +69,10 @@ public class UpdateStateOfSystem {
 
         solarSystem.updateTotalTimePassed(); // Increases the Total Real Time Passed by DeltaT(TimeStep Chosen)
 
-        System.out.println("And the Total Real Time passed = " + solarSystem.getTotalTimePassed() + " seconds");
+        // WATCH OUT FOR THE INDEX OF PROBE AND TITAN
+        System.out.println("The Distance from the Probe to Titan = " + calculateDistanceFromProbeToTitan(bodiesInSystem.get(8), bodiesInSystem.get(7)) + " KM"); 
+        System.out.println("And the Total Real Time passed = " + solarSystem.getTotalTimePassed() + " seconds = " + (solarSystem.getTotalTimePassed() / (60 * 60 * 24 * 365)) + " Years");
         System.out.println("\n");
-    }
-
-    // Method Responsible for Updating the State of Our Solar System -> From Tn to T1 -> Tamar's Methods
-    public void updateStateOfSolarSystemEuler() {
-
     }
 
     // Euler Solvers -> All the Calculation Functions -> Joãos Version
@@ -162,6 +161,16 @@ public class UpdateStateOfSystem {
     public double calculateDistanceFromProbeToTitan(CelestialBody probe, CelestialBody titan) {
 
         double distance = (probe.getPosition()).dist(titan.getPosition());
+        distancesToTitan.add(distance);
         return distance;
+    }
+
+    public boolean hasDistanceBetweenProbeAndTitanDecreased(CelestialBody probe, CelestialBody titan) {
+        // Compare if the Previous Distance has Decreased
+
+        double previousDistance = distancesToTitan.get(currentTimeOfState - 1);
+        double currentDistance = distancesToTitan.get(currentTimeOfState);
+
+        return (currentDistance < previousDistance);
     }
 }
