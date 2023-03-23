@@ -58,7 +58,7 @@ public class SolarSystemOrbitTester {
         //Vector probeInitialVelocity = new Vector(40.41793413, -43.6266632, -3.13596209);
 
         //Vector probeInitialPosition = new Vector((-148458048.395164+6370), (-27524868.1841142), (70233.6499287411));
-        Vector probeInitialVelocity = new Vector(42.41793414, -43.6266633, -3.13586209);
+        Vector probeInitialVelocity = new Vector(42.41793414, -43.6266633, -3.13401000);
 
         CelestialBody probe = new CelestialBody(probeInitialPosition, probeInitialVelocity,  50000, "Probe");
 
