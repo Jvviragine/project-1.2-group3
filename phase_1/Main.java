@@ -12,6 +12,13 @@ import java.util.ArrayList;
 // This is the Class Responsible for Launching the Whole Simulation
 
 public class Main {
+    public double[][] orbitOfVenus;
+    public double[][] orbitOfEarth;
+    public double[][] orbitOfMoon;
+    public double[][] orbitOfMars;
+    public double[][] orbitOfJupiter;
+    public double[][] orbitOfSaturn;
+    public double[][] orbitOfTitan;
 
 
     // Main Method -> Where all the Calculations will be Instantiated and GUIs Launched
@@ -103,13 +110,13 @@ public class Main {
 
 
         //Calculate the orbits of each planet skipping the uranus and neptune
-        double[][] orbitOfVenus = OrbitFinder.getOrbit(venus, celestialBodies);
-        double[][] orbitOfEarth = OrbitFinder.getOrbit(earth, celestialBodies);
-        double[][] orbitOfMoon = OrbitFinder.getOrbit(moon, celestialBodies);
-        double[][] orbitOfMars = OrbitFinder.getOrbit(mars, celestialBodies);
-        double[][] orbitOfJupiter = OrbitFinder.getOrbit(jupiter, celestialBodies);
-        double[][] orbitOfSaturn = OrbitFinder.getOrbit(saturn, celestialBodies);
-        double[][] orbitOfTitan = OrbitFinder.getOrbit(titan, celestialBodies);
+        orbitOfVenus = OrbitFinder.getOrbit(venus, celestialBodies);
+        orbitOfEarth = OrbitFinder.getOrbit(earth, celestialBodies);
+        orbitOfMoon = OrbitFinder.getOrbit(moon, celestialBodies);
+        orbitOfMars = OrbitFinder.getOrbit(mars, celestialBodies);
+        orbitOfJupiter = OrbitFinder.getOrbit(jupiter, celestialBodies);
+        orbitOfSaturn = OrbitFinder.getOrbit(saturn, celestialBodies);
+        orbitOfTitan = OrbitFinder.getOrbit(titan, celestialBodies);
 
         // Restarting the positions of solar system
         sun.setPosition(sunInitialPositions);
