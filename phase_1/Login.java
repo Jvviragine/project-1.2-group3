@@ -3,6 +3,7 @@ package phase_1;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.VetoableChangeSupport;
 
 public class Login implements ActionListener{
     JFrame frame;
@@ -19,8 +20,9 @@ public class Login implements ActionListener{
     JTextField v2Text;
     JTextField v3Text;
     JButton button;
-    Vector initPos;
-    Vector initVelo;
+    Vector initPos = new Vector();
+    Vector initVelo = new Vector();
+    public boolean clicked = false;
 
     public static void main(String[] args) {
         Login login = new Login();
@@ -98,16 +100,34 @@ public class Login implements ActionListener{
 
     public void actionPerformed(ActionEvent e){
         if(e.getSource() == button){
+            clicked = true;
+            try{
+                clicked = true;
+                initPos.setX(Double.parseDouble(x1Text.getText()));
+                initPos.setY(Double.parseDouble(x2Text.getText()));
+                initPos.setZ(Double.parseDouble(x3Text.getText()));
 
-            initPos.setX(Double.parseDouble(x1Text.getText()));
-            initPos.setY(Double.parseDouble(x2Text.getText()));
-            initPos.setZ(Double.parseDouble(x3Text.getText()));
+                initVelo.setX(Double.parseDouble(v1Text.getText()));
+                initVelo.setY(Double.parseDouble(v2Text.getText()));
+                initVelo.setZ(Double.parseDouble(v3Text.getText()));
+            }catch(Exception p){
+                
+                System.out.println("sorry somthing is wrong");
 
-            initVelo.setX(Double.parseDouble(v1Text.getText()));
-            initVelo.setY(Double.parseDouble(v2Text.getText()));
-            initVelo.setZ(Double.parseDouble(v3Text.getText()));
+                initPos.setX(-148458048.395164+6370);
+                initPos.setY(-27524868.1841142);
+                initPos.setZ(70233.6499287411);
+
+                initVelo.setX(42.42270135156);
+                initVelo.setY(-43.62738201925);
+                initVelo.setZ(-3.1328169170);
+                clicked = true;
+            }
+
 
             //to add: the gui of system pops up after closing
+
+            
         }
     }
 
