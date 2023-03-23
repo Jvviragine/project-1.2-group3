@@ -49,12 +49,17 @@ public class SolarSystemOrbitTester {
         CelestialBody titan = new CelestialBody(titanInitialPositions, titanInitialVelocity, 13455.3*Math.pow(10,19), "Titan");
 
         // Create the Probe
-        Vector probeInitialPosition = new Vector((-148186906.893642), (-27823158.5715694), (33746.8987977113));
+        
         //Vector probeInitialPosition = new Vector(-148186906.893642 + 6700, -27823158.5715694 + 6700, 33746.8987977113 + 6700);
 
         //Vector probeInitialPosition = new Vector(0 ,0 , -6370);
 
-        Vector probeInitialVelocity = new Vector(0, 0, 0);
+        Vector probeInitialPosition = new Vector((-148458048.395164+6370), (-27524868.1841142), (70233.6499287411));
+        //Vector probeInitialVelocity = new Vector(40.41793413, -43.6266632, -3.13596209);
+
+        //Vector probeInitialPosition = new Vector((-148458048.395164+6370), (-27524868.1841142), (70233.6499287411));
+        Vector probeInitialVelocity = new Vector(42.41793414, -43.6266633, -3.13586209);
+
         CelestialBody probe = new CelestialBody(probeInitialPosition, probeInitialVelocity,  50000, "Probe");
 
         // Collection of Celestial Bodies
@@ -78,7 +83,7 @@ public class SolarSystemOrbitTester {
         solarSystemUpdater3.calculateMissingValuesForT0();
 
         // Loop controlling how many TimeSteps we are going to take
-        int lastT = 365 * 1 ; // 1 Hour Passed by
+        int lastT = (365 * 24); // 1 Hour Passed by
         for (int t = 1; t <= lastT; t++) {
             solarSystemUpdater3.updateStateOfSolarSystem();
         }

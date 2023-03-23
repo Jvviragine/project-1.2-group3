@@ -16,6 +16,6 @@ public class Main {
             // Return each one of them so the GUI Team can Plot
         
         // Calculate the Path of the Probe either until it reaches Titan or for 1 Earth Year - João and Ula
-            //
+            // Return the Coordinates of the Path to the GUI Team can plot it
     }
 }
