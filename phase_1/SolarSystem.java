@@ -99,12 +99,7 @@ public class SolarSystem extends JPanel implements ActionListener
                 String path = image[i];
                 trial = ImageIO.read(getClass().getResource(path));
                 switch(i) {
-                    case 0: 
-                        offset = 0;
-                        adjustH = SolarSystemViewer.h/38;
-                        adjustW = adjustH;
-                        break;
-                    case 1: 
+                    case 0, 1: 
                         offset = 0;
                         adjustH = SolarSystemViewer.h/38;
                         adjustW = adjustH;
