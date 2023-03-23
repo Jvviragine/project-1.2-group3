@@ -171,5 +171,52 @@ public class SolarSystem extends JPanel
         add(overlayPanel);
     }
 }
-//! ORBITDRAWER MOVED TO ITS OWN SEPARATE CLASS. DONT FREAK OUT.
+// mport javax.imageio.ImageIO;
+        
+// public class SolarSystem extends JPanel implements ActionListener
+// {
+//     BufferedImage trial;
+//     BufferedImage imageBuffer;
+//     ImageObserver observer;        
+//     Timer timer = new Timer(1, this);
+//     private int planetX = 0;
+//     private int planetY = 0;
 
+//     public void paintComponent(Graphics g) 
+//     {
+//         Graphics2D g2D = (Graphics2D) g;
+//         timer.start();
+
+//         double starX[] = new double[300];
+//         double starY[] = new double[300];
+
+// @ -63,9 +64,9 @@ public class SolarSystem extends JPanel implements ActionListener
+//             // g2D.drawLine(0, 0, 800, 800);
+//             // g2D.drawLine(0, 800, 800, 0);
+//             String path = "cbSun.png";
+//             trial = ImageIO.read(getClass().getResource(path));
+//             imageBuffer = ImageIO.read(getClass().getResource(path));
+            
+//             g2D.drawImage(trial, sunX, sunY, SolarSystemViewer.h/15, SolarSystemViewer.h/15, observer);
+//             g2D.drawImage(imageBuffer, sunX, sunY, SolarSystemViewer.h/15, SolarSystemViewer.h/15, observer);
+//             // g2D.drawString("SUN", sunX, sunY + 80);
+//         } 
+//         catch (IOException e) 
+// @ -174,7 +175,7 @@ public class SolarSystem extends JPanel implements ActionListener
+//                 {
+//                     System.out.println(ax);
+//                     String path = image[j - 1];
+//                     trial = ImageIO.read(getClass().getResource(path));
+//                     imageBuffer = ImageIO.read(getClass().getResource(path));
+//                     switch(j - 1) {
+//                         case 0, 1: 
+//                             offset = 0;
+// @ -213,7 +214,7 @@ public class SolarSystem extends JPanel implements ActionListener
+
+//                     }
+
+//                     g2D.drawImage(trial, (int) ((sunX+SolarSystemViewer.h/30)+ax)-15-offset,(int) ((sunY+SolarSystemViewer.h/30)-ay)-15-offset , adjustW, adjustH, observer);
+//                     g2D.drawImage(imageBuffer, (int) ((sunX+SolarSystemViewer.h/30)+ax)-15-offset,(int) ((sunY+SolarSystemViewer.h/30)-ay)-15-offset , adjustW, adjustH, observer);
+//                     // g2D.drawString(label[i], (int) (sunX+ax)-10, (int) (sunY-ay)-10);
+
+//                     // g2D.drawImage(trial, (int) Math.round(-1*((SolarSystemViewer.h/2 - 3)-ax)+(SolarSystemViewer.h)) ,(int) Math.round((SolarSystemViewer.h/2 - 3)-ay) , 7, 7, observer);
