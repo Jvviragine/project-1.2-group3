@@ -31,7 +31,7 @@ public class UpdateStateOfSystem {
     // Method to just calculate the Values for T0 -> Force and Acceleration
     public void calculateMissingValuesForT0() {
 
-        System.out.println("State of our Solar System at T0: " + "\n");
+        //System.out.println("State of our Solar System at T0: " + "\n");
 
         for (int i = 1; i < bodiesInSystem.size(); i++) { // STARTS AT 1 BECAUSE THE SUN IS AT INDEX 0
             setNetForceActingOnABody(bodiesInSystem.get(i));
@@ -40,7 +40,7 @@ public class UpdateStateOfSystem {
         for (int i = 1; i < bodiesInSystem.size(); i++) {
             setNetAccelerationActingOnABody(bodiesInSystem.get(i));
         }
-        System.out.println("The Distance from the Probe to Titan = " + calculateDistanceFromProbeToTitan(bodiesInSystem.get(10), bodiesInSystem.get(7)) + " KM"); 
+        System.out.println("The Distance from the Probe to Titan = " + calculateDistanceFromProbeToTitan(bodiesInSystem.get(bodiesInSystem.size()-1), bodiesInSystem.get(7)) + " KM"); 
         System.out.println("And the Total Real Time passed = " + solarSystem.getTotalTimePassed() + " seconds = " + (solarSystem.getTotalTimePassed() / (60 * 60 * 24 * 365)) + " Years");
         // Now, for T0, we also have NetForce and NetAcceleration
     }
@@ -49,7 +49,7 @@ public class UpdateStateOfSystem {
     public void updateStateOfSolarSystem() {
 
         solarSystem.updateTimeOfState();
-        System.out.println("Now our Solar System is on State T = " + solarSystem.getTimeOfState() + "\n");
+        // System.out.println("Now our Solar System is on State T = " + solarSystem.getTimeOfState() + "\n");
 
         // Set new Positions -> Improved Euler Method 
         for (int i = 1; i < bodiesInSystem.size(); i++) { // STARTS AT 1 BECAUSE THE SUN IS AT INDEX 0
@@ -74,10 +74,10 @@ public class UpdateStateOfSystem {
         solarSystem.updateTotalTimePassed(); // Increases the Total Real Time Passed by DeltaT(TimeStep Chosen)
 
         // WATCH OUT FOR THE INDEX OF PROBE AND TITAN
-        System.out.println("The Distance from the Probe to Titan = " + calculateDistanceFromProbeToTitan(bodiesInSystem.get(10), bodiesInSystem.get(7)) + " KM"); 
-        System.out.println("Has the Distance between the Probe and Titan decreased? " + hasDistanceBetweenProbeAndTitanDecreased(bodiesInSystem.get(8), bodiesInSystem.get(7)));
-        System.out.println("And the Total Real Time passed = " + solarSystem.getTotalTimePassed() + " seconds = " + (solarSystem.getTotalTimePassed() / (60 * 60 * 24 * 365)) + " Years");
-        System.out.println("\n");
+        // System.out.println("The Distance from the Probe to Titan = " + calculateDistanceFromProbeToTitan(bodiesInSystem.get(10), bodiesInSystem.get(7)) + " KM"); 
+        // System.out.println("Has the Distance between the Probe and Titan decreased? " + hasDistanceBetweenProbeAndTitanDecreased(bodiesInSystem.get(8), bodiesInSystem.get(7)));
+        // System.out.println("And the Total Real Time passed = " + solarSystem.getTotalTimePassed() + " seconds = " + (solarSystem.getTotalTimePassed() / (60 * 60 * 24 * 365)) + " Years");
+        // System.out.println("\n");
     }
 
     // Euler Solvers -> All the Calculation Functions -> Joãos Version

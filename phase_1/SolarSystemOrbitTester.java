@@ -91,7 +91,7 @@ public class SolarSystemOrbitTester {
         celestialBodies.add(probe);
 
         // Creating the Solar System
-        int timeStepInSeconds = 60 * 60; // 1 HOUR of Timestep
+        int timeStepInSeconds = 60; // 1 HOUR of Timestep
         StateOfSystem solarSystemState3 = new StateOfSystem(timeStepInSeconds, celestialBodies); // Giging it a Time Step of
         
         // Create the Object that can Update the State of the Solar System
@@ -99,7 +99,7 @@ public class SolarSystemOrbitTester {
         solarSystemUpdater3.calculateMissingValuesForT0();
 
         // Loop controlling how many TimeSteps we are going to take
-        int lastT = (365 * 24); // 1 Hour Passed by
+        int lastT = (365 * 24 * 60); // 1 Hour Passed by
         for (int t = 1; t <= lastT; t++) {
             solarSystemUpdater3.updateStateOfSolarSystem();
         }

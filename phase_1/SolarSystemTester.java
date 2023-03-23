@@ -81,17 +81,29 @@ public class SolarSystemTester {
         celestialBodies.add(probe);
 
         // Creating the Solar System
-        int timeStepInSeconds = 60*60*24; // 1 Hour of Timestep
+        // int timeStepInSeconds = 60; // 1 Hour of Timestep
+        // StateOfSystem solarSystemState = new StateOfSystem(timeStepInSeconds, celestialBodies); // Giging it a Time Step of 
+        
+        // // Create the Object that can Update the State of the Solar System
+        // UpdateStateOfSystem solarSystemUpdater = new UpdateStateOfSystem(solarSystemState);
+
+        // //Loop controlling how many TimeSteps we are going to take
+        // int lastT = 60*24*687;
+        // for (int t = 1; t <= lastT; t++) {
+        //     solarSystemUpdater.updateStateOfSolarSystem();
+        // }      
+        
+        int timeStepInSeconds = 1; // 1 Hour of Timestep
         StateOfSystem solarSystemState = new StateOfSystem(timeStepInSeconds, celestialBodies); // Giging it a Time Step of 
         
         // Create the Object that can Update the State of the Solar System
         EulerUpdateStateofSystem solarSystemUpdater = new EulerUpdateStateofSystem(solarSystemState);
 
         //Loop controlling how many TimeSteps we are going to take
-        int lastT = 687;
+        int lastT = 60*60*24*687;
         for (int t = 1; t <= lastT; t++) {
             solarSystemUpdater.updateStateOfSolarSystemEuler();
-        }        
+        }  
         // OrbitFinder findEarth=new OrbitFinder(earth, celestialBodies);
         // findEarth.getOrbit();
         // OrbitFinder findVenus=new OrbitFinder(venus, celestialBodies);
