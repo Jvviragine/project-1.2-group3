@@ -171,8 +171,8 @@ public class UpdateStateOfSystem {
 
         int currentT = solarSystem.getCurrentTime();
 
-        double previousDistance = distancesToTitan.get(currentT);
-        double currentDistance = distancesToTitan.get(currentT - 1);
+        double previousDistance = distancesToTitan.get(currentT - 1);
+        double currentDistance = distancesToTitan.get(currentT);
 
         return (currentDistance < previousDistance);
     }
