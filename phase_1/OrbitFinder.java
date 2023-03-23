@@ -15,8 +15,9 @@ public class OrbitFinder {
         /*Planets with larger orbit periods will have a larger time step (one day),
           Planets with shorter orbit periods will have a smaller time step (one hour).
         */
-        if(body.getPeriod()>400)timeStepInSeconds = 60 * 60 * 24;
-        else timeStepInSeconds = 60 * 60;
+        //if(body.getPeriod()>400)timeStepInSeconds = 60 * 60 * 24;
+        //else timeStepInSeconds = 60 * 60;
+        timeStepInSeconds = 60 * 60;
 
         StateOfSystem solarSystemState = new StateOfSystem(timeStepInSeconds, bodies);  
         EulerUpdateStateofSystem solarSystemUpdater = new EulerUpdateStateofSystem(solarSystemState);

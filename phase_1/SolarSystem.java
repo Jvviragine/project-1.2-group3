@@ -26,7 +26,9 @@ public class SolarSystem extends JPanel implements ActionListener
     Main carl = new Main();
     private double xProbeDouble = 0, yProbeDouble = 0;
     private int xProbe = 0, yProbe = 0;
+    
     private ArrayList<ArrayList<Double>> probePath = carl.probePath;
+
     private double[][] venusPath = carl.orbitOfVenus;
     private double[][] earthPath = carl.orbitOfEarth;
     private double[][] moonPath = carl.orbitOfMoon;
@@ -34,6 +36,7 @@ public class SolarSystem extends JPanel implements ActionListener
     private double[][] jupiterPath = carl.orbitOfJupiter;
     private double[][] saturnPath = carl.orbitOfSaturn;
     private double[][] titanPath = carl.orbitOfTitan;
+
     private int counter = 0;
 
     public SolarSystem()
@@ -147,11 +150,11 @@ public class SolarSystem extends JPanel implements ActionListener
 
                     image[i] = ImageIO.read(getClass().getResource(picID[i]));
                     icon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/15, SolarSystemViewer.h/25, Image.SCALE_SMOOTH));
-                    zoomIcon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/14, SolarSystemViewer.h/20, Image.SCALE_SMOOTH));
+                    zoomIcon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/12, SolarSystemViewer.h/20, Image.SCALE_SMOOTH));
 
                     label[i] = new JLabel(icon[i]);
 
-                    label[i].setBounds((int)(sunX+ax)+(SolarSystemViewer.h/15 + 1)/2, (int) -(sunY+ay)+(SolarSystemViewer.h/25 + 1)/2 + (2*sunY), SolarSystemViewer.h/14 + 1, SolarSystemViewer.h/20 + 1);
+                    label[i].setBounds((int)(sunX+ax)+(SolarSystemViewer.h/15 + 1)/2, (int) -(sunY+ay)+(SolarSystemViewer.h/25 + 1)/2 + (2*sunY), SolarSystemViewer.h/12 + 1, SolarSystemViewer.h/20 + 1);
                 }
                 else if(i == 7)// titan
                 {
@@ -262,7 +265,7 @@ public class SolarSystem extends JPanel implements ActionListener
                 // int xProbe = xStartEarth + (int) angle * 21;
                 // int yProbe = yStartEarth + (int) angle * 21;
 
-                counter++;
+                //counter += 5;
 
                 double xVenusDouble = venusPath[counter][0];
                 int xVenus = sunX + (int) (xVenusDouble/SolarSystemViewer.scale);
