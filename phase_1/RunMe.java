@@ -121,7 +121,7 @@ public class RunMe implements ActionListener{
 
             }catch(Exception p){
                 
-                System.out.println("Default values used!");
+                System.out.println("Default values used.");
 
                 initPos.setX(-148458048.395164+6370);
                 initPos.setY(-27524868.1841142);
