@@ -147,7 +147,7 @@ public class SolarSystem extends JPanel implements ActionListener
 
                     image[i] = ImageIO.read(getClass().getResource(picID[i]));
                     icon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/15, SolarSystemViewer.h/25, Image.SCALE_SMOOTH));
-                    zoomIcon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/14, SolarSystemViewer.h/20, Image.SCALE_SMOOTH));
+                    zoomIcon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/12, SolarSystemViewer.h/20, Image.SCALE_SMOOTH));
 
                     label[i] = new JLabel(icon[i]);
 
