@@ -7,6 +7,7 @@ public class OrbitFinder {
 
     /**
      * Returns the orbit of a celestial object in an array of x and y coordinates
+     * @param body,bodies the body for which the orbit is to be found and the list of all bodies 
      * @return double array containing x and y coordinates of points on the planets orbit.
      */
     public static double[][] getOrbit(CelestialBody body, ArrayList<CelestialBody> bodies){
@@ -24,7 +25,6 @@ public class OrbitFinder {
         /*Ensures that the total number of times the system is updated corresponds
         (is proportionate) with the time step.
         */
-
         int lastT = body.getPeriod() * ((24 * 60 * 60) / timeStepInSeconds); //period in days converted to seconds/minutes/hours
         for (int t = 1; t <= (int)lastT; t++) {
             solarSystemUpdater.updateStateOfSolarSystemEuler();

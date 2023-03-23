@@ -74,18 +74,18 @@ public class SolarSystemTester {
         // Create the Object that can Update the State of the Solar System
         EulerUpdateStateofSystem solarSystemUpdater = new EulerUpdateStateofSystem(solarSystemState);
 
-        // Loop controlling how many TimeSteps we are going to take
-        // int lastT = 24*365*60 +6*60;
-        // for (int t = 1; t <= lastT; t++) {
-        //     solarSystemUpdater.updateStateOfSolarSystemEuler();
-        // }        
+        //Loop controlling how many TimeSteps we are going to take
+        int lastT = 24*365*60 +6*60;
+        for (int t = 1; t <= lastT; t++) {
+            solarSystemUpdater.updateStateOfSolarSystemEuler();
+        }        
         // OrbitFinder findEarth=new OrbitFinder(earth, celestialBodies);
         // findEarth.getOrbit();
-        OrbitFinder findVenus=new OrbitFinder(venus, celestialBodies);
-        findVenus.getOrbit();
+        // OrbitFinder findVenus=new OrbitFinder(venus, celestialBodies);
+        // findVenus.getOrbit(venus,celestialBodies);
 
         // OrbitFinder findTitan=new OrbitFinder(titan, celestialBodies);
-        // findTitan.getOrbit();
+        //findTitan.getOrbit();
         // OrbitFinder findSaturn=new OrbitFinder(saturn, celestialBodies);
         // findSaturn.getOrbit();
 

@@ -51,6 +51,16 @@ public class SolarSystemTester3 {
         Vector titanInitialVelocity = new Vector((8.99593229549645), (11.1085713608453), (-2.25130986174761));
         CelestialBody titan = new CelestialBody(titanInitialPositions, titanInitialVelocity, 13455.3*Math.pow(10,19), "Titan");
 
+        // Create Uranus
+        Vector uranusInitialPositions = new Vector((1958732435.99338), (2191808553.21893 ), (-17235283.8321992));
+        Vector uranusInitialVelocity = new Vector((-5.12766216337626), (4.22055347264457), (0.082119033640306386));
+        CelestialBody uranus = new CelestialBody(uranusInitialPositions, uranusInitialVelocity, 13455.3*Math.pow(10,19), "Uranus");
+
+        // Create Neptune
+        Vector neptuneInitialPositions = new Vector((4454487339.09447), (-397895128.763904), (-94464151.3421107));
+        Vector neptuneInitialVelocity = new Vector((0.447991656952326), (5.44610697514907), (-0.122638125365954102));
+        CelestialBody neptune = new CelestialBody(neptuneInitialPositions, neptuneInitialVelocity, 13455.3*Math.pow(10,19), "Neptune");
+
         // Create the Probe
         //Vector probeInitialPosition = new Vector((-148186906.893642), (-27823158.5715694), (33746.8987977113));
         Vector probeInitialPosition = new Vector(-148458048.395164+6370, -27524868.1841142, 70233.6499287411);
@@ -70,6 +80,8 @@ public class SolarSystemTester3 {
         celestialBodies.add(saturn);
         celestialBodies.add(titan);
         celestialBodies.add(probe);
+        celestialBodies.add(neptune);
+        celestialBodies.add(uranus);
 
         // Creating the Solar System
         int timeStepInSeconds = 60 * 60; // 1 Month of Timestep
@@ -80,12 +92,17 @@ public class SolarSystemTester3 {
         solarSystemUpdater3.calculateMissingValuesForT0();
 
 
-
+        double min = probeInitialPosition.dist(titanInitialPositions);
         while(!solarSystemUpdater3.reachedTitan(probe, titan, solarSystemState3.getTotalTimePassed())){
             solarSystemUpdater3.updateStateOfSolarSystem();
             System.out.println(probe.getPosition().dist(titanInitialPositions));
+            if(probe.getPosition().dist(titan.getPosition())<min){
+                min = probe.getPosition().dist(titan.getPosition());
+            }
         }
         System.out.println(solarSystemUpdater3.getPositionWhenReached());
+        System.out.println("\n");
+        System.out.println(min);
 
         int positionsSize = earth.getPositionsArray().size()-1;
 

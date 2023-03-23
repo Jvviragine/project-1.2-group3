@@ -8,6 +8,8 @@ import javax.swing.UIManager;
 import javax.swing.plaf.metal.MetalLookAndFeel;
 import javax.tools.Tool;
 
+import phase_1.SolarSystem.OrbitDrawer;
+
 import java.awt.Toolkit;
 
 public class SolarSystemViewer {
