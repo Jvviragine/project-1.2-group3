@@ -248,9 +248,9 @@ public class SolarSystem extends JPanel implements ActionListener
                 int yEarth = sunY + (int) (yEarthDouble/SolarSystemViewer.scale);
 
                 double xMoonDouble = moonPath[counter][0];
-                int xMoon = sunX + (int) (xMoonDouble/SolarSystemViewer.scale);
+                int xMoon = xEarth + (int) (xMoonDouble/SolarSystemViewer.scale);
                 double yMoonDouble = moonPath[counter][1];
-                int yMoon = sunY + (int) (yMoonDouble/SolarSystemViewer.scale);
+                int yMoon = yEarth + (int) (yMoonDouble/SolarSystemViewer.scale);
 
                 double xMarsDouble = marsPath[counter][0];
                 int xMars = sunX + (int) (xMarsDouble/SolarSystemViewer.scale);
