@@ -32,9 +32,9 @@ public class RunMe implements ActionListener{
 
         frame = new JFrame();
         JPanel panel = new JPanel();
-        panel.setLayout(null);
+        panel.setLayout(null);        
 
-        JLabel label = new JLabel("Please enter initial positions and velocities;p");
+        JLabel label = new JLabel("Please enter initial positions and velocities;");
         label.setBounds(30, 20, 300, 25);
         panel.add(label);
 
