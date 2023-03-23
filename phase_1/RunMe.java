@@ -3,7 +3,6 @@ package phase_1;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.beans.VetoableChangeSupport;
 
 public class RunMe implements ActionListener{
     JFrame frame;
@@ -112,10 +111,12 @@ public class RunMe implements ActionListener{
                 initVelo.setZ(Double.parseDouble(v3Text.getText()));
 
                 Main carl = new Main();
+                frame.dispose();
+                SolarSystemViewer.main(null);
 
             }catch(Exception p){
                 
-                System.out.println("sorry somthing is wrong");
+                System.out.println("Sorry, something went wrong.");
 
                 initPos.setX(-148458048.395164+6370);
                 initPos.setY(-27524868.1841142);
@@ -126,6 +127,8 @@ public class RunMe implements ActionListener{
                 initVelo.setZ(-3.1328169170);
 
                 Main carl = new Main();
+                frame.dispose();
+                SolarSystemViewer.main(null);
             }
 
 

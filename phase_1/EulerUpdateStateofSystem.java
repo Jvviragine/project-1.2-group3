@@ -1,5 +1,7 @@
 package phase_1;
+
 import java.util.ArrayList;
+
 public class EulerUpdateStateofSystem {
     // Instance Fields
     private StateOfSystem solarSystem;
@@ -8,7 +10,10 @@ public class EulerUpdateStateofSystem {
     private int currentTimeOfState;
     final double G = 6.6743*(Math.pow(10,-20));
 
-    // Constructor 
+    /**
+     * Constructor for the EulerUpdateStateofSystem. 
+     * @param solarSystem StateOfSystem which represents the current state of our Solar System.
+     */ 
     public EulerUpdateStateofSystem(StateOfSystem solarSystem) {
         this.solarSystem = solarSystem;
         bodiesInSystem = this.solarSystem.getBodiesInSystem();
@@ -16,15 +21,14 @@ public class EulerUpdateStateofSystem {
         this.currentTimeOfState = this.solarSystem.getCurrentTime();
     }
 
-    // Method Responsible for Updating the State of Our Solar System -> Tamar's Methods
+    /**
+     * Method Responsible for Updating the State of Our Solar System */ 
     public void updateStateOfSolarSystemEuler() {
         updatePosition();
     }
-
-//  ------------------------Euler's Update Position Method -> Tamar-------------------
     
     /**
-     * Updates the position of the body
+     * Updates the position of the body using Euler's method.
      * @return void
      */
     public void updatePosition(){
@@ -54,18 +58,15 @@ public class EulerUpdateStateofSystem {
         }
     }
 
-
-//  ------------------------Euler's Update Velocity Methods -> Tamar-------------------
-   
     /**
-     * Updates the velocity of the body
+     * Updates the velocity of the body using Euler's method.
      * @return void
      */
     public void updateVelocity(){
         
         //Updates velocities of all bodies, except the Sun (index 0)
         for(int i=1;i<bodiesInSystem.size();i++){
-           
+
             Vector netforce = (getForce(bodiesInSystem.get(i))).multi(-1);
             Vector acceleration = netforce.multi(1/bodiesInSystem.get(i).getMass());
 

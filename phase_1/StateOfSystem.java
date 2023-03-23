@@ -2,6 +2,7 @@ package phase_1;
 
 import java.util.ArrayList;
 
+//Class representing the current state of the Soolar System
 public class StateOfSystem {
     ArrayList <CelestialBody> bodies=new ArrayList<>();
     ArrayList<Vector> currentPositions = new ArrayList<>();
@@ -15,8 +16,13 @@ public class StateOfSystem {
     private ArrayList<Double> distancesToTitan = new ArrayList<Double>();
     
 
-    //constructor
-    public StateOfSystem(double timeStepInSeconds, ArrayList<CelestialBody>bodies) {
+    /**
+     * Constructor for the StateOfSystem.
+     * @param timeStepInSeconds time step
+     * @param bodies celestial bodies present on the Solar System
+     */
+    public StateOfSystem(double timeStepInSeconds, ArrayList<CelestialBody>bodies) 
+    {
         for(int i=0;i<bodies.size();i++){
             currentPositions.add(bodies.get(i).getPosition());
             currentVelocities.add(bodies.get(i).getVelocity());
@@ -29,6 +35,7 @@ public class StateOfSystem {
         
     }
 
+     // Methods below are methods type "get", "set" or "update" used to extract particular variables or set a new value for them.
     public ArrayList<Vector> getCurrentPositions(){
         return currentPositions;
     }
@@ -41,31 +48,40 @@ public class StateOfSystem {
         return timeOfState;
     }
 
-    public void setSingleVelocity(int id, Vector newVelocity){
+    public void setSingleVelocity(int id, Vector newVelocity)
+    {
         ArrayList<Vector> newVelocities = new ArrayList<>();
         for(int i = 0; i<currentVelocities.size(); i++){
-            if(i == id){
+            if(i == id)
+            {
                 newVelocities.add(newVelocity);
-            }else{
+            }
+            else
+            {
                 newVelocities.add(currentVelocities.get(i));
             }
         }
         currentVelocities = newVelocities;
     }
 
-    public void setSinglePosition(int id, Vector newPosition){
+    public void setSinglePosition(int id, Vector newPosition)
+    {
         ArrayList<Vector> newPositions = new ArrayList<>();
         for(int i = 0; i<currentPositions.size(); i++){
-            if(i == id){
+            if(i == id)
+            {
                 newPositions.add(newPosition);
-            }else{
+            }
+            else
+            {
                 newPositions.add(currentPositions.get(i));
             }
         }
         currentPositions = newPositions;
     }
 
-    public String toString(){//to print the positions and velocities
+    //to print the positions and velocities
+    public String toString(){
         StringBuilder str = new StringBuilder();
         str.append("positions: ");
         for(int i = 0; i<currentPositions.size(); i++){
