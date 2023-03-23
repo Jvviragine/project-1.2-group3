@@ -45,5 +45,6 @@ public class SolarSystemViewer
         solarSystemFrame.setResizable(false);
         solarSystemFrame.setLocationRelativeTo(null);
         solarSystemFrame.setVisible(true);
+
     }
 }
