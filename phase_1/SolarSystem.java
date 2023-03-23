@@ -41,8 +41,8 @@ public class SolarSystem extends JPanel implements ActionListener
     {
         celestialObjects.list();
         //Coordinates of the sun
-        final int sunX = (int) ((celestialObjects.mars.getDistanceFromSun()/SolarSystemViewer.scale) + 120) -((SolarSystemViewer.h/8 + 1))+50;
-        final int sunY = (int) (SolarSystemViewer.h/2 -((SolarSystemViewer.h/8 + 1)))+50;
+        final int sunX = (int) ((celestialObjects.mars.getDistanceFromSun()/SolarSystemViewer.scale) + 120) -((SolarSystemViewer.h/8 + 1)) + 100;
+        final int sunY = (int) (SolarSystemViewer.h/2 -((SolarSystemViewer.h/8 + 1))) + 100;
 
         String picID[] = {"cbSun.png", "cbVenus.png", "cbEarth.png", "cbMoon.png", "cbMars.png", "cbJupiter.png", "cbSaturn.png", "cbTitan.png", "cbNormandy.png", "space.png"}; 
 
@@ -234,7 +234,7 @@ public class SolarSystem extends JPanel implements ActionListener
         Timer timer = new Timer(DELAY, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 
-                counter+= 10;
+                counter+= 100;
 
                 double xVenusDouble = venusPath[counter][0];
                 int xVenus = sunX + (int) (xVenusDouble/SolarSystemViewer.scale);
@@ -247,9 +247,9 @@ public class SolarSystem extends JPanel implements ActionListener
                 int yEarth = sunY + (int) (yEarthDouble/SolarSystemViewer.scale);
 
                 double xMoonDouble = moonPath[counter][0];
-                int xMoon = xEarth + (int) (xMoonDouble/SolarSystemViewer.scale);
+                int xMoon = sunX + (int) (xMoonDouble/SolarSystemViewer.scale);
                 double yMoonDouble = moonPath[counter][1];
-                int yMoon = yEarth + (int) (yMoonDouble/SolarSystemViewer.scale);
+                int yMoon = sunY + (int) (yMoonDouble/SolarSystemViewer.scale);
 
                 double xMarsDouble = marsPath[counter][0];
                 int xMars = sunX + (int) (xMarsDouble/SolarSystemViewer.scale);
@@ -275,10 +275,6 @@ public class SolarSystem extends JPanel implements ActionListener
                 xProbe = sunX + (int) (xProbeDouble/SolarSystemViewer.scale);
                 yProbeDouble = probePath.get(counter).get(1);
                 yProbe = sunY + (int) (yProbeDouble/SolarSystemViewer.scale);
-                
-
-                System.out.println(xProbe);
-                System.out.println(yProbe);
 
                 label[1].setLocation(xVenus, yVenus);
                 label[2].setLocation(xEarth, yEarth);
@@ -288,8 +284,11 @@ public class SolarSystem extends JPanel implements ActionListener
                 label[6].setLocation(xSaturn, ySaturn);
                 label[7].setLocation(xTitan, yTitan);
                 label[8].setLocation(xProbe, yProbe);
-                // System.out.println(xProbe);
-                // System.out.println(yProbe);
+
+                if(probePath.get(counter).get(0) == UpdateStateOfSystem.getPositionWhenReached().getX()) {
+                    System.out.println("Reached!");
+                    return;
+                }
             }
         });
         timer.start();

@@ -15,7 +15,7 @@ public class UpdateStateOfSystem {
     private double radiusOfTitan = 2.575;
     private double c = 0.0*radiusOfTitan;
     private double yearInSec = 60*60*24*365;
-    Vector positionWhenReached = new Vector();
+    static Vector positionWhenReached = new Vector();
 
     // Constructor 
     public UpdateStateOfSystem(StateOfSystem solarSystem) {
@@ -190,7 +190,7 @@ public class UpdateStateOfSystem {
         return false;
     }
 
-    public Vector getPositionWhenReached(){
+    public static Vector getPositionWhenReached(){
         return positionWhenReached;
     }
 }
