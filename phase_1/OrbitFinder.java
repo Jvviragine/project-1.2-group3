@@ -5,19 +5,11 @@ import java.util.Arrays;
 
 public class OrbitFinder {
 
-    CelestialBody body;
-    ArrayList<CelestialBody>bodies;
-
-    public OrbitFinder(CelestialBody body, ArrayList<CelestialBody> bodies){
-        this.body=body;
-        this.bodies=bodies;
-    }
-
     /**
      * Returns the orbit of a celestial object in an array of x and y coordinates
      * @return double array containing x and y coordinates of points on the planets orbit.
      */
-    public double[][] getOrbit(){
+    public static double[][] getOrbit(CelestialBody body, ArrayList<CelestialBody> bodies){
         int timeStepInSeconds;
 
         /*Planets with larger orbit periods will have a larger time step (one day),
@@ -32,6 +24,7 @@ public class OrbitFinder {
         /*Ensures that the total number of times the system is updated corresponds
         (is proportionate) with the time step.
         */
+
         int lastT = body.getPeriod() * ((24 * 60 * 60) / timeStepInSeconds); //period in days converted to seconds/minutes/hours
         for (int t = 1; t <= (int)lastT; t++) {
             solarSystemUpdater.updateStateOfSolarSystemEuler();
@@ -46,7 +39,7 @@ public class OrbitFinder {
      * @return converted array
      */
 
-    public double[][]convertToArray(ArrayList<Vector>arraylist){
+    public static double[][]convertToArray(ArrayList<Vector>arraylist){
 
         double[][]coordinates=new double[arraylist.size()][2];
 

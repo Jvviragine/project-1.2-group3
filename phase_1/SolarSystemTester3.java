@@ -53,9 +53,11 @@ public class SolarSystemTester3 {
 
         // Create the Probe
         //Vector probeInitialPosition = new Vector((-148186906.893642), (-27823158.5715694), (33746.8987977113));
-        Vector probeInitialPosition = new Vector(-148186906.893642 + 6700, -27823158.5715694 + 6700, 33746.8987977113 + 6700);
-        Vector probeInitialVelocity = new Vector(0, 0, 0);
+        Vector probeInitialPosition = new Vector(-148458048.395164+6370, -27524868.1841142, 70233.6499287411);
+        Vector probeInitialVelocity = new Vector(42.41793414, -43.6266633, -3.13586209);
         CelestialBody probe = new CelestialBody(probeInitialPosition, probeInitialVelocity,  50000, "Probe");
+
+        
 
         // Collection of Celestial Bodies
         ArrayList<CelestialBody> celestialBodies = new ArrayList<CelestialBody>();
@@ -87,19 +89,19 @@ public class SolarSystemTester3 {
 
         int positionsSize = earth.getPositionsArray().size()-1;
 
-        System.out.println(earth.getPositionsArray().get(0));
-        System.out.println(earth.getPositionsArray().get(positionsSize));
+        // System.out.println(earth.getPositionsArray().get(0));
+        // System.out.println(earth.getPositionsArray().get(positionsSize));
 
         // System.out.println();
         // System.out.println(probe.getPositionsArray().get(0));
         // System.out.println(probe.getPositionsArray().get(lastT));
 
-        System.out.println(venus.getPositionsArray().get(0));
-        System.out.println(venus.getPositionsArray().get(positionsSize));
+        // System.out.println(venus.getPositionsArray().get(0));
+        // System.out.println(venus.getPositionsArray().get(positionsSize));
 
-        System.out.println();
-        System.out.println(saturn.getPositionsArray().get(0));
-        System.out.println(saturn.getPositionsArray().get(positionsSize));
+        // System.out.println();
+        // System.out.println(saturn.getPositionsArray().get(0));
+        // System.out.println(saturn.getPositionsArray().get(positionsSize));
 
 
         System.out.println("Error on the X Coordinate = " + (Math.abs((earth.getPositionsArray().get(0).getX()) - earth.getPositionsArray().get(positionsSize).getX()) / (earth.getPositionsArray().get(0).getX())) * 100 + " %");
