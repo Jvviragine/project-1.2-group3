@@ -19,12 +19,13 @@ public class SolarSystem extends JPanel implements ActionListener
     BufferedImage trial;
     ImageObserver observer;        
     Timer timer = new Timer(1, this);
+    private int planetX = 0;
+    private int planetY = 0;
 
     public void paintComponent(Graphics g) 
     {
         Graphics2D g2D = (Graphics2D) g;
         timer.start();
-
         double starX[] = new double[300];
         double starY[] = new double[300];
 
@@ -129,14 +130,16 @@ public class SolarSystem extends JPanel implements ActionListener
                         adjustH = SolarSystemViewer.h/96;
                         adjustW = adjustH;
                         break;
-                }
-                
+            }
+            planetX = (int) ((sunX+SolarSystemViewer.h/30)+ax)-15-offset;
+            planetY = (int) ((sunY+SolarSystemViewer.h/30)-ay)-15-offset;
+
             //     else{
             //       offset = 0;
             //       g2D.drawImage(trial, rocketX, rocketY, SolarSystemViewer.h/96, SolarSystemViewer.h/96, observer);
             // }
 
-                g2D.drawImage(trial, (int) ((sunX+SolarSystemViewer.h/30)+ax)-15-offset,(int) ((sunY+SolarSystemViewer.h/30)-ay)-15-offset , adjustW, adjustH, observer);
+                g2D.drawImage(trial, planetX, planetY, adjustW, adjustH, observer);
                 // g2D.drawString(label[i], (int) (sunX+ax)-10, (int) (sunY-ay)-10);
 
                 // g2D.drawImage(trial, (int) Math.round(-1*((SolarSystemViewer.h/2 - 3)-ax)+(SolarSystemViewer.h)) ,(int) Math.round((SolarSystemViewer.h/2 - 3)-ay) , 7, 7, observer);
