@@ -1,12 +1,23 @@
 package phase_1;
 
 import java.awt.*;
+
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JRootPane;
+import javax.swing.JTextField;
+import javax.swing.JWindow;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.plaf.metal.MetalLookAndFeel;
+import javax.tools.Tool;
+
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class SolarSystemViewer{
     public static Toolkit tk = Toolkit.getDefaultToolkit();
@@ -25,7 +36,7 @@ public class SolarSystemViewer{
     public static double[][] rocketLaunch = new double[2][3];
 
     public static void main(String[] args) {
-
+        
         JFrame initialConditions = new JFrame();
         initialConditions.setTitle("Starting Conditions");
         JPanel format = new JPanel();
@@ -36,7 +47,7 @@ public class SolarSystemViewer{
         JPanel v1 = new JPanel();
         JPanel v2 = new JPanel();
         JPanel v3 = new JPanel();
-        JButton confirm = new JButton();
+        JButton confirm = new JButton("Launch");
         JLabel x11 = new JLabel("x0");
         JLabel x21 = new JLabel("y0");
         JLabel x31 = new JLabel("z0");
