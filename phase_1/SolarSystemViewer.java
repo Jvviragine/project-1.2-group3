@@ -1,11 +1,23 @@
 package phase_1;
 
 import java.awt.*;
+
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JRootPane;
+import javax.swing.JTextField;
+import javax.swing.JWindow;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.plaf.metal.MetalLookAndFeel;
+import javax.tools.Tool;
+
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class SolarSystemViewer
 {
@@ -22,9 +34,9 @@ public class SolarSystemViewer
     public static double m = (celestialObjects.getMaxDistanceFromSun(-159116303.422552, 189235671.561057, 7870476.08522969));
     public static double sum = s + m;
     public static final double scale = Math.ceil(sum / 100000000) * 100000000 / (h-200);
+    public static double[][] rocketLaunch = new double[2][3];
 
     public static void main(String[] args) {
-
 
         // JFrame initialConditions = new JFrame();
         // initialConditions.setTitle("Starting Conditions");
@@ -36,7 +48,7 @@ public class SolarSystemViewer
         // JPanel v1 = new JPanel();
         // JPanel v2 = new JPanel();
         // JPanel v3 = new JPanel();
-        // JButton confirm = new JButton();
+        // JButton confirm = new JButton("Launch");
         // JLabel x11 = new JLabel("x0");
         // JLabel x21 = new JLabel("y0");
         // JLabel x31 = new JLabel("z0");
@@ -70,21 +82,35 @@ public class SolarSystemViewer
         // v3.add(v31);
         // v3.add(v32);
         // format.setVisible(true);
+        // double input1 = 0;
+        // double input2 = 0;
+        // double input3 = 0;
+        // double input4 = 0;
+        // double input5 = 0;
+        // double input6 = 0;
         // try {
-        //     double input1 = Double.parseDouble(x12.getText());
-        //     double input2 = Double.parseDouble(x22.getText());
-        //     double input3 = Double.parseDouble(x32.getText());
-        //     double input4 = Double.parseDouble(v12.getText());
-        //     double input5 = Double.parseDouble(v22.getText());
-        //     double input6 = Double.parseDouble(v32.getText());
+        //     input1 = Double.parseDouble(x12.getText());
+        //     input2 = Double.parseDouble(x22.getText());
+        //     input3 = Double.parseDouble(x32.getText());
+        //     input4 = Double.parseDouble(v12.getText());
+        //     input5 = Double.parseDouble(v22.getText());
+        //     input6 = Double.parseDouble(v32.getText());
         // } catch (NumberFormatException e) {
         //     // TODO: handle exception
         // } 
         // confirm.addActionListener(new ActionListener() {
         //     @Override
         //     public void actionPerformed(ActionEvent e) {
-        //         if(input1 != 0 && input2 != 0 && input3 != 0 && input4 != 0 && input5 != 0 && input6 != 0)
-        //     format.setVisible(false);
+        //         if(input1 != 0 && input2 != 0 && input3 != 0 && input4 != 0 && input5 != 0 && input6 != 0){
+        //             rocketLaunch[0][0] = input1;
+        //             rocketLaunch[0][1] = input2;
+        //             rocketLaunch[0][2] = input3;
+        //             rocketLaunch[1][0] = input4;
+        //             rocketLaunch[1][1] = input5;
+        //             rocketLaunch[1][2] = input6;
+        //             format.setVisible(false);
+                    
+        //         }
         //     }
         // });
      
