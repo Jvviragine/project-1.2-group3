@@ -22,37 +22,47 @@ public class EulerUpdateStateofSystem {
         updatePosition();
     }
 
-    //Euler's Update Position Method -> Tamar
-    
+//  ------------------------Euler's Update Position Method -> Tamar-------------------
+    //Updates the position of the body
+
     public void updatePosition(){
+
+        //Initial velocities are stored
         ArrayList <Vector> initialvelocities = new ArrayList<>();
+
         for(int i=0;i<bodiesInSystem.size();i++){
             Vector initialvelocity = bodiesInSystem.get(i).getVelocity();
             initialvelocities.add(initialvelocity);
         }
     
+        //Velocity method is called, to ensure updated positions do not affect calculations
         updateVelocity();
 
+        //Position is updated using Euler's method.
+        //Xi+1 = Xi + (h * Vi)
         for(int i=0;i<bodiesInSystem.size();i++){ 
+
             //System.out.println("Initial Position of " + bodiesInSystem.get(i).getName() + " :"  + bodiesInSystem.get(i).getPosition());
+            
             Vector incr = (initialvelocities.get(i).multi(timeStepInSeconds));
             Vector updated = bodiesInSystem.get(i).getPosition().add(incr);
             bodiesInSystem.get(i).setPosition(updated);
+            
             bodiesInSystem.get(i).getPositionsArray().add(updated);
-            //newpositions.add(updated);
+            
             //System.out.println("Final Position of " + bodiesInSystem.get(i).getName() + " :"  + bodiesInSystem.get(i).getPosition());
         }
-    
-        //positions = newpositions;
     }
 
+
+//  ------------------------Euler's Update Velocity Methods -> Tamar-------------------
+    //Updates the velocity of the body
     
     public void updateVelocity(){
-
-        for(int i=1;i<bodiesInSystem.size();i++){//skip sun (index 0) when calculating velocity
+        
+        //Updates velocities of all bodies, except the Sun (index 0)
+        for(int i=1;i<bodiesInSystem.size();i++){
            
-            //System.out.println("Initial Velocity of " + bodiesInSystem.get(i).getName() + " :" + bodiesInSystem.get(i).getVelocity());
-
             Vector netforce = (getForce(bodiesInSystem.get(i))).multi(-1);
             Vector acceleration = netforce.multi(1/bodiesInSystem.get(i).getMass());
 
@@ -62,7 +72,6 @@ public class EulerUpdateStateofSystem {
             bodiesInSystem.get(i).setVelocity(updated);
             bodiesInSystem.get(i).getVelocitiesArray().add(updated);
             
-            //System.out.println("Final Velocity of " + bodiesInSystem.get(i).getName() +" :" + bodiesInSystem.get(i).getVelocity());
         }
     }
     
@@ -75,8 +84,10 @@ public class EulerUpdateStateofSystem {
         Vector force = new Vector();
     
         for(int i=0; i<bodiesInSystem.size(); i++){
+
+            //own body should not be added to net force 
             if(bodiesInSystem.get(i)!=body){ 
-                //own body should not be added to net force 
+                
                 Vector bodyposition = body.getPosition(); //Xi
                 Vector otherposition = bodiesInSystem.get(i).getPosition(); //Xj
     

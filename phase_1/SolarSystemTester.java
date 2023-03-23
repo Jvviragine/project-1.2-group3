@@ -2,6 +2,8 @@ package phase_1;
 
 import java.util.ArrayList;
 
+import phase_1.SolarSystem.OrbitDrawer;
+
 public class SolarSystemTester {
     
     public static void main(String[] args) {
@@ -77,14 +79,15 @@ public class SolarSystemTester {
         // for (int t = 1; t <= lastT; t++) {
         //     solarSystemUpdater.updateStateOfSolarSystemEuler();
         // }        
-        OrbitFinder findEarth=new OrbitFinder(earth, celestialBodies);
-        findEarth.getOrbit();
+        // OrbitFinder findEarth=new OrbitFinder(earth, celestialBodies);
+        // findEarth.getOrbit();
         OrbitFinder findVenus=new OrbitFinder(venus, celestialBodies);
         findVenus.getOrbit();
-        OrbitFinder findTitan=new OrbitFinder(titan, celestialBodies);
-        findTitan.getOrbit();
-        OrbitFinder findSaturn=new OrbitFinder(saturn, celestialBodies);
-        findSaturn.getOrbit();
+
+        // OrbitFinder findTitan=new OrbitFinder(titan, celestialBodies);
+        // findTitan.getOrbit();
+        // OrbitFinder findSaturn=new OrbitFinder(saturn, celestialBodies);
+        // findSaturn.getOrbit();
 
         // System.out.println("Error on the X Coordinate = " + Math.abs(Math.abs((earth.getPositionsArray().get(0).getX()) - earth.getPositionsArray().get(lastT).getX()) / (earth.getPositionsArray().get(0).getX())) * 100 + " %");
         // System.out.println("Error on the Y Coordinate = " + Math.abs(Math.abs((earth.getPositionsArray().get(0).getY()) - earth.getPositionsArray().get(lastT).getY()) / (earth.getPositionsArray().get(0).getY())) * 100 + " %");
