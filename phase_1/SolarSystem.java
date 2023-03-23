@@ -156,15 +156,14 @@ public class SolarSystem extends JPanel implements ActionListener
                 }      
                 else if(i == 8)// probe
                 {
-                    double ax = r.x1/SolarSystemViewer.scale;
-                    double ay = r.x2/SolarSystemViewer.scale;
                     image[i] = ImageIO.read(getClass().getResource(picID[i]));
                     icon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/30, SolarSystemViewer.h/30, Image.SCALE_SMOOTH));
                     zoomIcon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/20, SolarSystemViewer.h/20, Image.SCALE_SMOOTH));
 
                     label[i] = new JLabel(icon[i]);
 
-                    label[i].setBounds((int) (-earthDiameter + (sunX+ax)-SolarSystemViewer.h/30), (int) (-earthDiameter + -(sunY+ay)-(SolarSystemViewer.h/30 + (sunY))), SolarSystemViewer.h/30 + 1, SolarSystemViewer.h/30 + 1);
+                    label[i].setBounds((int) (-2*earthDiameter + (sunX)-SolarSystemViewer.h/15), (int) (-earthDiameter + -(sunY)-(SolarSystemViewer.h/15 + (sunY))), SolarSystemViewer.h/30 + 1, SolarSystemViewer.h/30 + 1);
+
                 }
                 else if(i == 9)// space
                 {
