@@ -111,21 +111,6 @@ public class SolarSystemTester3 {
 
         int positionsSize = earth.getPositionsArray().size()-1;
 
-        // System.out.println(earth.getPositionsArray().get(0));
-        // System.out.println(earth.getPositionsArray().get(positionsSize));
-
-        // System.out.println();
-        // System.out.println(probe.getPositionsArray().get(0));
-        // System.out.println(probe.getPositionsArray().get(lastT));
-
-        // System.out.println(venus.getPositionsArray().get(0));
-        // System.out.println(venus.getPositionsArray().get(positionsSize));
-
-        // System.out.println();
-        // System.out.println(saturn.getPositionsArray().get(0));
-        // System.out.println(saturn.getPositionsArray().get(positionsSize));
-
-
         System.out.println("Error on the X Coordinate = " + (Math.abs((earth.getPositionsArray().get(0).getX()) - earth.getPositionsArray().get(positionsSize).getX()) / (earth.getPositionsArray().get(0).getX())) * 100 + " %");
         System.out.println("Error on the Y Coordinate = " + (Math.abs((earth.getPositionsArray().get(0).getY()) - earth.getPositionsArray().get(positionsSize).getY()) / (earth.getPositionsArray().get(0).getY())) * 100 + " %");
         System.out.println("Error on the Z Coordinate = " + (Math.abs((earth.getPositionsArray().get(0).getZ()) - earth.getPositionsArray().get(positionsSize).getZ()) / (earth.getPositionsArray().get(0).getZ())) * 100 + " %");
