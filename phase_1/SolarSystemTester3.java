@@ -8,7 +8,6 @@ public class SolarSystemTester3 {
 
         double radiusTitan = 2.575;
         double c = 0.1*radiusTitan;
-        double radiusOfTitan = 2.575;
         
         // Create a new Solar System
 
@@ -80,9 +79,9 @@ public class SolarSystemTester3 {
         celestialBodies.add(jupiter);
         celestialBodies.add(saturn);
         celestialBodies.add(titan);
-        celestialBodies.add(probe);
         celestialBodies.add(neptune);
         celestialBodies.add(uranus);
+        celestialBodies.add(probe);
 
         // Creating the Solar System
         int timeStepInSeconds = 60 * 60; // 1 Month of Timestep
@@ -94,19 +93,20 @@ public class SolarSystemTester3 {
 
 
         double min = probeInitialPosition.dist(titanInitialPositions);
-        while(probe.getPosition().dist(titan.getPosition()) > radiusOfTitan){
+        double minTime = 0;
+        while(!solarSystemUpdater3.reachedTitan(probe, titan, solarSystemState3.getTotalTimePassed())){
             solarSystemUpdater3.updateStateOfSolarSystem();
             //System.out.println(probe.getPosition().dist(titanInitialPositions));
             if(probe.getPosition().dist(titan.getPosition())<min){
                 min = probe.getPosition().dist(titan.getPosition());
+                minTime = solarSystemState3.getTotalTimePassed();
             }
         }
-
         System.out.println(solarSystemUpdater3.getPositionWhenReached());
-        System.out.println(titan.getPosition());
         System.out.println("\n");
         System.out.println("min distance to titan: " + min);
         System.out.println("\n");
+        System.out.println(minTime);
         System.out.println(min<radiusTitan);
 
         int positionsSize = earth.getPositionsArray().size()-1;
