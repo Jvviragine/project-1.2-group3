@@ -6,8 +6,6 @@ import javax.swing.JRootPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.plaf.metal.MetalLookAndFeel;
-import javax.tools.Tool;
-
 import java.awt.Toolkit;
 
 public class SolarSystemViewer {
