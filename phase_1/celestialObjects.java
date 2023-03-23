@@ -32,6 +32,9 @@ public class celestialObjects
         this.mass = mass;
     }
 
+    public celestialObjects() {
+    }
+
     public static void list()
     {
         celestialObjectList.add(sun);

@@ -2,14 +2,8 @@ package phase_1;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.geom.*;
 import java.util.Arrays;
-import java.awt.image.BufferedImage;
-import java.awt.image.ImageObserver;
-import java.io.IOException;
-import javax.imageio.ImageIO;
+
 
 class OrbitDrawer extends JComponent {
     //nested class used to draw an orbit by tracing between the given points

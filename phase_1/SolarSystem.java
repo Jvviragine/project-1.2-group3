@@ -18,12 +18,14 @@ public class SolarSystem extends JPanel implements ActionListener
     JLabel label[] = new JLabel[8];
     BufferedImage image[] = new BufferedImage[8];
     ImageIcon icon[] = new ImageIcon[8];
+
     ImageIcon zoomIcon[] = new ImageIcon[8];
+
     private double angle = 0;
     private final int DELAY = 10;
     private int radiusVenus, radiusEarth, radiusMoon, radiusMars, radiusJupiter, radiusSaturn, radiusTitan;
 
-    public SolarSystem() 
+    public SolarSystem()
     {
 
         celestialObjects.list();
@@ -147,6 +149,12 @@ public class SolarSystem extends JPanel implements ActionListener
                 e.printStackTrace();
             }
         }
+
+        for(int j = 0; j < 8; j++)
+        {
+            labelPanel.add(label[j]);
+        }
+
         
         setLayout(null);
         labelPanel.setOpaque(true);
@@ -154,11 +162,6 @@ public class SolarSystem extends JPanel implements ActionListener
         labelPanel.setLayout(null);
         labelPanel.setBounds(0, 0, SolarSystemViewer.h, SolarSystemViewer.h);
         add(labelPanel);
- 
-        for(int j = 0; j < 8; j++)
-        {
-            labelPanel.add(label[j]);
-        }
  
         for(int t = 0; t < 8; t++)
         {
