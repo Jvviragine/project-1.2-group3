@@ -2,7 +2,7 @@ package phase_1;
 
 import java.util.ArrayList;
 
-// This is the Class Responsible for Launching the Whole Simulation
+// This is the Class containing all the actions for running the simulation
 
 public class Main {
     public double[][] orbitOfVenus;
@@ -15,23 +15,7 @@ public class Main {
     public ArrayList<ArrayList<Double>> probePath = new ArrayList<>();
 
 
-    // Main Method -> Where all the Calculations will be Instantiated and GUIs Launched
     public Main() {
-        
-        // Launch the JFrame with Initial Conditions -> Garrick
-            // Get the Initial Position and Velocity for the Probe
-            // Close the JFrame
-
-        // Calculate the Orbit of Each Celestial Body so it can be plotted (with the exception of Probe) -> Tamar
-            // Return each one of them so the GUI Team can Plot
-        
-        // Calculate the Path of the Probe either until it reaches Titan or for 1 Earth Year - João and Ula
-            // Return the Coordinates of the Path to the GUI Team can plot it
-
-        // Create a new Solar System
-
-        // Open the login window for entering the initial positions and velocities
-        //Login login = new Login();
 
         // Create the Sun
         Vector sunInitialPositions = new Vector(0, 0, 0);
@@ -84,7 +68,6 @@ public class Main {
         CelestialBody neptune = new CelestialBody(neptuneInitialPositions, neptuneInitialVelocity, 13455.3*Math.pow(10,19), "Neptune");
 
         // Create the Probe
-        //Vector probeInitialPosition = new Vector((-148186906.893642), (-27823158.5715694), (33746.8987977113));
         Vector probeInitialPosition = new Vector(0, 0, 0);
         Vector probeInitialVelocity = new Vector(0, 0, 0);
         CelestialBody probe = new CelestialBody(probeInitialPosition, probeInitialVelocity,  50000, "Probe");
@@ -112,7 +95,7 @@ public class Main {
         orbitOfSaturn = OrbitFinder.getOrbit(saturn, celestialBodies);
         orbitOfTitan = OrbitFinder.getOrbit(titan, celestialBodies);
 
-        // Restarting the positions of solar system
+        // Restarting the positions of solar system after calculating the orbits
         sun.setPosition(sunInitialPositions);
         sun.setVelocity(sunInitialVelocity);
         venus.setPosition(venusInitialPosition);
@@ -149,6 +132,8 @@ public class Main {
         double min = probeInitialPosition.dist(titanInitialPosition);
         double minTime = 0;
         int i = 0;
+
+        //Updating the Solar System until we reach Titan or a year has passed
         while(!solarSystemUpdater3.reachedTitan(probe, titan, solarSystemState3.getTotalTimePassed())){
             probePath.add(new ArrayList<>());
             solarSystemUpdater3.updateStateOfSolarSystem();
@@ -160,16 +145,13 @@ public class Main {
                 minTime = solarSystemState3.getTotalTimePassed();
             }
         }
-        System.out.println(probePath);
 
-        // System.out.println(solarSystemUpdater3.getPositionWhenReached());
-        // System.out.println("\n");
-        // System.out.println("min distance to titan: " + min);
-        // System.out.println("\n");
-        // System.out.println(minTime);
+        System.out.println("\n");
+        System.out.println("min distance to titan: " + min);
+        System.out.println("Titan reached at: " + minTime);
+        System.out.println("When probe reached Titan it had positions: " + solarSystemUpdater3.getPositionWhenReached());
 
         // int positionsSize = earth.getPositionsArray().size()-1;
-
         // System.out.println("Error on the X Coordinate = " + (Math.abs((earth.getPositionsArray().get(0).getX()) - earth.getPositionsArray().get(positionsSize).getX()) / (earth.getPositionsArray().get(0).getX())) * 100 + " %");
         // System.out.println("Error on the Y Coordinate = " + (Math.abs((earth.getPositionsArray().get(0).getY()) - earth.getPositionsArray().get(positionsSize).getY()) / (earth.getPositionsArray().get(0).getY())) * 100 + " %");
         // System.out.println("Error on the Z Coordinate = " + (Math.abs((earth.getPositionsArray().get(0).getZ()) - earth.getPositionsArray().get(positionsSize).getZ()) / (earth.getPositionsArray().get(0).getZ())) * 100 + " %");

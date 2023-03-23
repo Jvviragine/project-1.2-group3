@@ -2,6 +2,7 @@ package phase_1;
 
 import java.util.ArrayList;
 
+//Class representing the current state of the Soolar System
 public class StateOfSystem {
     ArrayList <CelestialBody> bodies=new ArrayList<>();
     ArrayList<Vector> currentPositions = new ArrayList<>();
@@ -15,7 +16,11 @@ public class StateOfSystem {
     private ArrayList<Double> distancesToTitan = new ArrayList<Double>();
     
 
-    //constructor
+    /**
+     * Constructor for the StateOfSystem.
+     * @param timeStepInSeconds time step
+     * @param bodies celestial bodies present on the Solar System
+     */
     public StateOfSystem(double timeStepInSeconds, ArrayList<CelestialBody>bodies) 
     {
         for(int i=0;i<bodies.size();i++){
@@ -30,6 +35,7 @@ public class StateOfSystem {
         
     }
 
+     // Methods below are methods type "get", "set" or "update" used to extract particular variables or set a new value for them.
     public ArrayList<Vector> getCurrentPositions(){
         return currentPositions;
     }
@@ -74,7 +80,8 @@ public class StateOfSystem {
         currentPositions = newPositions;
     }
 
-    public String toString(){//to print the positions and velocities
+    //to print the positions and velocities
+    public String toString(){
         StringBuilder str = new StringBuilder();
         str.append("positions: ");
         for(int i = 0; i<currentPositions.size(); i++){

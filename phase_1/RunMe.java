@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+//Class responsible for running the simulation
 public class RunMe implements ActionListener{
     JFrame frame;
     JLabel x1;
@@ -21,12 +22,12 @@ public class RunMe implements ActionListener{
     JButton button;
     static Vector initPos = new Vector();
     static Vector initVelo = new Vector();
-    public boolean clicked = false;
 
     public static void main(String[] args) {
         RunMe login = new RunMe();
     }
 
+    //Creating the login window in which the user can input the initial positions and velocities for the probe
     public RunMe(){
 
         frame = new JFrame();
@@ -97,11 +98,15 @@ public class RunMe implements ActionListener{
 
     }
 
+    /**
+     * Action listener, when the button is clicked the initial values are assigned and we create Main, 
+     * which runs the simulation and we run the GUI of the Solar System.
+     */
     public void actionPerformed(ActionEvent e){
         if(e.getSource() == button){
-            clicked = true;
+            
             try{
-                clicked = true;
+                
                 initPos.setX(Double.parseDouble(x1Text.getText()));
                 initPos.setY(Double.parseDouble(x2Text.getText()));
                 initPos.setZ(Double.parseDouble(x3Text.getText()));
@@ -130,12 +135,6 @@ public class RunMe implements ActionListener{
                 frame.dispose();
                 SolarSystemViewer.main(null);
             }
-
-
-            //to add: the gui of system pops up after closing
-
-            
         }
     }
-
 }
