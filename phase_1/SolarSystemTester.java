@@ -2,6 +2,8 @@ package phase_1;
 
 import java.util.ArrayList;
 
+import phase_1.SolarSystem.OrbitDrawer;
+
 public class SolarSystemTester {
     
     public static void main(String[] args) {
@@ -81,6 +83,7 @@ public class SolarSystemTester {
         // findEarth.getOrbit();
         OrbitFinder findVenus=new OrbitFinder(venus, celestialBodies);
         findVenus.getOrbit();
+
         // OrbitFinder findTitan=new OrbitFinder(titan, celestialBodies);
         // findTitan.getOrbit();
         // OrbitFinder findSaturn=new OrbitFinder(saturn, celestialBodies);
