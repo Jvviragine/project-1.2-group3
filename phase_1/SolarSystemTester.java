@@ -2,7 +2,6 @@ package phase_1;
 
 import java.util.ArrayList;
 
-import phase_1.SolarSystem.OrbitDrawer;
 
 public class SolarSystemTester {
     
