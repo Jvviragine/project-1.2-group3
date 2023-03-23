@@ -2,7 +2,6 @@ package phase_1;
 
 import java.util.ArrayList;
 
-
 public class SolarSystemTester {
     
     public static void main(String[] args) {

@@ -16,7 +16,8 @@ public class StateOfSystem {
     
 
     //constructor
-    public StateOfSystem(double timeStepInSeconds, ArrayList<CelestialBody>bodies) {
+    public StateOfSystem(double timeStepInSeconds, ArrayList<CelestialBody>bodies) 
+    {
         for(int i=0;i<bodies.size();i++){
             currentPositions.add(bodies.get(i).getPosition());
             currentVelocities.add(bodies.get(i).getVelocity());
@@ -41,24 +42,32 @@ public class StateOfSystem {
         return timeOfState;
     }
 
-    public void setSingleVelocity(int id, Vector newVelocity){
+    public void setSingleVelocity(int id, Vector newVelocity)
+    {
         ArrayList<Vector> newVelocities = new ArrayList<>();
         for(int i = 0; i<currentVelocities.size(); i++){
-            if(i == id){
+            if(i == id)
+            {
                 newVelocities.add(newVelocity);
-            }else{
+            }
+            else
+            {
                 newVelocities.add(currentVelocities.get(i));
             }
         }
         currentVelocities = newVelocities;
     }
 
-    public void setSinglePosition(int id, Vector newPosition){
+    public void setSinglePosition(int id, Vector newPosition)
+    {
         ArrayList<Vector> newPositions = new ArrayList<>();
         for(int i = 0; i<currentPositions.size(); i++){
-            if(i == id){
+            if(i == id)
+            {
                 newPositions.add(newPosition);
-            }else{
+            }
+            else
+            {
                 newPositions.add(currentPositions.get(i));
             }
         }

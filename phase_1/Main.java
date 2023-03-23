@@ -1,12 +1,5 @@
 package phase_1;
 
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.beans.VetoableChangeSupport;
-import java.awt.Button;
-import java.awt.event.ActionEvent;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 // This is the Class Responsible for Launching the Whole Simulation
