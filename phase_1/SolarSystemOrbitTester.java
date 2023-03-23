@@ -75,7 +75,7 @@ public class SolarSystemOrbitTester {
         solarSystemUpdater3.calculateMissingValuesForT0();
 
         // Loop controlling how many TimeSteps we are going to take
-        int lastT = 1; // 1 Hour Passed by
+        int lastT = 10; // 1 Hour Passed by
         for (int t = 1; t <= lastT; t++) {
             solarSystemUpdater3.updateStateOfSolarSystem();
         }
