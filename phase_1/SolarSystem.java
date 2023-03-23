@@ -160,21 +160,12 @@ public class SolarSystem extends JPanel implements ActionListener
                     double ay = r.x2/SolarSystemViewer.scale;
                     image[i] = ImageIO.read(getClass().getResource(picID[i]));
                     icon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/30, SolarSystemViewer.h/30, Image.SCALE_SMOOTH));
-                    zoomIcon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/30, SolarSystemViewer.h/30, Image.SCALE_SMOOTH));
+                    zoomIcon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/20, SolarSystemViewer.h/20, Image.SCALE_SMOOTH));
 
                     label[i] = new JLabel(icon[i]);
 
-                    label[i].setBounds((int)(sunX+ax)+(SolarSystemViewer.h/38 + 1)/2, (int) -(sunY+ay)+(SolarSystemViewer.h/38 + 1)/2 + (2*sunY), SolarSystemViewer.h/30 + 1, SolarSystemViewer.h/30 + 1);
-                }   
-                else if(i == 9)// space
-                {
-                    image[i] = ImageIO.read(getClass().getResource(picID[i]));
-                    icon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h, SolarSystemViewer.h, Image.SCALE_SMOOTH));
-
-                    label[i] = new JLabel(icon[i]);
-
-                    label[i].setBounds(0,0, SolarSystemViewer.h, SolarSystemViewer.h);
-                }            
+                    label[i].setBounds((int) (earthDiameter + (sunX+ax)+(SolarSystemViewer.h/38 + 1)/2), (int) (earthDiameter + -(sunY+ay)+(SolarSystemViewer.h/38 + 1)/2 + (2*sunY)), SolarSystemViewer.h/20 + 1, SolarSystemViewer.h/20 + 1);
+                }         
             } 
             catch (IOException e) 
             {
@@ -220,7 +211,7 @@ public class SolarSystem extends JPanel implements ActionListener
         // Start the timer to update the positions of the labels
         Timer timer = new Timer(DELAY, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                angle += 0.05;
+                angle += 0.0;
                 if(angle >= 20.5) {
                     return;
                 }
