@@ -96,7 +96,7 @@ public class Main {
         probe.setPosition(RunMe.initPos);
         probe.setVelocity(RunMe.initVelo);
 
-        int timeStepInSeconds = 60 * 60; // 1 Month of Timestep
+        int timeStepInSeconds = 60 * 60; // 1 hour of timestep
         StateOfSystem solarSystemState3 = new StateOfSystem(timeStepInSeconds, celestialBodies); // Giging it a Time Step of
         
         // Create the Object that can Update the State of the Solar System
