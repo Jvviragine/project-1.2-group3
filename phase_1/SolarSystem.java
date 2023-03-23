@@ -82,7 +82,7 @@ public class SolarSystem extends JPanel implements ActionListener
 
                     label[i] = new JLabel(icon[i]);
 
-                    label[i].setBounds(200, 200, SolarSystemViewer.h/50 + 1, SolarSystemViewer.h/50 + 1);
+                    label[i].setBounds((int)(sunX+ax)+(SolarSystemViewer.h/50 + 1)/2, (int) -(sunY+ay)+(SolarSystemViewer.h/50 + 1)/2 + (2*sunY), SolarSystemViewer.h/40 + 1, SolarSystemViewer.h/40 + 1);
                 }
                 else if(i == 4)// mars
                 {
@@ -134,7 +134,7 @@ public class SolarSystem extends JPanel implements ActionListener
 
                     label[i] = new JLabel(icon[i]);
 
-                    label[i].setBounds((int) ((sunX+ax)+(SolarSystemViewer.h/50 + 1)/2), (int) -((sunY+ay)+(SolarSystemViewer.h/50 + 1)/2 + (2*sunY)), SolarSystemViewer.h/32 + 1, SolarSystemViewer.h/32 + 1);
+                    label[i].setBounds((int)(sunX+ax)+(SolarSystemViewer.h/50 + 1)/2, (int) -(sunY+ay)+(SolarSystemViewer.h/50 + 1)/2 + (2*sunY), SolarSystemViewer.h/40 + 1, SolarSystemViewer.h/40 + 1);
                 }      
             } 
             catch (IOException e) 
@@ -176,7 +176,6 @@ public class SolarSystem extends JPanel implements ActionListener
         overlayPanel.setOpaque(false);
         overlayPanel.setBounds(labelPanel.getBounds());
         add(overlayPanel);
-<<<<<<< Updated upstream
 
         // Start the timer to update the positions of the labels
         Timer timer = new Timer(DELAY, new ActionListener() {
@@ -198,9 +197,6 @@ public class SolarSystem extends JPanel implements ActionListener
         throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
     }
 }
-=======
-    }}
->>>>>>> Stashed changes
 // mport javax.imageio.ImageIO;
         
 // public class SolarSystem extends JPanel implements ActionListener
