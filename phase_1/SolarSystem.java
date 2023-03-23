@@ -25,8 +25,8 @@ public class SolarSystem extends JPanel implements ActionListener
 
     public SolarSystem()
     {
-
         celestialObjects.list();
+        //Coordinates of the sun
         final int sunX = (int) ((celestialObjects.mars.getDistanceFromSun()/SolarSystemViewer.scale) + 120)-((SolarSystemViewer.h/8 + 1)/2);
         final int sunY = (int) SolarSystemViewer.h/3-((SolarSystemViewer.h/8 + 1)/2);
 
@@ -157,9 +157,6 @@ public class SolarSystem extends JPanel implements ActionListener
                     image[i] = ImageIO.read(getClass().getResource(picID[i]));
                     icon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/30, SolarSystemViewer.h/30, Image.SCALE_SMOOTH));
                     zoomIcon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/30, SolarSystemViewer.h/30, Image.SCALE_SMOOTH));
-
-                    System.out.println(ax);
-                    System.out.println(ay);
 
                     label[i] = new JLabel(icon[i]);
 
