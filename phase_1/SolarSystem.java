@@ -265,7 +265,7 @@ public class SolarSystem extends JPanel implements ActionListener
                 // int xProbe = xStartEarth + (int) angle * 21;
                 // int yProbe = yStartEarth + (int) angle * 21;
 
-                //counter += 5;
+                counter += 5;
 
                 double xVenusDouble = venusPath[counter][0];
                 int xVenus = sunX + (int) (xVenusDouble/SolarSystemViewer.scale);
