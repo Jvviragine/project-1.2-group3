@@ -220,7 +220,7 @@ public class SolarSystem extends JPanel implements ActionListener
         Timer timer = new Timer(DELAY, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 
-                counter+= 10;
+                counter+= 100;
 
                 double xVenusDouble = venusPath[counter][0];
                 int xVenus = sunX + (int) (xVenusDouble/SolarSystemViewer.scale);
@@ -271,9 +271,9 @@ public class SolarSystem extends JPanel implements ActionListener
                 label[7].setLocation(xTitan, yTitan);
                 label[8].setLocation(xProbe, yProbe);
 
-                if(probePath.get(counter).get(0) == UpdateStateOfSystem.getPositionWhenReached().getX()) {
+                if((int) (probePath.get(counter).get(0) / SolarSystemViewer.scale) >= (int) (UpdateStateOfSystem.getPositionWhenReached().getX() / SolarSystemViewer.scale) - 19) {
                     System.out.println("Reached!");
-                    return;
+                    counter = 100000;
                 }
             }
         });
