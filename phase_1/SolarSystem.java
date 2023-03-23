@@ -27,13 +27,13 @@ public class SolarSystem extends JPanel implements ActionListener
     private double xProbeDouble = 0, yProbeDouble = 0;
     private int xProbe = 0, yProbe = 0;
     private ArrayList<ArrayList<Double>> probePath = carl.probePath;
-    private double[][] venusPath = carl.orbitOfVenus;
-    private double[][] earthPath = carl.orbitOfEarth;
-    private double[][] moonPath = carl.orbitOfMoon;
-    private double[][] marsPath = carl.orbitOfMars;
-    private double[][] jupiterPath = carl.orbitOfJupiter;
-    private double[][] saturnPath = carl.orbitOfSaturn;
-    private double[][] titanPath = carl.orbitOfTitan;
+    private double[][] venusPath = carl.venus.fromListToArray2D(carl.venus.getPositionsArray());
+    private double[][] earthPath = carl.earth.fromListToArray2D(carl.earth.getPositionsArray());
+    private double[][] moonPath = carl.moon.fromListToArray2D(carl.moon.getPositionsArray());
+    private double[][] marsPath = carl.mars.fromListToArray2D(carl.mars.getPositionsArray());
+    private double[][] jupiterPath = carl.jupiter.fromListToArray2D(carl.jupiter.getPositionsArray());
+    private double[][] saturnPath = carl.saturn.fromListToArray2D(carl.saturn.getPositionsArray());
+    private double[][] titanPath = carl.titan.fromListToArray2D(carl.titan.getPositionsArray());
     private int counter = 0;
 
     public SolarSystem()
@@ -262,7 +262,7 @@ public class SolarSystem extends JPanel implements ActionListener
                 // int xProbe = xStartEarth + (int) angle * 21;
                 // int yProbe = yStartEarth + (int) angle * 21;
 
-                counter++;
+                counter+= 5;
 
                 double xVenusDouble = venusPath[counter][0];
                 int xVenus = sunX + (int) (xVenusDouble/SolarSystemViewer.scale);

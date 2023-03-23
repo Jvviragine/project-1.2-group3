@@ -121,4 +121,13 @@ public class CelestialBody{
         velocities.add(newVelocity);
     }
 
+    public double[][] fromListToArray2D(ArrayList<Vector> positions){
+        double[][] pos = new double[positions.size()][2];
+        for(int i = 0;i<pos.length; i++){
+            pos[i][0] = positions.get(i).getX();
+            pos[i][1] = positions.get(i).getY();
+        }
+        return pos;
+    }
+
 }
