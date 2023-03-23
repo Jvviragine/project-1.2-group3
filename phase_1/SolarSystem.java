@@ -18,11 +18,8 @@ public class SolarSystem extends JPanel implements ActionListener
     BufferedImage image[] = new BufferedImage[10];
     ImageIcon icon[] = new ImageIcon[10];
     ImageIcon zoomIcon[] = new ImageIcon[9];
-    private double angle = 0;
-    private final int DELAY = 10;
-    private int radiusVenus, radiusEarth, radiusMoon, radiusMars, radiusJupiter, radiusSaturn, radiusTitan;
-    private int xStartEarth, yStartEarth;
-    private int sunDiameter, earthDiameter, saturnDiameter;
+    private final int DELAY = 1;
+    private int earthDiameter;
     Main carl = new Main();
     private double xProbeDouble = 0, yProbeDouble = 0;
     private int xProbe = 0, yProbe = 0;
@@ -61,7 +58,6 @@ public class SolarSystem extends JPanel implements ActionListener
                     icon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/20, SolarSystemViewer.h/20, Image.SCALE_SMOOTH));
                     zoomIcon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/16, SolarSystemViewer.h/16, Image.SCALE_SMOOTH));
                     
-                    sunDiameter = SolarSystemViewer.h/8 + 1;
                     label[i] = new JLabel(icon[i]);
 
                     label[i].setBounds(sunX, sunY, SolarSystemViewer.h/20 + 1, SolarSystemViewer.h/20 + 1);
@@ -70,7 +66,6 @@ public class SolarSystem extends JPanel implements ActionListener
                 {
                     double ax = r.x1/SolarSystemViewer.scale;
                     double ay = r.x2/SolarSystemViewer.scale;
-                    radiusVenus = (int) (r.getDistanceFromSun() / SolarSystemViewer.scale);
 
                     image[i] = ImageIO.read(getClass().getResource(picID[i]));
                     icon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/38, SolarSystemViewer.h/38, Image.SCALE_SMOOTH));
@@ -84,10 +79,7 @@ public class SolarSystem extends JPanel implements ActionListener
                 {
                     double ax = r.x1/SolarSystemViewer.scale;
                     double ay = r.x2/SolarSystemViewer.scale;
-                    radiusEarth = (int) (r.getDistanceFromSun() / SolarSystemViewer.scale);
                     earthDiameter = SolarSystemViewer.h/38 + 1;
-                    xStartEarth = (int)(sunX+ax)+(SolarSystemViewer.h/38 + 1)/2;
-                    yStartEarth = (int) -(sunY+ay)+(SolarSystemViewer.h/38 + 1)/2 + (2*sunY);
 
                     image[i] = ImageIO.read(getClass().getResource(picID[i]));
                     icon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/38, SolarSystemViewer.h/38, Image.SCALE_SMOOTH));
@@ -101,7 +93,6 @@ public class SolarSystem extends JPanel implements ActionListener
                 {
                     double ax = r.x1/SolarSystemViewer.scale;
                     double ay = r.x2/SolarSystemViewer.scale;
-                    radiusMoon = 20;
 
                     image[i] = ImageIO.read(getClass().getResource(picID[i]));
                     icon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/65, SolarSystemViewer.h/65, Image.SCALE_SMOOTH));
@@ -115,7 +106,6 @@ public class SolarSystem extends JPanel implements ActionListener
                 {
                     double ax = r.x1/SolarSystemViewer.scale;
                     double ay = r.x2/SolarSystemViewer.scale;
-                    radiusMars = (int) (r.getDistanceFromSun() / SolarSystemViewer.scale);
 
                     image[i] = ImageIO.read(getClass().getResource(picID[i]));
                     icon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/38, SolarSystemViewer.h/38, Image.SCALE_SMOOTH));
@@ -129,7 +119,6 @@ public class SolarSystem extends JPanel implements ActionListener
                 {
                     double ax = r.x1/SolarSystemViewer.scale;
                     double ay = r.x2/SolarSystemViewer.scale;
-                    radiusJupiter = (int) (r.getDistanceFromSun() / SolarSystemViewer.scale);
 
                     image[i] = ImageIO.read(getClass().getResource(picID[i]));
                     icon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/30, SolarSystemViewer.h/30, Image.SCALE_SMOOTH));
@@ -143,8 +132,6 @@ public class SolarSystem extends JPanel implements ActionListener
                 {
                     double ax = r.x1/SolarSystemViewer.scale;
                     double ay = r.x2/SolarSystemViewer.scale;
-                    radiusSaturn = (int) (r.getDistanceFromSun() / SolarSystemViewer.scale);
-                    saturnDiameter = SolarSystemViewer.h/16 + 1;
 
                     image[i] = ImageIO.read(getClass().getResource(picID[i]));
                     icon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/15, SolarSystemViewer.h/25, Image.SCALE_SMOOTH));
@@ -158,7 +145,6 @@ public class SolarSystem extends JPanel implements ActionListener
                 {
                     double ax = r.x1/SolarSystemViewer.scale;
                     double ay = r.x2/SolarSystemViewer.scale;
-                    radiusTitan = 20;
 
                     image[i] = ImageIO.read(getClass().getResource(picID[i]));
                     icon[i] = new ImageIcon(image[i].getScaledInstance(SolarSystemViewer.h/65, SolarSystemViewer.h/65, Image.SCALE_SMOOTH));
@@ -234,7 +220,7 @@ public class SolarSystem extends JPanel implements ActionListener
         Timer timer = new Timer(DELAY, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 
-                counter+= 100;
+                counter+= 10;
 
                 double xVenusDouble = venusPath[counter][0];
                 int xVenus = sunX + (int) (xVenusDouble/SolarSystemViewer.scale);
