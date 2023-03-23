@@ -20,6 +20,7 @@ public class celestialObjects
     static celestialObjects jupiter = new celestialObjects(692722875.928222, 258560760.813524, -16570817.7105996, -4.71443059866156, 12.8555096964427, 0.0522118126939208, Math.pow(189818722*10,19), 5);
     static celestialObjects saturn = new celestialObjects(1253801723.95465, -760453007.810989, -36697431.1565206, 4.46781341335014, 8.23989540475628, -0.320745376969732, Math.pow(5.6834*10,26), 6);
     static celestialObjects titan = new celestialObjects(1254501624.95946, -761340299.067828, -36309613.8378104, 8.99593229549645, 11.1085713608453, -2.25130986174761, Math.pow(13455.3*10,19), 7);
+    static celestialObjects probe = new celestialObjects(-148186906.893642, -27823158.5715694, 33746.8987977113, 5.05251577575409, -29.3926687625899, 0.00170974277401292, Math.pow(5.97219*10,24), 8);
 
     celestialObjects(double x1, double x2, double x3, double v1, double v2, double v3, double mass, int index)
     {
@@ -42,6 +43,7 @@ public class celestialObjects
         celestialObjectList.add(jupiter);
         celestialObjectList.add(saturn);
         celestialObjectList.add(titan);
+        celestialObjectList.add(probe);
     }
 
     public double getX1()
