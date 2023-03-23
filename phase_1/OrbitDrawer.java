@@ -4,7 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Arrays;
 
-
 class OrbitDrawer extends JComponent {
     //nested class used to draw an orbit by tracing between the given points
     
