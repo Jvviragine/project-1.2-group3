@@ -18,7 +18,7 @@ public class SolarSystem extends JPanel implements ActionListener
     BufferedImage image[] = new BufferedImage[10];
     ImageIcon icon[] = new ImageIcon[10];
     ImageIcon zoomIcon[] = new ImageIcon[9];
-    private final int DELAY = 1;
+    private final int DELAY = 10;
     private int earthDiameter;
     Main carl = new Main();
     private double xProbeDouble = 0, yProbeDouble = 0;
