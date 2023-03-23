@@ -234,35 +234,7 @@ public class SolarSystem extends JPanel implements ActionListener
         // Start the timer to update the positions of the labels
         Timer timer = new Timer(DELAY, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                angle += 0.05;
-                // if(angle >= 20.5) {
-                //     return;
-                // }
-
-                // int xVenus = sunX + sunDiameter / 3 + (int)(radiusVenus * Math.cos(0.5 * angle + 4.4));
-                // int yVenus = sunY + sunDiameter / 3 + (int)(radiusVenus * Math.sin(0.5 * angle + 4.4));
-
-                // int xEarth = sunX + sunDiameter / 3 + (int)(radiusEarth * Math.cos(0.308 * angle + 2.5));
-                // int yEarth = sunY + sunDiameter / 3 + (int)(radiusEarth * Math.sin(0.308 * angle + 2.5));
-
-                // int xMoon = xEarth + earthDiameter / 4 + (int)(radiusMoon * Math.cos(4.16 * angle + 3.8));
-                // int yMoon = yEarth + earthDiameter / 4 + (int)(radiusMoon * Math.sin(4.16 * angle + 3.8));
                 
-                // int xMars = sunX + sunDiameter / 3 + (int)(radiusMars * Math.cos(0.164 * angle + 3.8));
-                // int yMars = sunY + sunDiameter / 3 + (int)(radiusMars * Math.sin(0.164 * angle + 3.8));
-                
-                // int xJupiter = sunX + sunDiameter / 3 + (int)(radiusJupiter * Math.cos(0.026 * angle + 5.7));
-                // int yJupiter = sunY + sunDiameter / 3 + (int)(radiusJupiter * Math.sin(0.026 * angle + 5.7));
-                
-                // int xSaturn = sunX + sunDiameter / 3 + (int)(radiusSaturn * Math.cos(0.010 * angle + 0.7));
-                // int ySaturn = sunY + sunDiameter / 3 + (int)(radiusSaturn * Math.sin(0.010 * angle + 0.7));
-                
-                // int xTitan = 10 + xSaturn + saturnDiameter / 4 + (int)(radiusTitan * Math.cos(7.03 * angle));
-                // int yTitan = ySaturn + saturnDiameter / 4 - 4 + (int)(radiusTitan * Math.sin(7.03 * angle));
-                
-                // int xProbe = xStartEarth + (int) angle * 21;
-                // int yProbe = yStartEarth + (int) angle * 21;
-
                 counter+= 10;
 
                 double xVenusDouble = venusPath[counter][0];
