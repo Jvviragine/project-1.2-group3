@@ -10,21 +10,23 @@ public class EulerUpdateStateofSystem {
 
     // Constructor 
     public EulerUpdateStateofSystem(StateOfSystem solarSystem) {
-
         this.solarSystem = solarSystem;
         bodiesInSystem = this.solarSystem.getBodiesInSystem();
         timeStepInSeconds = this.solarSystem.getTimeStepInSeconds();
         this.currentTimeOfState = this.solarSystem.getCurrentTime();
     }
 
-    // Method Responsible for Updating the State of Our Solar System -> From Tn to T1 -> Tamar's Methods
+    // Method Responsible for Updating the State of Our Solar System -> Tamar's Methods
     public void updateStateOfSolarSystemEuler() {
         updatePosition();
     }
 
 //  ------------------------Euler's Update Position Method -> Tamar-------------------
-    //Updates the position of the body
-
+    
+    /**
+     * Updates the position of the body
+     * @return void
+     */
     public void updatePosition(){
 
         //Initial velocities are stored
@@ -41,8 +43,6 @@ public class EulerUpdateStateofSystem {
         //Position is updated using Euler's method.
         //Xi+1 = Xi + (h * Vi)
         for(int i=0;i<bodiesInSystem.size();i++){ 
-
-            //System.out.println("Initial Position of " + bodiesInSystem.get(i).getName() + " :"  + bodiesInSystem.get(i).getPosition());
             
             Vector incr = (initialvelocities.get(i).multi(timeStepInSeconds));
             Vector updated = bodiesInSystem.get(i).getPosition().add(incr);
@@ -56,8 +56,11 @@ public class EulerUpdateStateofSystem {
 
 
 //  ------------------------Euler's Update Velocity Methods -> Tamar-------------------
-    //Updates the velocity of the body
-    
+   
+    /**
+     * Updates the velocity of the body
+     * @return void
+     */
     public void updateVelocity(){
         
         //Updates velocities of all bodies, except the Sun (index 0)
@@ -104,6 +107,7 @@ public class EulerUpdateStateofSystem {
                 force = force.add(unitVector.multi(gxm/denominator)); //net force
             }
         }
+
         return force;
     }
 }
