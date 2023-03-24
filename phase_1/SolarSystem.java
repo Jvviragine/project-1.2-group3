@@ -272,8 +272,7 @@ public class SolarSystem extends JPanel implements ActionListener
                 label[8].setLocation(xProbe, yProbe);
 
                 if((int) (probePath.get(counter).get(0) / SolarSystemViewer.scale) >= (int) (UpdateStateOfSystem.getPositionWhenReached().getX() / SolarSystemViewer.scale) - 19) {
-                    System.out.println("Reached!");
-                    counter = 100000;
+                    return;
                 }
             }
         });

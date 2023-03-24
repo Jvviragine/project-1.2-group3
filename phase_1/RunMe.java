@@ -122,6 +122,7 @@ public class RunMe implements ActionListener{
                 Main carl = new Main();
                 frame.dispose();
                 SolarSystemViewer.main(null);
+                System.out.println("penis 1");
 
             }catch(Exception p){
                 
@@ -138,6 +139,7 @@ public class RunMe implements ActionListener{
                 Main carl = new Main();
                 frame.dispose();
                 SolarSystemViewer.main(null);
+                System.out.println("penis 2");
             }
         }
     }
