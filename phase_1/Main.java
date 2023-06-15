@@ -107,6 +107,8 @@ public class Main {
         double min = probeInitialPosition.dist(titanInitialPosition);
         double minTime = 0;
         int i = 0;
+        String minPos = "";
+        String minPost = "";
 
         //Updating the Solar System until we reach Titan or a year has passed
         while(!solarSystemUpdater3.reachedTitan(probe, titan, solarSystemState3.getTotalTimePassed())){
@@ -117,9 +119,14 @@ public class Main {
             i++;
             if(probe.getPosition().dist(titan.getPosition())<min){
                 min = probe.getPosition().dist(titan.getPosition());
+                minPos = probe.getPosition().toString();
+                minPost = titan.getPosition().toString();
                 minTime = solarSystemState3.getTotalTimePassed();
             }
         }
+        System.out.println("dist " + min);
+        System.out.println("Probe pos " + minPos);
+        System.out.println("Titan pos " + minPost);
         
         if(solarSystemUpdater3.calculateDistanceFromProbeToTitan(probe, titan) <= 2575) {
             System.out.println("Minimum distance to titan: " + min);

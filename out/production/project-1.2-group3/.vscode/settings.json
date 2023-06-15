@@ -1,0 +1,10 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "/Users/ulasawczuk/Downloads/xmlbeans-2.6.0.jar",
+        "/Users/ulasawczuk/Downloads/poi-ooxml-schemas-3.17.jar",
+        "/Users/ulasawczuk/Downloads/poi-ooxml-3.17.jar",
+        "/Users/ulasawczuk/Downloads/poi-3.17.jar",
+        "/Users/ulasawczuk/Downloads/commons-collections4-4.1.jar"
+    ]
+}
